@@ -1,0 +1,1407 @@
+<%- include('../partials/BootstrapLinks.ejs') %>
+
+    <style>
+        .sub_nav_bar {
+            height: 50px;
+            top: 0px;
+            background-color: #f9f4f4;
+            z-index: 99;
+            box-shadow: 0px 0px 4px #ccc;
+            margin-top: -2px;
+        }
+
+        .sub_navigation {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .sub_navigation li {
+            text-align: center;
+            font-weight: 400;
+            /* border-right: 1px solid #f4f4f4; */
+            float: left;
+
+        }
+
+        .sub_navigation li:last-child {
+            border-right: 0px;
+        }
+
+        .sub_navigation li a {
+            font-size: 15px;
+            color: #202020;
+            text-decoration: none;
+            display: block;
+            padding: 10px 20px;
+        }
+
+        .sub_navigation .active,
+        .sub_navigation li:hover {
+            border-bottom: 5px solid #54B445;
+
+        }
+
+        .sub_navigation .active a,
+        .sub_navigation li:hover {
+            color: black;
+            text-shadow: 1px 1px 2px #909090;
+        }
+
+        @media screen and (max-width:574px) {
+            .sub_navigation li {
+                text-align: center;
+                font-weight: 400;
+                border-right: 1px solid #f4f4f4;
+                float: none;
+
+            }
+
+            .sub_nav_bar {
+                height: auto;
+                top: 0px;
+                background-color: #f9f4f4;
+                z-index: 99;
+                box-shadow: 0px 0px 4px #ccc;
+                margin-top: -2px;
+            }
+
+        }
+    </style>
+    <style>
+        .components li {
+            
+            height: 7dvh;
+            margin: 10px;
+            margin-top: 25px;
+            padding-top: 4px;
+            list-style: none;
+            background: linear-gradient(to bottom, #54B445, #80e45a, #80e45a, #85e241, #8edb4f);
+            /* border: 1px solid; */
+            text-align: center;
+            border-radius: 10px;
+
+        }
+
+        .components li a {
+            text-decoration: none;
+            color: rgb(14, 15, 15);
+        }
+
+        .components li:hover {
+            background: linear-gradient(to right, #54B445, #80e45a, #80e45a, #85e241, #8edb4f);
+        }
+
+        .gradient-custom {
+            background: linear-gradient(to bottom, #54B445, #80e45a, #80e45a, #85e241, #8edb4f);
+        }
+
+        #setting {
+            border-radius: 10px;
+            background-color: #f8f7fc;
+            width: 40em;
+        }
+        #sideProfile{
+            margin: 20px;
+        }
+        #sideDiv{
+            width:80%;
+            height: auto;
+        }
+        @media only screen and (max-width:574px) {
+           
+        #sideContainer{
+            width:30%;
+            height:auto;
+            background-color:#f9f4f4 
+        } 
+        .components li {
+            width:6em;
+            position: sticky;
+            top:110px;
+            height: auto;
+            margin: 10px;
+            padding:14px;
+            list-style: none;
+            background: linear-gradient(to bottom, #54B445, #80e45a, #80e45a, #85e241, #8edb4f);
+            text-align: center;
+            border-radius: 10px;
+
+        }
+        
+        #sideProfile{
+            margin:0px;
+        }
+        #sideDiv{
+            width:70%;
+            height: auto;
+        }
+        #sticky_menu{position: sticky;
+            z-index: 1;
+            top: 120px;
+        }
+    }
+    </style>
+    <style>
+        .whitebox {
+            padding: 5px;
+            background: linear-gradient(to bottom, #54B445, #80e45a, #80e45a, #85e241, #8edb4f);
+            
+            border-radius: 10px;
+        }
+
+        .whitebox a {
+            text-decoration: none;
+            color: black;
+
+        }
+        .low_padding {
+            padding-top: 10px;
+            padding-left: 50px;
+        }
+
+        .sub_navigationdiv {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #submitbutton {
+            background-color: #f8f7fc;
+        }
+
+        #submitbutton:hover {
+            background-color: #3ec10a;
+        }
+
+        .field-icon {
+            margin-left: 91%;
+            margin-top: -35px;
+            position: relative;
+            z-index: 2;
+        }
+
+        #card-images {
+            margin: 5px;
+            width: 300px;
+            height: 200px;
+        }
+
+        #sellingdogcardbuttone {
+            width: 8.5rem;
+            background: #54B435;
+            border-radius: 1rem;
+            height: 2.5rem;
+            font-weight: bolder;
+
+        }
+ </style>
+    <script src="js/cities.js"></script>
+
+    <header style="position: sticky; z-index:10;top: 0;">
+        <%- include('../partials/Header'); %>
+    </header>
+
+    <!-- main div start -->
+    <div class="row w-100" style="height: auto;padding:0px 10px 0px 10px">
+        <!-- under div start -->
+        <div class="col-2" id="sideContainer">
+            <div class="sidebar-header">
+
+                <center class="mt-1 d-none d-md-block">
+                    <h4>Welcome <br>
+                        <%=customerData.CName%>
+                    </h4>
+                </center>
+                <hr>
+            </div>
+
+            <ul class="list-unstyled components" >
+                <li>
+                    <a href="/manageAccount/editProfile" > 
+                        Edit Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="/manageAccount/changepassword">
+                        Login & Security
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/manageAccount/yourOrder">
+                        Your Orders
+                    </a>
+                </li>
+                <li>
+                    <a href="/manageAccount/yourpayment">
+                        Your Payments
+                    </a>
+                </li>
+               
+                <li class="nav-item dropdown" id="nav-item">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Add Dog
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+                        style="background-color:rgb(255, 245, 227) ;color: black;">
+                        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addMatingDog">Add
+                                dog for mating</a></li>
+                        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#sellingdog">Add
+                                dog for selling</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- under div end -->
+
+        <!-- under second div start -->
+        <div class="col-10" id="sideDiv">
+            <!-- ........sub_navbar........... -->
+            <section class="sub_nav_bar sticky_sec m-4">
+                <div class="sticky_menu">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="sub_navigationdiv ">
+                                    <ul class="sub_navigation"
+                                        style="display: flex;justify-content: center;align-items: center;">
+                                        <li id="ctrlUserMenu_liUser" class="">
+                                            <a href="/manageAccount">My Account</a>
+                                        </li>
+                                        <li class="nav-item dropdown" id="ctrlUserMenu_liBreeder">
+                                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown"
+                                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                My Pet
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+                                                style="background-color:rgb(255, 245, 227) ;color: black;">
+                                                <li><a class="dropdown-item" href="/manageAccount/matingDogList">Mating
+                                                        Dogs</a></li>
+                                                <li><a class="dropdown-item"
+                                                        href="/manageAccount/sellingDogList">Selling Dogs</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ........sub_navbar........... -->
+
+            <%if(!id){%>
+                <!-- .............profile......... -->
+                <div class="row g-0" id="sideProfile" >
+             
+                    <div class="col-sm-6 col-md-4 gradient-custom text-center text-white"
+                        style="height: auto;border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                        <img src="/images/profileLogo.png" alt="Avatar" class="img-fluid my-5" style="width: 150px;" />
+                        <h5>
+                            <%=customerData.CName%>
+                        </h5>
+                        <p>Customer</p>
+
+                        <i class="far fa-edit mb-5"></i>
+                    </div>
+                    <div class="col-sm-6 col-md-4"
+                        style="border:2px solid red;height: auto;border:1.5px solid rgba(154, 150, 150, 0.498);border-radius: 0px 10px 10px 0px;">
+                        <div class="card-body p-4">
+                            <h5>Profile</h5>
+                            <hr class="mt-0 mb-4">
+                            <div class="row pt-1">
+                                <div class="col-12 mb-4">
+                                    <h5>Email</h5>
+                                    <p class="text-muted">
+                                        <%=customerData.CEmail%>
+                                    </p>
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <h5>Contact</h5>
+                                    <p class="text-muted">
+                                        <%=customerData.CContact%>
+                                    </p>
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <h5>City</h6>
+                                        <p class="text-muted">
+                                            <%=customerData.CCity%>(<%=customerData.CState%>)
+                                        </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-sm-12 col-md-4">
+                        
+                        <div class="col-12" id="serviceimg">
+                            <img src="https://static.vecteezy.com/system/resources/previews/012/069/453/original/dog-walker-with-various-dogs-at-the-park-free-vector.jpg"
+                            alt="" style="width:300px;height:300px"">
+                        </div>
+                    </div>
+                </div> 
+                <%}else if(id=="editProfile" ){%>
+
+                            <center>
+                                <hr>
+                                <h3>UPDATE PROFILE</h3>
+                                <hr>
+                            </center>
+                            <div class="row" style="padding:35px 10% 0px 10%;background-color: #85e241;">
+                                <div class="col-sm-12 col-md-6">
+                                    <img id="img-fluid img-responsive"
+                                        src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7883.jpg"
+                                        style="width:100%;height:90%" alt="">
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <form action="/updateCustomerProfile" method="post" onsubmit="return save()">
+                                        <div class="form-group">
+                                            <input type="text" value="<%=customerData.CName%>" id="login_name"
+                                                onkeyup="return validname()" placeholder="Enter Name" name="CName"
+                                                class="form-control inputform form-control inputform-lg" />
+                                            <p id="name"></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" value="<%=customerData.CEmail%>" id="login_email"
+                                                onkeyup="return validemail()" placeholder="Enter Email" name="CEmail"
+                                                class="form-control inputform form-control inputform-lg" />
+                                            <p id="email"></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" value="<%=customerData.CContact%>" id="login_contact"
+                                                onkeyup="return validcontact()" placeholder="Enter Contact no."
+                                                name="CContact"
+                                                class="form-control inputform form-control inputform-lg" />
+                                            <p id="contact"></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" value="<%=customerData.CCity%>" id="login_city"
+                                                onkeyup="return validcity()" placeholder="Enter City Name" name="CCity"
+                                                class="form-control inputform form-control inputform-lg" />
+                                            <p id="city"></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" id="login_state" value="<%=customerData.CState%>"
+                                                onkeyup="return validstate()" placeholder="Enter State Name"
+                                                name="CState"
+                                                class="form-control inputform form-control inputform-lg" />
+                                            <p id="state"></p>
+                                        </div>
+                                        <input type="submit" class="btn" id="submitbutton" value="UPDATE" />
+
+                                </div>
+                                </form>
+                            </div>
+
+                            <script>
+                                function validname() {
+                                    console.log("Enter name");
+                                    var name = document.getElementById("login_name");
+
+                                    //   var address=document.getElementById("add");
+                                    if (name.value.trim() == "") {
+                                        document.getElementById("name").style.color = "red";
+                                        document.getElementById("name").innerHTML = "Name Required";
+                                        return false
+                                    }
+                                    else {
+                                        var reg = /^[A-Za-z\s]+$/;
+                                        if (reg.test(name.value)) {
+                                            document.getElementById('name').style.color = "green";
+                                            document.getElementById("name").innerHTML = "Valid name";
+                                            return true
+                                        }
+                                        else {
+                                            document.getElementById('name').style.color = "red";
+                                            document.getElementById("name").innerHTML = "Invalid name";
+                                            return false;
+                                        }
+                                    }
+                                }
+
+                                function validemail() {
+                                    console.log("Enter email");
+                                    var email = document.getElementById("login_email");
+                                    if (email.value.trim() == "") {
+                                        document.getElementById("email").style.color = "red";
+                                        document.getElementById("email").innerHTML = "Email Required";
+                                        return false;
+                                    }
+                                    else {
+                                        var reg = /^\w+([\.-])?\w*@[a-z]*([\.][a-z]{2,3})+$/;
+                                        if (reg.test(email.value)) {
+                                            document.getElementById("email").style.color = "green";
+                                            document.getElementById("email").innerHTML = "Valid Email";
+                                            return true;
+                                        }
+                                        else {
+                                            document.getElementById("email").style.color = "red";
+                                            document.getElementById("email").innerHTML = "Invalid email";
+                                            return false;
+                                        }
+                                    }
+                                }
+
+                                function validcity() {
+                                    console.log("Enter city");
+                                    var name = document.getElementById("login_city");
+
+                                    //   var address=document.getElementById("add");
+                                    if (name.value.trim() == "") {
+                                        document.getElementById("city").style.color = "red";
+                                        document.getElementById("city").innerHTML = "City Name Required";
+                                        return false
+                                    }
+                                    else {
+                                        var reg = /^[A-Za-z\s]+$/;
+                                        if (reg.test(name.value)) {
+                                            document.getElementById('city').style.color = "green";
+                                            document.getElementById("city").innerHTML = "Valid name";
+                                            return true
+                                        }
+                                        else {
+                                            document.getElementById('city').style.color = "red";
+                                            document.getElementById("city").innerHTML = "Invalid name";
+                                            return false;
+                                        }
+                                    }
+                                }
+                                function validstate() {
+                                    console.log("Enter state");
+                                    var name = document.getElementById("login_state");
+
+
+                                    if (name.value.trim() == "") {
+                                        document.getElementById("state").style.color = "red";
+                                        document.getElementById("state").innerHTML = "State Name Required";
+                                        return false
+                                    }
+                                    else {
+                                        var reg = /^[A-Za-z\s]+$/;
+                                        if (reg.test(name.value)) {
+                                            document.getElementById('state').style.color = "green";
+                                            document.getElementById("state").innerHTML = "Valid name";
+                                            return true
+                                        }
+                                        else {
+                                            document.getElementById('state').style.color = "red";
+                                            document.getElementById("state").innerHTML = "Invalid name";
+                                            return false;
+                                        }
+                                    }
+                                }
+                                function validcontact() {
+                                    var mobile = document.getElementById("login_contact");
+                                    if (mobile.value.trim() == "") {
+                                        document.getElementById("contact").style.color = "red";
+                                        document.getElementById("contact").innerHTML = "Mobile Number Required";
+                                        return true;
+                                    }
+                                    else {
+                                        var reg = /^[6789][0-9]{9}$/;
+                                        if (reg.test(mobile.value)) {
+                                            document.getElementById("contact").style.color = "green";
+                                            document.getElementById("contact").innerHTML = "Valid Password";
+                                            return true;
+                                        }
+                                        else {
+                                            document.getElementById("contact").style.color = "red";
+                                            document.getElementById("contact").innerHTML = "Enter 10 Digit MobileNo.";
+                                            return false;
+                                        }
+                                    }
+                                }
+
+                                function save() {
+
+                                    console.log("Enter in sabe()....");
+                                    var name = validname();
+                                    if (name == false) {
+                                        return false;
+                                    }
+
+
+                                    var email = validemail();
+                                    if (email == false) {
+                                        return false;
+                                    }
+
+
+                                    var num = validcontact();
+                                    if (num == false) {
+                                        return false;
+                                    }
+
+
+                                    var name = validcity();
+                                    if (name == false) {
+                                        return false;
+                                    }
+
+
+                                    var name = validstate();
+                                    if (name == false) {
+                                        return false;
+                                    }
+
+                                    return true;
+                                }   
+                            </script>
+
+                            <%}else if(id=="changepassword" ){%>
+                                <center>
+                                    <hr>
+                                    <h3>RESET PASSWORD</h3>
+                                    <hr>
+                                </center>
+                                <div class="row" style="padding:35px 10% 0px 10%;background-color: #85e241;">
+                                    <div class="col-sm-12 col-md-6">
+                                        <img class="img-fluid img-responsive" src="https://cdn-icons-png.flaticon.com/512/6195/6195699.png"
+                                             alt="" style="width:200px;height:200px;margin:20px 0% 0px 6%;">
+                                    </div>
+                                    <div class="mt-3 col-sm-12 col-md-6">
+                                        <form action="/resetPassword/<%=customerData.CEmail%>"
+                                            onsubmit="return save(),checkpass()" method="post">
+                                            <div class="form-group">
+                                                <input type="password" id="currentPassword"
+                                                    onkeyup="validCurrentPassword()"
+                                                    placeholder="Enter Current Password" name="currentPassword"
+                                                    class="form-control inputform inputform-lg" />
+                                                <i class="fa fa-eye-slash field-icon" id="current-togglePassword"></i>
+                                                <p id="pass3"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" id="newPassword" onkeyup="validpassword()"
+                                                    placeholder="Enter New Password"
+                                                    class="form-control inputform form-control inputform-lg" />
+                                                <i class="fa fa-eye-slash field-icon" id="newpass-togglePassword"></i>
+                                                <p id="pass1"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" placeholder="Confirm Password"
+                                                    class="form-control inputform form-control inputform-lg"
+                                                    id="confirmPassword" name="confirmPassword">
+                                                <i class="fa fa-eye-slash field-icon"
+                                                    id="confirmpass-togglePassword"></i>
+                                                <p id="pass2"></p>
+                                            </div>
+                                            <input type="submit" class="btn" id="submitbutton" value="RESET" />
+                                            <h4 style="color:blue">
+                                                <%=msg%>
+                                            </h4>
+
+                                        </form>
+                                    </div>
+                                </div>
+                                <script>
+                                    function validpassword() {
+                                        var password = document.getElementById("newPassword");
+                                        if (password.value.trim() == "") {
+                                            document.getElementById("pass1").style.color = "red";
+                                            document.getElementById("pass1").innerHTML = "Password Required";
+                                            return false;
+                                        }
+                                        else {
+                                            var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                                            if (reg.test(password.value)) {
+                                                document.getElementById("pass1").style.color = "green";
+                                                document.getElementById("pass1").innerHTML = "Valid Password";
+                                                return true;
+                                            }
+                                            else {
+                                                document.getElementById("pass1").style.color = "red";
+                                                document.getElementById("pass1").innerHTML = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:";
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                    function validCurrentPassword() {
+                                        var password = document.getElementById("currentPassword");
+                                        if (password.value.trim() == "") {
+                                            document.getElementById("pass3").style.color = "red";
+                                            document.getElementById("pass3").innerHTML = "Password Required";
+                                            return false;
+                                        }
+                                        else {
+                                            var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                                            if (reg.test(password.value)) {
+                                                document.getElementById("pass3").style.color = "green";
+                                                document.getElementById("pass3").innerHTML = "Valid Password";
+                                                return true;
+                                            }
+                                            else {
+                                                document.getElementById("pass3").style.color = "red";
+                                                document.getElementById("pass3").innerHTML = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:";
+                                                return false;
+                                            }
+                                        }
+                                    }
+
+                                    function checkpass() {
+                                        var npassword = document.getElementById("newPassword").value;
+                                        var cpassword = document.getElementById("confirmPassword").value;
+                                        if (cpassword.trim() == "") {
+                                            document.getElementById("pass2").style.color = "red";
+                                            document.getElementById("pass2").innerHTML = "Password Required";
+                                            return false;
+                                        }
+                                        if (npassword === cpassword) {
+                                            document.getElementById("pass2").style.color = "green";
+                                            document.getElementById("pass2").innerHTML = "Password Match";
+                                            return true;
+                                        }
+                                        else {
+                                            document.getElementById("pass2").style.color = "red";
+                                            document.getElementById("pass2").innerHTML = "confirm password not match with new Password";
+                                            return false;
+                                        }
+                                    }
+
+
+                                    function save() {
+                                        console.log("Enter in sabe....");
+                                        var name = validpassword();
+                                        if (validpassword() && checkpass() && validCurrentPassword()) {
+                                            return true;
+                                        }
+                                        else {
+                                            return false;
+                                        }
+                                    }
+
+                                    const newpasstogglePassword = document.querySelector("#newpass-togglePassword");
+                                    const newPassword = document.querySelector("#newPassword");
+                                    const currenttogglePassword = document.querySelector("#current-togglePassword");
+                                    const currentPassword = document.querySelector("#currentPassword");
+                                    const confirmpasstogglePassword = document.querySelector("#confirmpass-togglePassword");
+                                    const confirmPassword = document.querySelector("#confirmPassword");
+
+                                    newpasstogglePassword.addEventListener("click", function () {
+                                        // toggle the type attribute
+                                        const type = newPassword.getAttribute("type") === "password" ? "text" : "password";
+                                        newPassword.setAttribute("type", type);
+
+                                        // toggle the icon
+                                        this.classList.toggle("bi-eye");
+                                    });
+                                    confirmpasstogglePassword.addEventListener("click", function () {
+                                        // toggle the type attribute
+                                        const type = confirmPassword.getAttribute("type") === "password" ? "text" : "password";
+                                        confirmPassword.setAttribute("type", type);
+
+                                        // toggle the icon
+                                        this.classList.toggle("bi-eye");
+                                    });
+                                    currenttogglePassword.addEventListener("click", function () {
+                                        // toggle the type attribute
+                                        const type = currentPassword.getAttribute("type") === "password" ? "text" : "password";
+                                        currentPassword.setAttribute("type", type);
+
+                                        // toggle the icon
+                                        this.classList.toggle("bi-eye");
+                                    });
+
+                                    // prevent form submit
+                                    // const form = document.querySelector("form");
+                                    // form.addEventListener('submit', function (e) {
+                                    //     e.preventDefault();
+                                    // });
+                                </script>
+
+                                <%}%>
+                                <%if(id=="sellingDogList" ){%>
+                                    <hr>
+                                    <center>
+                                        <b>
+                                            <h1>DOG LIST</h1>
+                                        </b>
+                                    </center>
+                                    <hr>
+        
+                                        <!-- dogs -->
+                                        <%if(sellingDogData.length!=0){%>
+                                            <div class="details" id="detail1">
+                                                <div class="recentOrders">
+                                                    <div class="table-responsive container">
+                                                        <table class="table table-bordered table-striped" id="myTable">
+                                                            <thead class="text-center">
+                                                                <tr>
+                                                                    <th>Breed Name </th>
+                                                                    <th>Price</th>
+                                                                    <th>Description</th>
+                                                                    <th>Age</th>
+                                                                    <th>Weight</th>
+                                                                    <th>Gender</th>
+                                                                    <th>Color's</th>
+                                                                    <th>Dog Image</th>
+                                                                    <th>Status</th>
+                                                                    <th>Edit</th>
+                                                                    <th>Delete</th>
+                                                                    
+                                                                </tr>
+                                                            </thead>
+                            
+                                                            <tbody>
+                                                                <%sellingDogData.forEach((DogListData)=>{%>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <%=DogListData.DogBreed%>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%=DogListData.dogPrice%>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="" style="width:300px">
+                                                                                <%=DogListData.breedDescription%>
+                                                                            </div>
+        
+                                                                        </td>
+                                                                        <td>
+                                                                            <%=DogListData.DogAge%>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%=DogListData.DogWeight%>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%=DogListData.gender%>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%=DogListData.DogColor%>
+                                                                        </td>
+                                                                        <td>
+                                                                            <img src="/uploads/<%=DogListData.avtar%>" style="height: 5rem;width: 5rem;" class="img-responsive" alt="Image">
+                                                                        </td>
+                                                                        <td>
+                                                                            <%=DogListData.status%>
+                                                                        </td>
+                                                                        <td>
+                                                                            <form action="/dealer/edit/<%= DogListData._id %>" method="get"  >
+                                                                                <button type="submit" class="btn p-2" id="sellingdogcardbuttone">Edit</button>
+                                                                            </form>
+                                                         
+                                                                        </td>
+                                                                        <td>
+                                                                            <form action="/dealer/delete/<%= DogListData._id %>" method="post">
+                                                                                <button type="submit" class="btn p-2" id="sellingdogcardbuttone" >Delete</button>
+                                                                            </form>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <%})%>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                    </div>
+                                            <%}else{%>
+                                                                 
+                                                <div class="row"
+                                                    style="margin-top: 3rem;display: flex; justify-content: center;align-items: center;">
+                                                    <img class="col-6" src="/images/noResultFound.gif" alt=""
+                                                        style="width:300px;height: 300px;">
+                                                    <div class="col-6" style="width:300px">
+                                                        <h3 class="text-danger">Sorry!</h1>
+                                                            <p class="text-primary">
+                                                                <%=msg%>
+                                                            </p>
+                                                            <button class="btn" style="background-color: #85e241;"
+                                                                data-bs-toggle="modal" data-bs-target="#sellingdog">List Your
+                                                                Dog</button>
+        
+                                                    </div>
+                                                </div>
+                                                <%}%>
+        
+        
+                                                    <%}else if(id=="matingDogList" ){%>
+                                                        <hr>
+                                                        <center>
+                                                            <b>
+                                                                <h2>MATING DOG LIST</h2>
+                                                            </b>
+                                                        </center>
+                                                        <hr>
+                                                        <!-- <button class="btn"
+                                                        style="background-color: #85e241;"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#addMatingdog">Add Mating Dog</button> -->
+                                                        <%if(matingDogData.length!=0){%>
+                                                            <div class="" id="">
+                                                                <div class="">
+                                                                    <div class="table-responsive container">
+                                                                        <table class="table table-bordered table-striped" id="myTable">
+                                                                            <thead class="text-center">
+                                                                                <tr>
+                                                                                    <th>Dog Name</th>
+                                                                                    <th>Breed Name </th>
+                                                                                    <th>Gender</th>
+                                                                                    <th>Description</th>
+                                                                                    <th>Location</th>
+                                                                                    <th>Image</th>
+                                                                                    <th>Edit</th>
+                                                                                    <th>Delete</th>
+                                                                                    
+                                                                                </tr>
+                                                                            </thead>
+                                            
+                                                                            <tbody>
+                                                                                <% matingDogData.forEach((matingDogData)=>{ %>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <%=matingDogData.dogname%>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <%=matingDogData.dogBreed%>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <%=matingDogData.gender%>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <div class="" style="width:200px">
+                                                                                                <%=matingDogData.breedDescription%>
+                                                                                            </div>
+                        
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <%=matingDogData.location%>
+                                                                                        </td>
+                                                                                        
+                                                                                        <td>
+                                                                                            <img src="/uploads/<%=matingDogData.avtar%>" style="height: 10rem;width: 10rem;" class="img-responsive" alt="Image">
+                                                                                        </td>
+                                                                                        
+                                                                                        <td>
+                                                                                            <form action="/dealer/fetchMatingaDogData/<%= matingDogData._id%>"
+                                                                                                method="get" class="mt-5">
+                                                                                                <button type="submit" id="sellingdogcardbuttone"
+                                                                                                    class="btn" >Edit </button>
+                                                                                            </form><br>
+                                                                                        </td>
+                                                                                            
+                                                                                        <td>
+                                                                                            <form action="/dealer/deletematingdog/<%= matingDogData._id%>" method="post" class="mt-5">
+                                                                                                <button type="submit" id="sellingdogcardbuttone"
+                                                                                                    class="btn">Delete </button>
+                                                                                            </form>
+                                                                         
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <%})%>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                      </div>
+                                                           
+                                                           
+                                                            <%}else{%>
+                                                                <div class="row"
+                                                                    style="margin-top: 3rem;display: flex; justify-content: center;align-items: center;">
+                                                                    <img class="col-6" src="/images/noResultFound.gif" alt=""
+                                                                        style="width:300px;height: 300px;">
+                                                                    <div class="col-6" style="width:300px">
+                                                                        <h3 class="text-danger">Sorry!</h1>
+                                                                            <p class="text-primary">
+                                                                                <%=msgMating%>
+                                                                            </p>
+                                                                            <button class="btn"
+                                                                                style="background-color: #85e241;"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#addMatingdog">List Your
+                                                                                Dog</button>
+        
+                                                                    </div>
+                                                                </div>
+                                                                <%}%>
+        
+                                                                    <%}else if(id=="yourOrder" ){%>
+
+                                                                            <%-include('./cart.ejs')%>
+
+
+                                                                                    <%}else if(id=="yourpayment" ){%>
+                                                                                        <h1>your-payment</h1>
+
+                                                                                        <%}else if(id=="newoffers" ){%>
+                                                                                            <h1>new-offers</h1>
+                                                                                            <%}%>
+                        </div>
+                        <!-- under second div end -->
+                    </div>
+                    <!-- main div end -->
+
+                    <div class="modal fade" id="addMatingDog" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="addMatingDogLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <center>
+                                        <h5 class="modal-title" id="staticBackdropLabel"
+                                            style="font-weight: bolder;margin-left: 7rem;">
+                                            Add Your Mating Dog</h5>
+                                    </center>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <form action="/dealer/addDogForMating" method="post" enctype="multipart/form-data">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control inputform" id="dogname"
+                                                placeholder="Enter your Dog Name"
+                                                style="width:100%;border-radius: rem;" name="dogname">
+                                            <small id="name-error-msg" style="color: red;"></small>
+                                            <p id="index"></p>
+                                        </div>
+                                        <div class="form-group mt-2">
+
+                                            <select name="dogBreed" id="Breed"
+                                                style="width:100%;height: 2.5rem;border-radius: 1rem;background-color: white;border: 1px solid skyblue;">
+                                                <option value="German Shepherd">German Shepherd</option>
+                                                <option value="Pug">Pug</option>
+                                                <option value="Boxer">Boxer</option>
+                                                <option value="Miltese">Miltese</option>
+                                                <option value="Akita">Akita</option>
+                                                <option value="Beagle">Beagle</option>
+                                                <option value="Golden Retriever">Golden Retriever</option>
+                                                <option value="Labrador Retriever">Labrador Retriever</option>
+                                                <option value="Huskey">Golden Retriever</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="text" class="form-control inputform" id="breedDescription"
+                                                placeholder="Enter Dog Breed Description" name="breedDescription"
+                                                style="width:100%;height: 2.5rem;border-radius: 1rem;">
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="text" class="form-control inputform" id="Address"
+                                                placeholder="Enter Address" name="location"
+                                                style="width:100%;height: 2.5rem;border-radius: 1rem;">
+                                        </div>
+                                        <label for="Gender">Gender</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" value="Male" name="gender"
+                                                id="Male">
+                                            <label class="form-check-label" for="Male">
+                                                Male
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" value="Female" name="gender"
+                                                id="Female">
+                                            <label class="form-check-label" for="Female">
+                                                Female
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control inputform" id="dogname" min="1"
+                                                placeholder="Enter your Dog Price"
+                                                style="width:100%;border-radius: rem;" name="price">
+                                            <small id="name-error-msg" style="color: red;"></small>
+                                            <p id="index"></p>
+                                        </div>
+                                        <div>
+                                            <input type="file" name="avtar" id="avtar">
+                                        </div><br>
+
+
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn"
+                                                style="background-color: #54B435;width: 100%;border-radius: 2rem;font-weight: bolder;"
+                                                id="btnnn">ADD MATING DOG</button><br><br>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal fade" id="sellingdog" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <center>
+                                        <h5 class="modal-title" id="staticBackdropLabel"
+                                            style="font-weight: bolder;margin-left: 9rem;">
+                                            Add Your Dog</h5>
+                                    </center>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <form action="/dealer/addSellingDog" method="post" enctype="multipart/form-data"
+                                    onsubmit="return validatedog()">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="DogBreed"></label>
+
+                                            <select name="DogBreed" id="Breed"
+                                                style="width: 100%;height: 2.5rem;border:1px solid rgba(128, 128, 128, 0.272);border-radius: 2rem;background-color: white;">
+                                                <option value="Select Breed">Select Breed</option>
+                                                <option value="Germen Shepherd">Germen Shepherd</option>
+                                                <option value="Pug">Pug</option>
+                                                <option value="Boxer">Boxer</option>
+                                                <option value="Miltese">Miltese</option>
+                                                <option value="Akita">Akita</option>
+                                                <option value="Beagle">Beagle</option>
+                                                <option value="Golden Retriever">Golden Retriever</option>
+                                                <option value="Lebrador Retriever">Golden Retriever</option>
+
+                                            </select>
+                                            <!-- <input type="text" class="form-control inputform" id="name" placeholder="Enter Dog Breed"
+                   style="width: 28rem;border-radius: 2rem;" name="DogBreed">
+               <small id="name-error-msg" style="color: red;"></small>
+               <p id="index"></p> -->
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <!-- <input type="text" class="form-control inputform" id="age" placeholder="Enter Dog Age" name="DogAge" -->
+                                            <!-- style="width: 28rem;border-radius: 2rem;"> -->
+                                            <select name="DogAge" id="DogAge"
+                                                style="width: 100%;height: 2.5rem;border:1px solid rgba(128, 128, 128, 0.272);border-radius: 2rem;background-color: white;">
+                                                <option value="" style="border:1px solid rgba(128, 128, 128, 0.272)">
+                                                    Select Age</option>
+                                                <option value="2 months">2 month</option>
+                                                <option value="3 months">3 months</option>
+                                                <option value="4 months">4 months</option>
+                                                <option value="5 months">5 months</option>
+                                                <option value="6 months">6 months</option>
+                                                <option value="7 months">7 months</option>
+                                                <option value="8 months">8 months</option>
+                                                <option value="9 months">9 months</option>
+                                                <option value="10 months">10 months</option>
+                                                <option value="11 months">11 months</option>
+                                                <option value="1 year">1 year</option>
+                                                <option value="2 year">2 year</option>
+                                                <option value="3 year">3 year</option>
+                                                <option value="4 year">4 year</option>
+                                                <option value="5 year">5 year</option>
+                                                <option value="6 year">6 year</option>
+                                                <option value="7 year">7 year</option>
+                                                <option value="8 year">8 year</option>
+                                                <option value="9 year">9 year</option>
+                                                <option value="10 year">10 year</option>
+                                                <option value="11 year">11 year</option>
+                                                <option value="12 year">12 year</option>
+                                                <option value="13 year">13 year</option>
+                                                <option value="14 year">14 year</option>
+                                                <option value="15 year">15 year</option>
+                                                <option value="16 year">16 year</option>
+                                                <option value="17 year">17 year</option>
+                                                <option value="18 year">18 year</option>
+                                                <option value="19 year">19 year</option>
+                                                <option value="20 year">20 year</option>
+
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="text" class="form-control inputform" id="color"
+                                                placeholder="Enter Dog Color" name="DogColor"
+                                                style="width: 100%;height: 2.5rem;border:1px solid rgba(128, 128, 128, 0.272);border-radius: 2rem;"
+                                                onkeyup="return validateDogColor()">
+                                            <p id="name"></p>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="text" class="form-control inputform" id="dogweight"
+                                                placeholder="Enter Dog Weight" onkeyup="return validateDogWeight()"
+                                                name="DogWeight" style="width: 100%;height: 2.5rem;border:1px solid rgba(128, 128, 128, 0.272);border-radius: 2rem;">
+                                            <p id="dogweigthp"></p>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="text" class="form-control inputform" id="dogHeight"
+                                                placeholder="Enter Dog Height" onkeyup="return validateDogHeight()"
+                                                name="DogHeight" style="width: 100%;height: 2.5rem;border:1px solid rgba(128, 128, 128, 0.272);border-radius: 2rem;">
+                                            <p id="dogheight"></p>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="text" class="form-control inputform" id="breedDescriptiondemo"
+                                                onkeyup="return validateDescription()"
+                                                placeholder="Enter Dog Breed Description" name="breedDescription"
+                                                style="width: 100%;height: 2.5rem;border:1px solid rgba(128, 128, 128, 0.272);border-radius: 2rem;">
+                                            <p id="dogdesciption"></p>
+                                        </div>
+
+                                        <div class="form-group mt-2">
+                                            <input type="text" class="form-control inputform" id="Dogiprice"
+                                                onkeyup="return validateDogPrice()" placeholder="Enter Dog Price"
+                                                name="dogPrice" style="width: 100%;height: 2.5rem;border:1px solid rgba(128, 128, 128, 0.272);border-radius: 2rem;">
+                                            <p id="dogpricee"></p>
+                                        </div>
+
+                                        <div>
+                                            <input type="file" class="form-control inputform" name="avtar" id="avtar"
+                                                style="width: 100%;height: 2.5rem;border:1px solid rgba(128, 128, 128, 0.272);border-radius: 2rem;background-color: white;border: 1px solid skyblue;">
+                                        </div><br>
+                                        <div class="d-flex">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="Male" name="gender"
+                                                    id="Male">
+                                                <label class="form-check-label" for="Male">
+                                                    Male
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" style="margin-left: 6rem;"
+                                                    value="Female" name="gender" id="Female">
+                                                <label class="form-check-label" 
+                                                    for="Female">
+                                                    Female
+                                                </label>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn"
+                                                style="background-color: #54B435;width: 100%;height: 2.5rem;border:1px solid rgba(128, 128, 128, 0.272);border-radius: 2rem;font-weight: bolder;"
+                                                id="btnnn">ADD DOG</button><br><br>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        function validateDogColor() {
+                            var name = document.getElementById("color");
+
+                            if (name.value.trim() === "") {
+                                document.getElementById("name").style.color = "red";
+                                document.getElementById("name").innerHTML = "Name Required";
+                                return false;
+                            } else {
+                                var reg = /^[A-Za-z\s]+$/;
+                                if (reg.test(name.value)) {
+                                    document.getElementById('name').style.color = "green";
+                                    document.getElementById("name").innerHTML = "";
+                                    return true;
+                                } else {
+                                    document.getElementById('name').style.color = "red";
+                                    document.getElementById("name").innerHTML = "Invalid name";
+                                    return false;
+                                }
+                            }
+                        }
+
+                        function validateDogWeight() {
+                            var name = document.getElementById("dogweight");
+
+                            if (name.value.trim() === "") {
+                                document.getElementById("dogweigthp").style.color = "red";
+                                document.getElementById("dogweigthp").innerHTML = "Dog weight Required";
+                                return false;
+                            } else {
+                                var reg = /^\d+(\.\d{1,2})?$/;
+                                if (reg.test(name.value)) {
+                                    document.getElementById('dogweigthp').style.color = "green";
+                                    document.getElementById("dogweigthp").innerHTML = "";
+                                    return true;
+                                } else {
+                                    document.getElementById('dogweigthp').style.color = "red";
+                                    document.getElementById("dogweigthp").innerHTML = "Invalid ";
+                                    return false;
+                                }
+                            }
+                        }
+
+                        function validateDogHeight() {
+                            var name = document.getElementById("dogHeight");
+
+                            if (name.value.trim() === "") {
+                                document.getElementById("dogheight").style.color = "red";
+                                document.getElementById("dogheight").innerHTML = "Dog Height Required";
+                                return false;
+                            } else {
+                                var reg = /^\d+(\.\d{1,2})?$/;
+                                if (reg.test(name.value)) {
+                                    document.getElementById('dogheight').style.color = "green";
+                                    document.getElementById("dogheight").innerHTML = "";
+                                    return true;
+                                } else {
+                                    document.getElementById('dogheight').style.color = "red";
+                                    document.getElementById("dogheight").innerHTML = "Invalid";
+                                    return false;
+                                }
+                            }
+                        }
+
+
+
+                        function validateDogPrice() {
+                            var name = document.getElementById("Dogiprice");
+
+                            if (name.value.trim() === "") {
+                                document.getElementById("dogpricee").style.color = "red";
+                                document.getElementById("dogpricee").innerHTML = "Dog price Require";
+                                return false;
+                            } else {
+                                var reg = /^\d+(\.\d{1,2})?$/;
+                                if (reg.test(name.value)) {
+                                    document.getElementById('dogpricee').style.color = "green";
+                                    document.getElementById("dogpricee").innerHTML = "";
+                                    return true;
+                                } else {
+                                    document.getElementById('dogpricee').style.color = "red";
+                                    document.getElementById("dogpricee").innerHTML = "Invalid";
+                                    return false;
+                                }
+                            }
+                        }
+
+                        function validateDescription() {
+                            var description = document.getElementById("breedDescriptiondemo");
+                            if (description.value.trim() === "") {
+                                document.getElementById("dogdesciption").style.color = "red";
+                                document.getElementById("dogdesciption").innerHTML = "Description Required";
+                                return false;
+                            } else {
+                                var reg = /^[A-Za-z\s,.-(){};:''""]+$/;
+                                if (reg.test(description.value)) {
+                                    document.getElementById('dogdesciption').style.color = "green";
+                                    document.getElementById("dogdesciption").innerHTML = "";
+                                    return true;
+                                } else {
+                                    document.getElementById('dogdesciption').style.color = "red";
+                                    document.getElementById("dogdesciption").innerHTML = "Invalid";
+                                    return false;
+                                }
+                            }
+                        }
+
+                        function validateDog() {
+                            var dogNameValid = validateDogColor();
+                            var dogWeightValid = validateDogWeight();
+                            var dogHeightValid = validateDogHeight();
+                            var descriptionValid = validateDescription();
+
+                            return dogNameValid && dogWeightValid && dogHeightValid && descriptionValid;
+                        }
+                    </script>
+
+
+
+                    <!-- dog Add validation -->
+                    <script>
+                        function validateDogColor() {
+                            var name = document.getElementById("color");
+
+                            if (name.value.trim() === "") {
+                                document.getElementById("name").style.color = "red";
+                                document.getElementById("name").innerHTML = "Name Required";
+                                return false;
+                            } else {
+                                var reg = /^[A-Za-z\s]+$/;
+                                if (reg.test(name.value)) {
+                                    document.getElementById('name').style.color = "green";
+                                    document.getElementById("name").innerHTML = "";
+                                    return true;
+                                } else {
+                                    document.getElementById('name').style.color = "red";
+                                    document.getElementById("name").innerHTML = "Invalid name";
+                                    return false;
+                                }
+                            }
+                        }
+
+                        function validateDogWeight() {
+                            var name = document.getElementById("dogweight");
+
+                            if (name.value.trim() === "") {
+                                document.getElementById("dogweigthp").style.color = "red";
+                                document.getElementById("dogweigthp").innerHTML = "Dog weight Required";
+                                return false;
+                            } else {
+                                var reg = /^\d+(\.\d{1,2})?$/;
+                                if (reg.test(name.value)) {
+                                    document.getElementById('dogweigthp').style.color = "green";
+                                    document.getElementById("dogweigthp").innerHTML = "";
+                                    return true;
+                                } else {
+                                    document.getElementById('dogweigthp').style.color = "red";
+                                    document.getElementById("dogweigthp").innerHTML = "Invalid ";
+                                    return false;
+                                }
+                            }
+                        }
+
+                        function validateDogHeight() {
+                            var name = document.getElementById("dogHeight");
+
+                            if (name.value.trim() === "") {
+                                document.getElementById("dogheight").style.color = "red";
+                                document.getElementById("dogheight").innerHTML = "Dog Height Required";
+                                return false;
+                            } else {
+                                var reg = /^\d+(\.\d{1,2})?$/;
+                                if (reg.test(name.value)) {
+                                    document.getElementById('dogheight').style.color = "green";
+                                    document.getElementById("dogheight").innerHTML = "";
+                                    return true;
+                                } else {
+                                    document.getElementById('dogheight').style.color = "red";
+                                    document.getElementById("dogheight").innerHTML = "Invalid";
+                                    return false;
+                                }
+                            }
+                        }
+
+
+
+                        function validateDogPrice() {
+                            var name = document.getElementById("Dogiprice");
+
+                            if (name.value.trim() === "") {
+                                document.getElementById("dogpricee").style.color = "red";
+                                document.getElementById("dogpricee").innerHTML = "Dog price Require";
+                                return false;
+                            } else {
+                                var reg = /^\d+(\.\d{1,2})?$/;
+                                if (reg.test(name.value)) {
+                                    document.getElementById('dogpricee').style.color = "green";
+                                    document.getElementById("dogpricee").innerHTML = "";
+                                    return true;
+                                } else {
+                                    document.getElementById('dogpricee').style.color = "red";
+                                    document.getElementById("dogpricee").innerHTML = "Invalid";
+                                    return false;
+                                }
+                            }
+                        }
+
+                        function validateDescription() {
+                            var description = document.getElementById("breedDescriptiondemo");
+                            if (description.value.trim() === "") {
+                                document.getElementById("dogdesciption").style.color = "red";
+                                document.getElementById("dogdesciption").innerHTML = "Description Required";
+                                return false;
+                            } else {
+                                var reg = /^[A-Za-z\s]+$/;
+                                if (reg.test(description.value)) {
+                                    document.getElementById('dogdesciption').style.color = "green";
+                                    document.getElementById("dogdesciption").innerHTML = "";
+                                    return true;
+                                } else {
+                                    document.getElementById('dogdesciption').style.color = "red";
+                                    document.getElementById("dogdesciption").innerHTML = "Invalid";
+                                    return false;
+                                }
+                            }
+                        }
+
+                        function validateDog() {
+                            var dogNameValid = validateDogColor();
+                            var dogWeightValid = validateDogWeight();
+                            var dogHeightValid = validateDogHeight();
+                            var descriptionValid = validateDescription();
+
+                            return dogNameValid && dogWeightValid && dogHeightValid && descriptionValid;
+                        }
+                    </script>

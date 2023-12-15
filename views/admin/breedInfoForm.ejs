@@ -1,0 +1,119 @@
+<%-include("../partials/adminNavbar")%>
+<%-include("../partials/BootstrapLinks")%>
+<style>
+
+      
+      input{
+            margin: 4px;
+            width:400px;
+            height:30px;
+            border-radius:5px;
+      }
+      textarea{
+            border-radius:5px;
+            width:400px;
+            height:auto
+      }
+      select{
+            width:25rem;
+            height: 30px;
+            margin:5px
+      }
+      #form{
+            width:500px;
+            height:auto;
+            /* background-color: whitesmoke; */
+            background: linear-gradient(to bottom, #54B445, #80e45a, #80e45a, #85e241, #8edb4f);
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+            border-radius:30px;
+            padding: 10px;
+      }
+      #container{
+            padding:40px 0px 0px 20rem ;
+      }
+      @media screen and (max-width:480px) {
+            #container{
+                  
+       margin-left: -300px;
+      }     
+      #form{
+            width:400px
+      }
+      }
+</style>
+<div class="container" id="container">
+<form action="/breedInfoSet" method="post" enctype="multipart/form-data" id="form">
+      <h2>Breed Information Add Form</h2>
+      <input type="text" value="" name="breedName" class="form-controle" placeholder="Enter Breed Name" ><br>
+      <!-- <input type="text" value="" name="lifeExpectancy" class="form-controle" placeholder="Enter breed life expectancy" ><br> -->
+      <select name="lifeExpectancy" id="">
+            <option value="">Select life Expectancy</option>
+            <option value="7-8 year">7-8 year</option>
+            <option value="6-10 year">6-10 year</option>
+            <option value="8-12 year">8-12 year</option>
+            <option value="9-13 year">9-13 year</option>
+            <option value="12-16 year">12-16 year</option>
+            <option value="14-17 year">14-17 year</option>
+            <option value="17-19 year">17-19 year</option>
+            <option value="16-21 year">16-21 year</option>
+            
+      </select><br>
+      <!-- <input type="text" value="" name="training" class="form-controle" placeholder="trainability" ><br> -->
+      <select name="training" id="">
+            <option value="">Select Trainability</option>
+            <option value="Easy">Easy</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Hard">Hard</option>
+      </select><br>
+      <!-- <input type="text" value="" name="litterSize" class="form-controle" placeholder="litterSize" ><br> -->
+      <select name="litterSize" id="">
+            <option value="">Select LitterSize</option>
+            <option value="2-4">2-4</option>
+            <option value="2-8">2-8</option>
+            <option value="3-7">3-7</option>
+            <option value="3-10">3-10</option>
+            <option value="4-8">4-8</option>
+            <option value="5-9">5-9</option>
+            <option value="5-11">5-11</option>
+            <option value="Na">Na</option>
+      </select><br>
+      
+      <!-- <input type="text" value="" name="wheight" class="form-controle" placeholder="wheight" ><br> -->
+      <select name="wheight" id="">
+            <option value="">Select wheight</option>
+            <option value="3-4 kg">3-4 kg</option>
+            <option value="5-7 kg">5-7 kg</option>
+            <option value="7-9 kg">7-9 kg</option>
+            <option value="9-14 kg">9-14 kg</option>
+            <option value="14-17 kg">14-17 kg</option>
+            <option value="18-22 kg">18-22 kg</option>
+            <option value="22-26 kg">22-26 kg</option>
+            <option value="26-30 kg">26-30 kg</option>
+            <option value="30-34 kg">30-34 kg</option>
+            <option value="34-38 kg">34-38 kg</option>
+            <option value="38-42 kg">38-42 kg</option>
+            <option value="45-50 kg">45-50 kg</option>
+            <option value="50-55 kg">50-55 kg</option>
+            <option value="55 kg+">55 kg+</option>
+            
+      </select><br>
+      <!-- <input type="text" value="" name="Maintenance" class="form-controle" placeholder="Maintenance" ><br> -->
+      <select name="Maintenance" id="">
+            <option value="">Select Maintenance</option>
+            <option value="Low">Low</option>
+            <option value="Moderate">Moderate</option>
+            <option value="High">High</option>
+      </select><br>
+      <input type="text" value="" name="dogSize" class="form-controle" placeholder="dogSize in inches" ><br>
+      <input type="file" name="avtar" id="avtar" style="border:1px solid rgba(128, 128, 128, 0.615);"><br>
+      <textarea value="" col="40" row="30" name="maintenance" class="form-controle" placeholder="maintenance pera" ></textarea><br> 
+      <textarea value="" name="shedding" class="form-controle" placeholder="shedding" ></textarea><br>
+      <textarea value="" name="trainability" class="form-controle" placeholder="trainability" ></textarea><br>
+      <textarea value="" name="personality" class="form-controle" placeholder="personality" ></textarea><br>
+      <textarea value="" name="Goodfor" class="form-controle" placeholder="Goodfor" ></textarea><br>
+      <input type="submit" value="Submit" name="">
+</form>
+</div>

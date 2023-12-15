@@ -1,0 +1,422 @@
+<%- include('../partials/BootstrapLinks') %>
+<script src="js/cities.js"></script>
+    
+    <style>
+        #login_ServiesPname,
+        #login_ServiesPemail,
+        #login_ServiesPcontact,
+        #login_ServiesPadhar,
+        #login_ServiesPpancard,
+        #login_ServiesPaddres,
+        #login_ServiesPexpirence,
+        #login_ServiesPexpirence1,
+        #login_ServiesPtype,
+        #login_ServiesPpass {
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            background: rgb(254, 247, 247);
+            color: black;
+            width: 100%;
+            height: 5%l;
+        }
+            
+
+     
+
+        #btnn {
+            border-radius: 2rem;
+            font-size: 1rem;
+            width: 100%;
+            background: green;
+        }
+
+        #addressfield,
+        #statename,
+        #Sstate,
+        #infield {
+            font-size: 1rem;
+            border: 1px solid rgba(128, 128, 128, 0.517);
+            border-radius: 0.5rem;
+            background: rgb(254, 247, 247);
+            color: black;
+            width: 100%;
+            height: 5%l;
+            /* margin-left:20rem; */
+        }
+        #serviceRegContainerMargin{
+            margin-left: 20%;
+        }
+        @media screen and (max-width:767px) {
+            #serviceRegContainerMargin{
+            margin-left:0%;
+        }   
+        }
+    </style>
+    <%-include('../partials/withoutLoginHeader')%>
+    <div class="row">
+
+
+        <div class="col-md-8 p-3" id="serviceRegContainerMargin"><br>
+
+
+            <form action="/serviceProvider/serviceData" style="background: white;padding: 20px;border-radius: 10px;" method="post" onsubmit="return validateForm()">
+                
+                <div style="color: red;">
+                    <h3>
+                        <%=msg%>
+                    </h3>
+                </div>
+                <div class="row" style="border:1px solid rgba(128, 128, 128, 0.547);border-radius: 10px;box-shadow: 1px 1px 10px 1px;">
+                    <center>
+                        <hr>
+                        <h3>SERVICE PROVIDER REGISTRATION FORM</h3>
+                        <hr>
+                    </center>
+                    <div class="col-sm-12 col-md-6 col-xl-6">
+                        <div class="mb-1">
+                            <input type="text" id="login_ServiesPname" onkeyup="return validnameService()"
+                                placeholder="Enter Your Name" name="name" class="ms-1 form-control" />
+                            <p id="name1"></p>
+                        </div>
+                        <div class="mb-1">
+                            <input type="email" id="login_ServiesPemail" onkeyup="return validemailService()"
+                                placeholder="Enter Email" name="email" class="ms-1 form-control" />
+                            <p id="email1"></p>
+                        </div>
+                        <div class="mb-1">
+                            <input type="number" id="login_ServiesPcontact" onkeyup="return validcontactService()"
+                                placeholder="Enter Contact no." name="contact" class="ms-1 form-control" />
+                            <p id="contact1"></p>
+                        </div>
+                        <div class="mb-1">
+                            <input type="text" maxlength="12" id="login_ServiesPadhar" onkeyup="return validadhar()"
+                                placeholder="Enter Addar no." name="addharno" class="ms-1 form-control" />
+                            <p id="Addharno"></p>
+
+                            <!-- 122456789012 -->
+                        </div>
+                        <div class="mb-1">
+                            <input type="text" maxlength="10" id="login_ServiesPpancard" onkeyup="return validpancard()"
+                                placeholder="Enter Pan_card no.(AAAA1234A)" name="pancard" class="ms-1 form-control" />
+                            <p id="pancard"></p>
+                            <!-- ABCDE1224F -->
+                        </div>
+
+                        <div class="row">
+                            <!-- ....addreessss....... -->
+                            <div class="col-6">
+                                <div class="col-12">
+                                    <select onchange="print_city('Sstate', this.selectedIndex);" id="statename"
+                                        name="state" class="form-control" required></select>
+                                </div><br>
+                                <div class="col-12">
+                                    <select id="Sstate" class="form-control" name="city" required></select>
+                                    <script language="javascript">print_state("statename");</script>
+                                </div><br>
+                            </div>
+                            
+                            <div class="col-6">
+                                <textarea type="text" col="40" onkeydown="return validAddhar()" id="addressfield" class=" ms-1 form-control"
+                                    placeholder="Enter Full Address" name="address"></textarea>
+                                <p id="address"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-6">
+                        <div class="mb-1">
+                            <input type="text" id="login_ServiesPexpirence" placeholder="Enter exprience"
+                                onkeyup="return validexperience()" name="experience" class=" ms-1 form-control" />
+                            <p id="experience"></p>
+                        </div>
+                        <div class="mb-1">
+                            <input type="password" id="login_ServiesPpass" onkeyup=" return validpass()"
+                                placeholder="Enter password" name="password" class=" ms-1 form-control" />
+                            <p id="password"></p>
+                        </div>
+
+                        <div class="mb-1" name="">
+                            <input type="number" id="infield" onkeyup="return validPrice()" name="grooming"
+                                value="grooming" placeholder="Enter grooming service price" class="form-control mb-3">
+                            <input type="number" id="infield" onkeyup="return validPrice()" name="walking"
+                                value="walking" placeholder="Enter your walking service price"
+                                class="form-control mb-3">
+                            <input type="number" id="infield" onkeyup="return validPrice()" name="training"
+                                value="training" placeholder="Enter training service price" class="form-control mb-3">
+                            <input type="number" id="infield" onkeyup="return validPrice()" name="dogspa" value="dogspa"
+                                placeholder="Enter dogspa service price" class="form-control mb-3">
+                        </div>
+                        <h6 id="p1"></h6>
+
+
+                        <input class="btn ms-1" type="submit" class="btn" id="btnn" value="SIGN UP" /><br><br>
+                    </div>
+                    <center>
+                        <a href="/serviceProvider/serviceProLogin" id="a">YOU HAVE ALREADY ACCOUNT ? <span
+                                style="color: black;">SIGN IN</span></a>
+                    </center>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <script>
+        function validnameService() {
+            var name = document.getElementById("login_ServiesPname");
+            if (name.value.trim() == "") {
+                document.getElementById("name1").style.color = "red";
+                document.getElementById("name1").innerHTML = "Name Required";
+                return false
+            }
+            else {
+                var reg = /^[A-Za-z\s]+$/;
+                if (reg.test(name.value)) {
+                    document.getElementById('name1').style.color = "green";
+                    document.getElementById("name1").innerHTML = "Valid name";
+                    return true
+                }
+                else {
+                    document.getElementById('name').style.color = "red";
+                    document.getElementById("name").innerHTML = "Invalid name";
+                    return false;
+                }
+            }
+        }
+
+        function validemailService() {
+            var email = document.getElementById("login_ServiesPemail");
+            if (email.value.trim() == "") {
+                document.getElementById("email1").style.color = "red";
+                document.getElementById("email1").innerHTML = "Email Required";
+                return false;
+            }
+            else {
+                var reg = /^\w+([\.-])?\w*@[a-z]*([\.][a-z]{2,3})+$/;
+                if (reg.test(email.value)) {
+                    document.getElementById("email1").style.color = "green";
+                    document.getElementById("email1").innerHTML = "Valid Email";
+                    return true;
+                }
+                else {
+                    document.getElementById("email1").style.color = "red";
+                    document.getElementById("email1").innerHTML = "Invalid email";
+                    return false;
+                }
+            }
+        }
+
+        function validAddhar() {
+            var name = document.getElementById("login_ServiesPaddres");
+            if (name.value.trim() == "") {
+                document.getElementById("address").style.color = "red";
+                document.getElementById("address").innerHTML = "Address Required";
+                return false
+            }
+            else {
+                var reg = /^[A-Za-z0-9\s,.-_;''""/]+$/;
+                if (reg.test(name.value)) {
+                    document.getElementById('address').style.color = "green";
+                    document.getElementById("address").innerHTML = "Valid Address";
+                    return true
+                }
+                else {
+                    document.getElementById('address').style.color = "red";
+                    document.getElementById("address").innerHTML = "Invalid Address";
+                    return false;
+                }
+            }
+        }
+        function validexperience() {
+            var name = document.getElementById("login_ServiesPexpirence");
+            if (name.value.trim() == "") {
+                document.getElementById("experience").style.color = "red";
+                document.getElementById("experience").innerHTML = "experience Required";
+                return false
+            }
+            else {
+                var reg = /^[0-9][A-Za-z\s]+$/;
+                if (reg.test(name.value)) {
+                    document.getElementById('experience').style.color = "green";
+                    document.getElementById("experience").innerHTML = "Valid experience";
+                    return true
+                }
+                else {
+                    document.getElementById('experience').style.color = "red";
+                    document.getElementById("experience").innerHTML = "Invalid experience";
+                    return false;
+                }
+            }
+        }
+
+
+        function validadhar() {
+            // console.log("Enter state");
+            var addhano = document.getElementById("login_ServiesPadhar");
+
+
+            if (addhano.value.trim() == "") {
+                document.getElementById("Addharno").style.color = "red";
+                document.getElementById("Addharno").innerHTML = "Addhar no. Required";
+                return false
+            }
+            else {
+                var reg = /^[0-9]+$/;
+                if (reg.test(addhano.value)) {
+                    document.getElementById('Addharno').style.color = "green";
+                    document.getElementById("Addharno").innerHTML = "Valid Addhar no.";
+                    return true
+                }
+                else {
+                    document.getElementById('Addharno').style.color = "red";
+                    document.getElementById("Addharno").innerHTML = "Invalid Addhar no.";
+                    return false;
+                }
+            }
+        }
+        function validpancard() {
+            console.log("Enter country");
+            var name = document.getElementById("login_ServiesPpancard");
+
+
+            if (name.value.trim() == "") {
+                document.getElementById("pancard").style.color = "red";
+                document.getElementById("pancard").innerHTML = "PanCard No. Required";
+                return false
+            }
+            else {
+                var reg = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+                if (reg.test(name.value)) {
+                    document.getElementById('pancard').style.color = "green";
+                    document.getElementById("pancard").innerHTML = "Valid PanCard No.";
+                    return true
+                }
+                else {
+                    document.getElementById('pancard').style.color = "red";
+                    document.getElementById("pancard").innerHTML = "Invalid PanCard No.";
+                    return false;
+                }
+            }
+        }
+        function validpass() {
+            console.log("Enter pass");
+            var password = document.getElementById("login_ServiesPpass");
+            if (password.value.trim() == "") {
+                document.getElementById("password").style.color = "red";
+                document.getElementById("password").innerHTML = "Password Required";
+                return false;
+            }
+            else {
+                var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                if (reg.test(password.value)) {
+                    document.getElementById("password").style.color = "green";
+                    document.getElementById("password").innerHTML = "Valid Password";
+                    return true;
+                }
+                else {
+                    document.getElementById("password").style.color = "red";
+                    document.getElementById("password").innerHTML = "Invalid Password";
+                    return false;
+                }
+            }
+        }
+
+        function validcontactService() {
+            var mobile = document.getElementById("login_ServiesPcontact");
+            if (mobile.value.trim() == "") {
+                document.getElementById("contact1").style.color = "red";
+                document.getElementById("contact1").innerHTML = "Mobile Number Required";
+                return true;
+            }
+            else {
+                var reg = /^[6789][0-9]{9}$/;
+                if (reg.test(mobile.value)) {
+                    document.getElementById("contact1").style.color = "green";
+                    document.getElementById("contact1").innerHTML = "Valid Password";
+                    return true;
+                }
+                else {
+                    document.getElementById("contact1").style.color = "red";
+                    document.getElementById("contact1").innerHTML = "Enter 10 Digit MobileNo.";
+                    return false;
+                }
+            }
+        }
+        function validPrice() {
+            var price = document.getElementById('infield');
+            if (price.value.trim() == "") {
+                document.getElementById("p1").style.color = "red";
+                document.getElementById("p1").innerHTML = "required";
+                return true;
+            }
+            else {
+                var reg = /^[0-9]+$/;
+                if (reg.test(price.value)) {
+                    document.getElementById("p1").style.color = "green";
+                    document.getElementById("p1").innerHTML = "Valid Price";
+                    return true;
+                }
+                else {
+                    document.getElementById("p1").style.color = "red";
+                    document.getElementById("p1").innerHTML = "InValid price Enter Digit Only";
+                    return false;
+                }
+            }
+        }
+
+
+        function validateForm() {
+            var name = validnameService();
+            if (name == false) {
+                return false;
+            }
+            var address = validAddhar();
+            if (address == false) {
+                return false;
+            }
+
+            var email = validemailService();
+            if (email == false) {
+                return false;
+            }
+
+            var breed = valideBreed();
+            if (breed == false) {
+                return false;
+            }
+
+            var contact = validcontactService();
+            if (contact == false) {
+                return false;
+            }
+
+
+            var addhano = validadhar();
+            if (addhano == false) {
+                return false;
+            }
+
+
+            var pancard = validpancard();
+            if (pancard == false) {
+                return false;
+            }
+
+
+            var experience = validexperience();
+            if (experience == false) {
+                return false;
+            }
+
+
+            var password = validpass();
+            if (password == false) {
+
+                return false;
+            }
+            // var address = validcity();
+            // if (address == false) {
+
+            //     return false;
+            // }
+            return true;
+        } 
+    </script>

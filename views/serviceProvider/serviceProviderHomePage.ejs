@@ -1,0 +1,716 @@
+<%- include('../partials/BootstrapLinks.ejs') %>
+
+    <style>
+        .sub_nav_bar {
+            height: 50px;
+            top: 0px;
+            background-color: #f9f4f4;
+            z-index: 99;
+            box-shadow: 0px 0px 4px #ccc;
+            margin-top: -2px;
+        }
+
+        .sub_navigation {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .sub_navigation li {
+            text-align: center;
+            font-weight: 400;
+            /* border-right: 1px solid #f4f4f4; */
+            float: left;
+
+        }
+
+        .sub_navigation li:last-child {
+            border-right: 0px;
+        }
+
+        .sub_navigation li a {
+            font-size: 15px;
+            color: #202020;
+            text-decoration: none;
+            display: block;
+            padding: 10px 20px;
+        }
+
+        .sub_navigation .active,
+        .sub_navigation li:hover {
+            border-bottom: 5px solid #54B445;
+
+        }
+
+        .sub_navigation .active a,
+        .sub_navigation li:hover {
+            color: black;
+            text-shadow: 1px 1px 2px #909090;
+        }
+
+        @media screen and (max-width:574px) {
+            .sub_navigation li {
+                text-align: center;
+                font-weight: 400;
+                border-right: 1px solid #f4f4f4;
+                float: none;
+
+            }
+
+            .sub_nav_bar {
+                height: auto;
+                top: 0px;
+                background-color: #f9f4f4;
+                z-index: 99;
+                box-shadow: 0px 0px 4px #ccc;
+                margin-top: -2px;
+            }
+
+        }
+    </style>
+    <style>
+        .components li {
+            height: 7dvh;
+            margin: 10px;
+            margin-top: 25px;
+            padding-top: 4px;
+            list-style: none;
+            background: linear-gradient(to bottom, #54B445, #80e45a, #80e45a, #85e241, #8edb4f);
+            /* border: 1px solid; */
+            text-align: center;
+            border-radius: 10px;
+
+        }
+
+        .components li a {
+            text-decoration: none;
+            color: rgb(14, 15, 15);
+        }
+
+        .components li:hover {
+            background: linear-gradient(to right, #54B445, #80e45a, #80e45a, #85e241, #8edb4f);
+        }
+
+        .gradient-custom {
+            background: linear-gradient(to bottom, #54B445, #80e45a, #80e45a, #85e241, #8edb4f);
+        }
+
+        #setting {
+            border-radius: 10px;
+            background-color: #f8f7fc;
+            width: 40em;
+        }
+
+        @media only screen and (max-width:574px) {
+            #setting {
+                border-radius: .5rem;
+                background-color: #ecebef;
+                width: 28.4em;
+            }
+        }
+    </style>
+    <style>
+        .whitebox a {
+            text-decoration: none;
+            color: #54B445;
+        }
+
+        .joinAsa h4 {
+            font-size: 18px;
+            height: 40px;
+            padding-top: 6px;
+            background-color: #f4f0f0;
+            border-radius: 10px;
+
+        }
+
+        .joinAsa h4:hover {
+            background-color: #e8e2e2;
+            color: #202020;
+            text-shadow: 1px 1px 2px #909090;
+
+        }
+
+        .low_padding {
+            padding-left: 50px;
+        }
+
+        .sub_navigationdiv {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #submitbutton {
+            background-color: #f8f7fc;
+        }
+
+        #submitbutton:hover {
+            background-color: #3ec10a;
+        }
+
+        .field-icon {
+            /* float: right; */
+            margin-left: 91%;
+            margin-top: -35px;
+            position: relative;
+            z-index: 2;
+        }
+
+        #card-images {
+            margin: 5px;
+            width: 300px;
+            height: 200px;
+        }
+
+        #sellingdogcardbuttone {
+            width: 8.5rem;
+            background: #54B435;
+            border-radius: 1rem;
+            height: 2.5rem;
+            font-weight: bolder;
+
+        }
+
+        .components {
+            padding-top: 10px;
+        }
+    </style>
+   
+
+    <!-- main div start -->
+    <div class="row w-100" style="height: auto;">
+        <!-- under div start -->
+        <div class="col-4" style="width:20%;height:auto;background-color:#f9f4f4 ;">
+            <div class="sidebar-header">
+
+                <center class="mt-1">
+                    <h4>Welcome <br>
+                        <%=data.name%>
+                    </h4>
+                </center>
+                <hr>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="/serviceProvider/serviceHomePage/editProfile">
+                        Edit Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="/serviceProvider/serviceHomePage/changepassword">
+                        Login & Security
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/serviceProvider/serviceHomePage/yourorders">
+                        Your Orders
+                    </a>
+                </li>
+                <li>
+                    <a href="/serviceProvider/serviceHomePage/yourpayment">
+                        Your Payments
+                    </a>
+                </li>
+               </ul>
+        </div>
+        <!-- under div end -->
+
+        <!-- under second div start -->
+        <div class="col-4" style="width:80%;height:auto;">
+            <!-- ........sub_navbar........... -->
+            <section class="sub_nav_bar sticky_sec m-4">
+                <div class="sticky_menu">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="sub_navigationdiv">
+                                    <ul class="sub_navigation">
+                                        <li id="ctrlUserMenu_liUser" >
+                                            <a href="/serviceProvider/serviceHomePage/">My Account</a>
+                                        </li>
+                                        <!-- <li class="nav-item " id="ctrlUserMenu_liBreeder">
+                                            <a class="nav-link" href="" > MyPetList</a>
+                                        </li> -->
+                                        <li id="ctrlUserMenu_liBreeder">
+                                                      <a href="/serviceProvider/serviceProviderLogout">Logout</a>
+                                                </li>
+                                       
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ........sub_navbar........... -->
+
+            <%if(!id){%>
+                <!-- .............profile......... -->
+                <div class="row g-0 m-5">
+                    <div class="col-md-4 gradient-custom text-center text-white"
+                        style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                        <img src="/images/profileLogo.png" 
+                            alt="Avatar" class="img-fluid my-3" style="width:150px;" />
+                        <h5>
+                            <%=data.name%>
+                        </h5>
+                        <p>Service Provider</p>
+                        <i class="far fa-edit mb-5"></i>
+                    </div>
+                    <div class="col-md-4"
+                        style="border:1.5px solid rgba(154, 150, 150, 0.498);border-radius: 0px 10px 10px 0px;">
+                        <div class="card-body p-4">
+                            <h5>Profile</h5>
+                            <hr class="mt-0 mb-4">
+                            <div class="row pt-1">
+                                <div class="col-12 mb-4">
+                                    <h5>Email</h5>
+                                    <p class="text-muted">
+                                        <%=data.email%>
+                                    </p>
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <h5>Contact</h5>
+                                    <p class="text-muted">
+                                        <%=data.contact%>
+                                    </p>
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <h5>City</h6>
+                                        <p class="text-muted">
+                                            <%=data.city%>(<%=data.state%>)
+                                        </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                  
+                <%}else if(id=="editProfile" ){%>
+
+                   
+                    <div class="row" style="padding:20px;background-color: #85e241;">
+                        <center>
+                            <hr>
+                            <h3>UPDATE PROFILE</h3>
+                            <hr>
+                        </center>
+                        <div class="col-md-4">
+                            <img id="img"
+                                src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7883.jpg"
+                                style="height: 55vh;" alt="">
+                        </div>
+                        <div class="col-md-4">
+                            <form action="/serviceProvider/updateServiceProviderProfile" method="post" onsubmit="return save()">
+                                <div class="form-group">
+                                    <input type="text" value="<%=data.name%>" id="login_name"
+                                        onkeyup="return validname()" placeholder="Enter Name" name="name"
+                                        class="form-control inputform form-control inputform-lg" />
+                                    <p id="name"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" value="<%=data.email%>" id="login_email"
+                                        onkeyup="return validemail()" placeholder="Enter Email" name="email"
+                                        class="form-control inputform form-control inputform-lg" />
+                                    <p id="email"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" value="<%=data.contact%>" id="login_contact"
+                                        onkeyup="return validcontact()" placeholder="Enter Contact no." name="contact"
+                                        class="form-control inputform form-control inputform-lg" />
+                                    <p id="contact"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" value="<%=data.city%>" id="login_city"
+                                        onkeyup="return validcity()" placeholder="Enter City Name" name="city"
+                                        class="form-control inputform form-control inputform-lg" />
+                                    <p id="city"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="login_state" value="<%=data.state%>"
+                                        onkeyup="return validstate()" placeholder="Enter State Name" name="state"
+                                        class="form-control inputform form-control inputform-lg" />
+                                    <p id="state"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="login_address" value="<%=data.address%>"
+                                        onkeyup="return validstate()" placeholder="Enter address" name="address"
+                                        class="form-control inputform form-control inputform-lg">
+                                    <p id="state"></p>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input type="text" id="login_aadharno" value="<%=data.addharno%>"
+                                        onkeyup="return validstate()" placeholder="Enter Aadhar no." name="addharno"
+                                        class="form-control inputform form-control inputform-lg" readonly>
+                                    <p id="state"></p>
+                                </div>
+                        </div>
+                        <div class="col-md-4" style="">
+
+                                <div class="form-group">
+                                    <input type="text" id="login_pancard" value="<%=data.pancard%>" readonly
+                                        onkeyup="return validstate()" placeholder="Enter Pancard no." name="pancard"
+                                        class="form-control inputform form-control inputform-lg">
+                                    <p id="state"></p>
+                                </div>
+                              
+                                <div class="form-group">
+                                    <input type="text" id="login_grooming" value="<%=data.prices.grooming%>"
+                                        onkeyup="return validstate()" placeholder="Enter grooming service price" name="grooming"
+                                        class="form-control inputform form-control inputform-lg">
+                                    <p id="state"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="login_walking" value="<%=data.prices.walking%>"
+                                        onkeyup="return validstate()" placeholder="Enter grooming service price" name="walking"
+                                        class="form-control inputform form-control inputform-lg">
+                                    <p id="state"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="login_training" value="<%=data.prices.training%>"
+                                        onkeyup="return validstate()" placeholder="Enter grooming service price" name="training"
+                                        class="form-control inputform form-control inputform-lg">
+                                    <p id="state"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="login_dogspa" value="<%=data.prices.dogspa%>"
+                                        onkeyup="return validstate()" placeholder="Enter grooming service price" name="dogspa"
+                                        class="form-control inputform form-control inputform-lg">
+                                    <p id="state"></p>
+                                </div>
+                                <input type="submit" class="btn" id="submitbutton" value="UPDATE" />
+                           </div>
+                        </div>
+                        </form>
+                    </div>
+
+                    <script>
+                        function validname() {
+                            console.log("Enter name");
+                            var name = document.getElementById("login_name");
+
+                            //   var address=document.getElementById("add");
+                            if (name.value.trim() == "") {
+                                document.getElementById("name").style.color = "red";
+                                document.getElementById("name").innerHTML = "Name Required";
+                                return false
+                            }
+                            else {
+                                var reg = /^[A-Za-z\s]+$/;
+                                if (reg.test(name.value)) {
+                                    document.getElementById('name').style.color = "green";
+                                    document.getElementById("name").innerHTML = "Valid name";
+                                    return true
+                                }
+                                else {
+                                    document.getElementById('name').style.color = "red";
+                                    document.getElementById("name").innerHTML = "Invalid name";
+                                    return false;
+                                }
+                            }
+                        }
+
+                        function validemail() {
+                            console.log("Enter email");
+                            var email = document.getElementById("login_email");
+                            if (email.value.trim() == "") {
+                                document.getElementById("email").style.color = "red";
+                                document.getElementById("email").innerHTML = "Email Required";
+                                return false;
+                            }
+                            else {
+                                var reg = /^\w+([\.-])?\w*@[a-z]*([\.][a-z]{2,3})+$/;
+                                if (reg.test(email.value)) {
+                                    document.getElementById("email").style.color = "green";
+                                    document.getElementById("email").innerHTML = "Valid Email";
+                                    return true;
+                                }
+                                else {
+                                    document.getElementById("email").style.color = "red";
+                                    document.getElementById("email").innerHTML = "Invalid email";
+                                    return false;
+                                }
+                            }
+                        }
+
+                        function validcity() {
+                            console.log("Enter city");
+                            var name = document.getElementById("login_city");
+
+                            //   var address=document.getElementById("add");
+                            if (name.value.trim() == "") {
+                                document.getElementById("city").style.color = "red";
+                                document.getElementById("city").innerHTML = "City Name Required";
+                                return false
+                            }
+                            else {
+                                var reg = /^[A-Za-z\s]+$/;
+                                if (reg.test(name.value)) {
+                                    document.getElementById('city').style.color = "green";
+                                    document.getElementById("city").innerHTML = "Valid name";
+                                    return true
+                                }
+                                else {
+                                    document.getElementById('city').style.color = "red";
+                                    document.getElementById("city").innerHTML = "Invalid name";
+                                    return false;
+                                }
+                            }
+                        }
+                        function validstate() {
+                            console.log("Enter state");
+                            var name = document.getElementById("login_state");
+
+
+                            if (name.value.trim() == "") {
+                                document.getElementById("state").style.color = "red";
+                                document.getElementById("state").innerHTML = "State Name Required";
+                                return false
+                            }
+                            else {
+                                var reg = /^[A-Za-z\s]+$/;
+                                if (reg.test(name.value)) {
+                                    document.getElementById('state').style.color = "green";
+                                    document.getElementById("state").innerHTML = "Valid name";
+                                    return true
+                                }
+                                else {
+                                    document.getElementById('state').style.color = "red";
+                                    document.getElementById("state").innerHTML = "Invalid name";
+                                    return false;
+                                }
+                            }
+                        }
+                        function validcontact() {
+                            var mobile = document.getElementById("login_contact");
+                            if (mobile.value.trim() == "") {
+                                document.getElementById("contact").style.color = "red";
+                                document.getElementById("contact").innerHTML = "Mobile Number Required";
+                                return true;
+                            }
+                            else {
+                                var reg = /^[6789][0-9]{9}$/;
+                                if (reg.test(mobile.value)) {
+                                    document.getElementById("contact").style.color = "green";
+                                    document.getElementById("contact").innerHTML = "Valid Password";
+                                    return true;
+                                }
+                                else {
+                                    document.getElementById("contact").style.color = "red";
+                                    document.getElementById("contact").innerHTML = "Enter 10 Digit MobileNo.";
+                                    return false;
+                                }
+                            }
+                        }
+
+                        function save() {
+
+                            console.log("Enter in sabe()....");
+                            var name = validname();
+                            if (name == false) {
+                                return false;
+                            }
+
+
+                            var email = validemail();
+                            if (email == false) {
+                                return false;
+                            }
+
+
+                            var num = validcontact();
+                            if (num == false) {
+                                return false;
+                            }
+
+
+                            var name = validcity();
+                            if (name == false) {
+                                return false;
+                            }
+
+
+                            var name = validstate();
+                            if (name == false) {
+                                return false;
+                            }
+
+                            return true;
+                        }   
+                    </script>
+
+                    <%}else if(id=="changepassword" ){%>
+                        <center>
+                            <hr>
+                            <h3>RESET PASSWORD</h3>
+                            <hr>
+                        </center>
+                        <div class="row" style="padding:6rem 0rem 6rem 10rem;background-color: #85e241;">
+                            <div class="col-md-6" style="width:200px">
+                                <img id="img" src="https://cdn-icons-png.flaticon.com/512/6195/6195699.png"
+                                    style="height: 30vh;" alt="">
+                            </div>
+                            <div class="col-md-6">
+                                <form action="/serviceProvider/resetPassword/<%=data.email%>" onsubmit="return save(),checkpass()" method="post">
+                                    <div class="form-group">
+                                        <input type="password" id="currentPassword" onkeyup="validCurrentPassword()"
+                                            placeholder="Enter Current Password"name="currentPassword"
+                                            class="form-control inputform form-control inputform-lg" />
+                                        <i class="fa fa-eye-slash field-icon" id="current-togglePassword"></i>
+                                        <p id="pass3"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" id="newPassword" onkeyup="validpassword()"
+                                            placeholder="Enter New Password"
+                                            class="form-control inputform form-control inputform-lg" />
+                                        <i class="fa fa-eye-slash field-icon" id="newpass-togglePassword"></i>
+                                        <p id="pass1"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" placeholder="Confirm Password" 
+                                            class="form-control inputform form-control inputform-lg"
+                                            id="confirmPassword" name="confirmPassword">
+                                        <i class="fa fa-eye-slash field-icon" id="confirmpass-togglePassword"></i>
+                                        <p id="pass2"></p>
+                                    </div>
+                                    <input type="submit" class="btn" id="submitbutton" value="RESET" />
+                                    <h4 style="color:blue"><%=msg%></h4>
+
+                                </form>
+                            </div>
+                        </div>
+                        <script>
+                            function validpassword() {
+                                var password = document.getElementById("newPassword");
+                                if (password.value.trim() == "") {
+                                    document.getElementById("pass1").style.color = "red";
+                                    document.getElementById("pass1").innerHTML = "Password Required";
+                                    return false;
+                                }
+                                else {
+                                    var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                                    if (reg.test(password.value)) {
+                                        document.getElementById("pass1").style.color = "green";
+                                        document.getElementById("pass1").innerHTML = "Valid Password";
+                                        return true;
+                                    }
+                                    else {
+                                        document.getElementById("pass1").style.color = "red";
+                                        document.getElementById("pass1").innerHTML = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:";
+                                        return false;
+                                    }
+                                }
+                            }
+                            function validCurrentPassword() {
+                                var password = document.getElementById("currentPassword");
+                                if (password.value.trim() == "") {
+                                    document.getElementById("pass3").style.color = "red";
+                                    document.getElementById("pass3").innerHTML = "Password Required";
+                                    return false;
+                                }
+                                else {
+                                    var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                                    if (reg.test(password.value)) {
+                                        document.getElementById("pass3").style.color = "green";
+                                        document.getElementById("pass3").innerHTML = "Valid Password";
+                                        return true;
+                                    }
+                                    else {
+                                        document.getElementById("pass3").style.color = "red";
+                                        document.getElementById("pass3").innerHTML = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:";
+                                        return false;
+                                    }
+                                }
+                            }
+
+                            function checkpass() {
+                                var npassword = document.getElementById("newPassword").value;
+                                var cpassword = document.getElementById("confirmPassword").value;
+                                if (cpassword.trim() == "") {
+                                    document.getElementById("pass2").style.color = "red";
+                                    document.getElementById("pass2").innerHTML = "Password Required";
+                                    return false;
+                                }
+                                if (npassword===cpassword) {
+                                    document.getElementById("pass2").style.color = "green";
+                                        document.getElementById("pass2").innerHTML = "Password Match";
+                                        return true;
+                                    }
+                                    else {
+                                        document.getElementById("pass2").style.color = "red";
+                                        document.getElementById("pass2").innerHTML = "confirm password not match with new Password";
+                                        return false;
+                                    }
+                                }
+                            
+
+                            function save() {
+                                console.log("Enter in sabe....");
+                                var name = validpassword();
+                                if (validpassword()&&checkpass()&&validCurrentPassword()) {
+                                    return true;
+                                }
+                                else{
+                                    return false;
+                                }
+                            }
+
+                            const newpasstogglePassword = document.querySelector("#newpass-togglePassword");
+                            const newPassword = document.querySelector("#newPassword");
+                            const currenttogglePassword = document.querySelector("#current-togglePassword");
+                            const currentPassword = document.querySelector("#currentPassword");
+                            const confirmpasstogglePassword = document.querySelector("#confirmpass-togglePassword");
+                            const confirmPassword = document.querySelector("#confirmPassword");
+
+                            newpasstogglePassword.addEventListener("click", function () {
+                                // toggle the type attribute
+                                const type = newPassword.getAttribute("type") === "password" ? "text" : "password";
+                                newPassword.setAttribute("type", type);
+
+                                // toggle the icon
+                                this.classList.toggle("bi-eye");
+                            });
+                            confirmpasstogglePassword.addEventListener("click", function () {
+                                // toggle the type attribute
+                                const type = confirmPassword.getAttribute("type") === "password" ? "text" : "password";
+                                confirmPassword.setAttribute("type", type);
+
+                                // toggle the icon
+                                this.classList.toggle("bi-eye");
+                            });
+                            currenttogglePassword.addEventListener("click", function () {
+                                // toggle the type attribute
+                                const type = currentPassword.getAttribute("type") === "password" ? "text" : "password";
+                                currentPassword.setAttribute("type", type);
+
+                                // toggle the icon
+                                this.classList.toggle("bi-eye");
+                            });
+
+                            // prevent form submit
+                            // const form = document.querySelector("form");
+                            // form.addEventListener('submit', function (e) {
+                            //     e.preventDefault();
+                            // });
+                        </script>
+
+                        <%}else if(id=="yourorders" ){%>
+                              <h1>your-orders</h1>
+
+                        <%}else if(id=="yourpayment" ){%>
+                              <h1>your-payment</h1>
+
+                              <%}else if(id=="newoffers" ){%>
+                              <h1>new-offers</h1>
+                              <%}%>
+        </div>
+        <!-- under second div end -->
+    </div>
+    <!-- main div end -->
+
+  

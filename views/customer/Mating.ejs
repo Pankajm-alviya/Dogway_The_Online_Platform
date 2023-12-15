@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css"> -->
+
+    <style>
+        .quick_en-form_bg {
+            width: 95%;
+            box-shadow: 1px 1px 1px 1px grey;
+        }
+
+        #quickenqsendotp {
+            margin-left: 15vw;
+        }
+
+        @media screen and (max-width:991px) {
+            #quickenqsendotp {
+                margin-left: 15vw;
+            }
+        }
+
+        @media screen and (max-width:570px) {
+            #quickenqsendotp {
+                margin-left: -2vw;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: #ffffff;"><br>
+      <head>
+            <%- include('../partials/head'); %>
+        </head>
+        <%if(loginStatus){%>
+
+            <header style="position: sticky; z-index: 1;top: 0;">
+                <%- include('../partials/Header'); %>
+            </header>
+        <%}else{%>
+            <header style="position: sticky; z-index: 1;top: 0;">
+                <%- include('../partials/withoutLoginHeader'); %>
+            </header>
+        <%}%>
+        
+        <center>
+            <div style="height: auto;width: 95%;box-shadow: 1px 2px 41px 4px rgb(116 115 115 / 23%);background-color: white;"><br>
+                <span style="font-size: 30px;font-weight: 1000; color: rgb(99, 228, 99);">
+                    Dogs For Mating
+                </span><br><br>
+                <div style="margin-left: 3.5rem; font-size: 18px; text-align: justify;margin-right: 2rem;">
+                    You've come to the right place if you're looking for a reliable source for your dog's mating. Mr n Mrs
+                    Pet
+                    is
+                    the perfect solution for dog owners looking for a mate for their canine companion. We provide
+                    KCI-registered
+                    stud dogs and pedigree dogs for mating all over India.<br>
+                    
+                    Mr n Mrs Pet is a safe and convenient place to find the perfect mate for your dog. We have the best
+                    network
+                    of
+                    dog breeders and breeding centres in India. Our team provides complete assistance in every process,
+                    making
+                    it
+                    hassle-free.<br>
+                    
+                    On our website, you can find all breeds of dogs for mating in India. You can also learn about dog mating
+                    charges, reviews, photos, videos, and other information. All our mating pet listings are of healthy,
+                    good-quality dogs that result in healthy breeding. You can call 6265903552 right away to confirm the
+                    right
+                    partner for your dog.
+                </div>
+                <br><br>
+            </div>
+        </center>
+        <br>
+        
+        
+        <%if(!msg){%>
+        <div class="container-fluid row  justify-content-center " id="maindiv">
+            <% item.forEach((data)=>{ %>
+            <div class="card ms-4 mt-5 p-1" id="ccc"
+                style="width: 20rem;padding:10px 0px 0px 0px; box-shadow: 1px 2px 41px 4px rgb(116 115 115 / 23%);background-color: white;">
+                <img height="200" src="/uploads/<%=data.avtar%>" class="card-img-top " alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight: bold; color: rgb(99, 228, 99);"><%=data.dogname%></h5>
+                    <h5 class="card-title"><%=data.dogBreed%></h5>
+                    <p class="card-text" style="max-height:60px;overflow-y:scroll;"><%=data.breedDescription%></p>
+                    
+                    <div class="card-text" style="color: green;">Location : <%=data.location%></div>
+                    <div class="card-text" style="color: green;">Gender : <%=data.gender%></div><br><br>
+                        <p ><span style=" color: rgb(99, 228, 99);font-weight: bolder;">Price : </span> $<%=data.price%><p>
+                    <!-- <span class="card-text" style="margin-left: 10px;"><button type="button"
+                        style="color: white;background-color:rgb(99, 228, 99);border: none;border-radius: 5px;width: 125px;">Message</button></span> -->
+                <!-- <span class="card-text" style="margin-left: 5px;"><button type="button"
+                    style="color: white;background-color:rgb(99, 228, 99);border: none;border-radius: 5px;width: 260px;">Deatils</button></span><br><br> -->
+                    <a href="/dogmating/<%=data._id%>" ><span class="card-text" style="margin-left: 10px;"><button class="btn"
+                        style="color: white;background-color:rgb(99, 228, 99);border: none;border-radius: 5px;width: 260px;">Book
+                        Now</button></span></a>
+                </div>
+            </div>
+            <%})%> 
+        </div>
+
+        <br><br>
+        <%}else{%>
+            <div class="row p-5">
+            <%-include('../partials/notFoundAlertPage')%>
+            <%}%>
+           </div>
+            
+   
+    <!-- Footer -->
+    <footer>
+        <%- include('../partials/Footer'); %>
+    </footer>
+    
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        #login {
+            right: 100%;
+        }
+
+        #button {
+            width: 4rem;
+        }
+
+        .gradient-custom {
+
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to bottom, #54B435, #80e45a, #80e45a, #85e261, #8edb6f);
+        }
+
+        #setting {
+            border-radius: .5rem;
+            background-color: #f8f7fc;
+            width: 40em;
+        }
+
+        @media only screen and (max-width:576px) {
+            #setting {
+                border-radius: .5rem;
+                background-color: #ecebef;
+                width: 28.4em;
+
+            }
+        }
+    </style>
+
+</head>
+
+<body style="background:white;">
+
+   
+    <header style="position: sticky; z-index: 1;top: 0;">
+        <%- include('../partials/dealerheader'); %>
+    </header>
+
+    <!-- dogs -->
+
+
+        <div class="container-fluid row  justify-content-center " id="maindiv">
+            <% item.forEach((data)=>{ %>
+            <div class="card ms-4 mt-5 p-1" id="ccc"
+                style="width: 20rem;padding:10px 0px 0px 0px; box-shadow: 1px 2px 41px 4px rgb(116 115 115 / 23%);background-color: white;">
+                <img height="200" src="/uploads/<%=data.avtar%>" class="card-img-top " alt="...">
+                <div class="card-body">
+                    <div class="d-flex">
+                    <p class="card-text" style="margin-left: 12px;max-height: 150px;height: 10vh;width: 20vw;"><strong>Dog Description </strong><br><%=data.breedDescription%></p></div><br>
+
+                   <!-- <center> <h5 class="card-title" style="font-weight: bold; color: rgb(5, 8, 5);">dog name : <%=data.dogname%></h5></center><br> -->
+                    <div style="display: flex;">
+                        <p class="card-text" style="margin-left:12px ;height: 6vh;width: 7vw;"><strong>Breed</strong><br><%=data.dogBreed%></p>
+                       <p class="card-text" style="margin-left: 6rem;height: 6vh;width: 7vw;"><strong>Dog Name </strong><br><%=data.dogname%></p></div><br>
+                       
+
+                       
+                    <span class="card-text" style="margin-left: 28px;"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </span>
+                    <span class="card-text" style="margin-left: 130px;"><i class="fa fa-mars"
+                            aria-hidden="true"></i></span><br>
+                    <span class="card-text" style="margin-left: 20px;height: 6vh;width: 9vw;"><%=data.location%></span>
+                    <span class="card-text" style="margin-left: 100px;height: 6vh;width: 9vw;"><%=data.gender%></span><br><br>
+                    <form action="/dealer/editmatingdog/<%= data._id%>" method="get" class="d-inline">
+                        <button type="submit" style="background: #54B435;color:white;width: 17rem;" class="btn "
+                            data-bs-toggle="modal" data-bs-target="#EditDog">Edit Dog</button>
+                    </form><br>
+                    <form action="/dealer/deletematingdog/<%= data._id%>" method="post" class="d-inline">
+                        <button type="submit" style="background: #54B435;color:white;width: 17rem;" class="btn ">Delete
+                            Dog</button>
+                    </form>
+                    
+                </div>
+            </div>
+            <%})%> 
+        </div>
+        <br><br>
+    </div>
+       <br><br>
+    <footer>
+        <%- include('../partials/Footer'); %>
+    </footer>
+</body>
+
+
+
+

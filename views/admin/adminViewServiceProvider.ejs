@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <title>Admin Dashboard</title>
+    <title>Document</title>
+    
+<script>
+    $(document).ready(function () {
+      $("#myTable").DataTable();
+    });
+  </script>
+<style>
+    td{
+        color: black;
+    }
+</style>
+</head>
+
+<body style="color: black;">
+    <%-include('../partials/adminNavbar.ejs')%>
+        <div id="dashboard" >
+       <hr>
+            <center><h2 style="color: black;">View Service Provider</h2></center>
+            <hr>
+            <div class="table-responsive" style="margin-top: 30px;width: 70rem;">
+                <table class="table table-striped table-bordered" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Contact No.</th>
+                            <th>Email</th>
+                            <th>Addhar No</th>
+                            <th>Pancard</th>
+                            <th>Address</th>
+                            <th>Experience</th>
+                            
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% item.forEach((user)=> { %>
+                            <tr>
+                                <td>
+                                    <%= user.name %>
+                                </td>
+                                <td>
+                                    <%= user.contact %>
+                                </td>
+                                <td>
+                                    <%= user.email %>
+                                </td>
+                                <td>
+                                    <%= user.addharno %>
+                                </td>
+                                <td>
+                                    <%= user.pancard %>
+                                </td>
+                                <td>
+                                    <%= user.address %>
+                                </td>
+                                <td>
+                                    <%= user.experience %>
+                                </td>
+                                
+                                <td>
+                                    <!-- <button class="btn" style="background-color: #54B435;"><a
+                                            href="/admin/deactivateService/<%= user.Email%>">Deactivate</a></button> -->
+                                            <%console.log(user.email)%>
+                                            <form action="/admin/deactivateService/<%= user.email %>">
+                                                <div class="form-check form-switch">
+                                                    <input style="background-color: #54B435;color:black" class="btn" type="submit"
+                                                        <%=user.status=='Deactivate' ? 'value = Activate' : 'value = Deactivate' %>>
+                                                </div>
+                                            </form>
+                                </td>
+                            </tr>
+                            <%})%>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+</body>
+
+</html>

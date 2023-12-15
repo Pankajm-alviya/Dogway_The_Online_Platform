@@ -1,0 +1,119 @@
+
+<style>
+    #nav-item{
+        margin-left:0px ;
+        color: black;
+}
+    .nav-link{
+        font-weight: bold;
+        color: #4d7e3e;
+}
+.nav-link:hover{
+        
+        color: #352222;
+}
+.search-and-icons {
+          display: flex;
+          align-items: center;
+        }
+      
+      .search-and-icons form input {
+        border-radius: 0;
+        height: 2em;
+        background: #fff
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='grey' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E")
+          no-repeat 95%;
+      }
+      .search-and-icons form input:focus {
+        background: #fff;
+        box-shadow: none;
+      }
+      .search-and-icons .user-icons div {
+        padding-right: 1em;
+      }
+</style>
+<%- include('../partials/IconLinks.ejs') %>
+    <div class="container-fluid vh-50" style="background-color:rgb(53,34,34);color: white;height:6vh">
+        <marquee   scrolldelay="100">Get Free Pet Coller Worth Rs.500/- On First Order </marquee>
+    </div>
+<nav class="navbar navbar-expand-lg" style="height:6rem;color:#54B435;background-color:#f9f4f4;z-index:0;">
+      <a class="navbar-brand" href="#">
+          <img class="img img-responsive" src="\images\lastLogo.png" style="width:16rem;height:5rem;"alt="">
+          
+        </a>
+    <div class="container-fluid">
+        <button class="navbar-toggler " style="background-color:#54B435;" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="color:gray"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 10%;">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link " href="/dealer" >HOME</a>
+                </li>
+                <li class="nav-item" id="nav-item">
+                    <a class="nav-link" href="">ORDER LIST</a>
+                </li>
+                <li class="nav-item" id="nav-item">
+                    <a class="nav-link" href="" >PAYMENT</a>
+                </li>
+
+                <li class="nav-item dropdown"id="nav-item">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        ADD DOG
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" 
+                        style="background-color:rgb(255, 245, 227) ;color: black;">
+                        <li><a class="dropdown-item" style="color: #4d7e3e;"  data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">FOR SELLING</a></li>
+                        <li><a class="dropdown-item" style="color: #4d7e3e;"href="" data-bs-toggle="modal"
+                            data-bs-target="#addMatingDog">FOR MATING</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown"id="nav-item">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        MY ACCOUNT
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" 
+                        style="background-color:rgb(255, 245, 227) ;color: black;">
+                        <li><a class="dropdown-item" style="color: #191a18;" href="/    ">Logout</a></li>
+                        <li><a class="dropdown-item" style="color: #4d7e3e;"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal4">Manage Your Account</a></li>
+                    </ul>
+                </li>
+                
+                <!-- <li class="nav-item dropdown"id="nav-item">
+                    <a class="nav-link" href="/Contact" >CONATCT US
+                    </a>
+                </li> -->
+                                
+            </ul>
+            <!-- <form class="d-flex">
+                <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success ml-4" type="submit">Search</button>
+              </form> -->
+         <div class="search-and-icons">
+            <form class="d-flex mb-2 me-2" role="search">
+                  <input class="form-control me-2"placeholder="Search by breed" type="search" aria-label="Search">
+            </form>
+            <div class="user-icons d-flex mb-2">
+                <!-- <form action="/dealer/dealerProfile"> -->
+                  <div class="profile">
+                    <input type="submit" id="sub" style="display: none;">
+                    <label for="sub"> <i style="color:#4d7e3e"  data-bs-toggle="modal"
+                        data-bs-target="#profileuser" class="fa fa-user " aria-hidden="true"></i></label>
+                </div>
+                <!-- </form> -->
+                    <!-- <div class="wishlist"><a href=""><i style="color:#4d7e3e" class="fa-solid fa-heart "></i></a></div>
+               <div class="cart"><a href=""><i style="color:#4d7e3e;"class="fa-solid fa-cart-shopping "></i></a></div> -->
+            </div>
+      </div>
+            
+        </div>
+    </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        #login {
+            right: 100%;
+        }
+
+        #button {
+            width: 4rem;
+        }
+
+        .gradient-custom {
+
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to bottom, #54B435, #80e45a, #80e45a, #85e261, #8edb6f);
+        }
+
+        #setting {
+            border-radius: .5rem;
+            background-color: #f8f7fc;
+            width: 40em;
+        }
+
+        @media only screen and (max-width:576px) {
+            #setting {
+                border-radius: .5rem;
+                background-color: #ecebef;
+                width: 28.4em;
+
+            }
+        }
+    </style>
+
+</head>
+
+<body style="background:white;">
+
+
+    <header style="position: sticky; z-index: 1;top: 0;">
+        <%- include('../partials/dealerheader'); %>
+    </header><br><br>
+    <!-- Add dog modal -->
+
+    <div class="modal fade" id="addMatingDog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="addMatingDogLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <center>
+                        <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bolder;margin-left: 7rem;">
+                            Add Your Mating Dog</h5>
+                    </center>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/dealer/registration" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="dogname" placeholder="Enter your Dog Name"
+                                style="width: 28rem;border-radius: 2rem;" name="dogname">
+                            <small id="name-error-msg" style="color: red;"></small>
+                            <p id="index"></p>
+                        </div>
+                        <div class="form-group mt-2">
+
+                            <select name="dogBreed" id="Breed"
+                                style="width: 28rem;height: 2.5rem;border-radius: 1rem;background-color: white;border: 1px solid skyblue;">
+                                <option value="Germen Shepherd">Germen Shepherd</option>
+                                <option value="pug">pug</option>
+                                <option value="Boxer">Boxer</option>
+                                <option value="Miltese">Miltese</option>
+                                <option value="Akita">Akita</option>
+                                <option value="Beagle">Beagle</option>
+                                <option value="Golden Retriever">Golden Retriever</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" class="form-control" id="breedDescription"
+                                placeholder="Enter Dog Breed Description" name="breedDescription"
+                                style="width: 28rem;border-radius: 2rem;">
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" class="form-control" id="Address" placeholder="Enter Address"
+                                name="location" style="width: 28rem;border-radius: 2rem;">
+                        </div>
+                        <label for="Gender">Gender</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="Male" name="gender" id="Male">
+                            <label class="form-check-label" for="Male">
+                                Male
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="Female" name="gender" id="Female">
+                            <label class="form-check-label" for="Female">
+                                Female
+                            </label>
+                        </div>
+                        <div>
+                            <input type="file" name="avtar" id="avtar">
+                        </div><br>
+
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn"
+                                style="background-color: #54B435;margin-left: -12rem;width: 28rem;border-radius: 2rem;font-weight: bolder;"
+                                id="btnnn">ADD MATING DOG</button><br><br>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- selling dog add -->
+    <!-- Add dog modal -->
+    <div class="modal fade" id="" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <center>
+                        <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bolder;margin-left: 9rem;">
+                            Add Your Dog</h5>
+                    </center>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/dealer/doginfo" method="post" enctype="multipart/form-data"
+                   >
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="DogBreed"></label>
+
+                            <select name="DogBreed" id="Breed"
+                                style="width: 28rem;height: 2.5rem;border-radius: 1rem;background-color: white;border: 1px solid skyblue;">
+                                <option value="Germen Shepherd">Germen Shepherd</option>
+                                <option value="pug">pug</option>
+                                <option value="Boxer">Boxer</option>
+                                <option value="Miltese">Miltese</option>
+                                <option value="Akita">Akita</option>
+                                <option value="Beagle">Beagle</option>
+                                <option value="Golden Retriever">Golden Retriever</option>
+
+                            </select>
+                            <!-- <input type="text" class="form-control" id="name" placeholder="Enter Dog Breed"
+                        style="width: 28rem;border-radius: 2rem;" name="DogBreed">
+                    <small id="name-error-msg" style="color: red;"></small>
+                    <p id="index"></p> -->
+                        </div>
+                        <div class="form-group mt-2">
+                            <!-- <input type="text" class="form-control" id="age" placeholder="Enter Dog Age" name="DogAge" -->
+                            <!-- style="width: 28rem;border-radius: 2rem;"> -->
+                            <select name="DogAge" id="DogAge"
+                                style="width: 28rem;height: 2.5rem;border-radius: 1rem;background-color: white;border: 1px solid skyblue;">
+                                <option value="15 year">15 year</option>
+                                <option value="16 year">16 year</option>
+                                <option value="17 year">17year</option>
+                                <option value="18 year">18 year</option>
+                                <option value="19 yearr">19 year</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" class="form-control" id="color" placeholder="Enter Dog Color"
+                                name="DogColor" style="width: 28rem;border-radius: 2rem;"
+                               >
+                                <p id="name"></p>
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" class="form-control" id="dogweight" placeholder="Enter Dog Weight"
+                                name="DogWeight"
+                                style="width: 28rem;border-radius: 2rem;">
+                                <p id="weigth"></p>
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" class="form-control" id="price" placeholder="Enter Dog Price"
+                                 name="dogPrice"
+                                style="width: 28rem;border-radius: 2rem;">
+                                <p id="weigth"></p>
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" class="form-control" id="dogheight" placeholder="Enter Dog Height"
+                                 name="DogHeight"
+                                style="width: 28rem;border-radius: 2rem;">
+                                <p id="height"></p>
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" class="form-control" id="breedDescription"
+                                 placeholder="Enter Dog Breed Description"
+                                name="breedDescription" style="width: 28rem;border-radius: 2rem;">
+                                <p id="desciption"></p>
+                        </div>
+
+                        <div>
+                            <input type="file" class="form-control" name="avtar" id="avtar"
+                                style="width: 28rem;height: 2.5rem;border-radius: 1rem;background-color: white;border: 1px solid skyblue;">
+                        </div><br>
+                        <div class="d-flex">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="Male" name="gender" id="Male">
+                                <label class="form-check-label" for="Male">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" style="margin-left: 6rem;" value="Female"
+                                    name="gender" id="Female">
+                                <label class="form-check-label" style="margin-left: 7.5rem;" for="Female">
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+
+
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn"
+                                style="background-color: #54B435;margin-left: -12rem;width: 28rem;border-radius: 2rem;font-weight: bolder;"
+                                id="btnnn">ADD DOG</button><br><br>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+
+        function validedogcolour() {
+            console.log("Enter name");
+            var name = document.getElementById("color");
+
+            //   var address=document.getElementById("add");
+            if (name.value.trim() == "") {
+                document.getElementById("name").style.color = "red";
+                document.getElementById("name").innerHTML = "Name Required";
+                return false
+            }
+            else {
+                var reg = /^[A-Za-z\s]+$/;
+                if (reg.test(name.value)) {
+                    document.getElementById('name').style.color = "green";
+                    document.getElementById("name").innerHTML = "Valid name";
+                    return true
+                }
+                else {
+                    document.getElementById('name').style.color = "red";
+                    document.getElementById("name").innerHTML = "Invalid name";
+                    return false;
+                }
+            }
+        }
+
+        function validweight() {
+            console.log("Enter name");
+            var name = document.getElementById("dogweight");
+
+            //   var address=document.getElementById("add");
+            if (name.value.trim() == "") {
+                document.getElementById("weigth").style.color = "red";
+                document.getElementById("weigth").innerHTML = "Dog weight Required";
+                return false
+            }
+            else {
+                var reg = /^\d{2}/;
+                if (reg.test(name.value)) {
+                    document.getElementById('weigth').style.color = "green";
+                    document.getElementById("weigth").innerHTML = "Valid";
+                    return true
+                }
+                else {
+                    document.getElementById('weigth').style.color = "red";
+                    document.getElementById("weigth").innerHTML = "Invalid ";
+                    return false;
+                }
+            }
+        }
+
+
+        
+        function validHeight() {
+            var name = document.getElementById("dogheight");
+
+            //   var address=document.getElementById("add");
+            if (name.value.trim() == "") {
+                document.getElementById("height").style.color = "red";
+                document.getElementById("height").innerHTML = "Dog Height Required";
+                return false
+            }
+            else {
+                var reg = /^\d{2}/;
+                if (reg.test(name.value)) {
+                    document.getElementById('height').style.color = "green";
+                    document.getElementById("height").innerHTML = "Valid";
+                    return true
+                }
+                else {
+                    document.getElementById('height').style.color = "red";
+                    document.getElementById("height").innerHTML = "Invalid ";
+                    return false;
+                }
+            }
+        }
+
+
+        
+        function validDescription() {
+            console.log("Enter name");
+            var name = document.getElementById("breedDescription");            
+            if (name.value.trim() == "") {
+                document.getElementById("desciption").style.color = "red";
+                document.getElementById("desciption").innerHTML = " Required";
+                return false
+            }
+            else {
+                var reg = /^[A-Za-z\s]+$/;
+                if (reg.test(name.value)) {
+                    document.getElementById('desciption').style.color = "green";
+                    document.getElementById("desciption").innerHTML = "Valid";
+                    return true
+                }
+                else {
+                    document.getElementById('desciption').style.color = "red";
+                    document.getElementById("desciption").innerHTML = "Invalid";
+                    return false;
+                }
+            }
+        }
+
+
+        function validatedog() {
+            var Dogname = validedogcolour();
+            if (Dogname == false) {
+                return false;
+            }
+
+            var DogWeight = validweight();
+            if (DogWeight == false) {
+                return false;
+            }
+
+            var dogHeight = validHeight();
+            if (dogHeight == false) {
+                return false;
+            }
+
+            var dogDescription = validDescription();
+            if (dogDescription == false) {
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <!-- <div class="modal fade" id="sellingdog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="addMatingDogLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <center>
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bolder;margin-left: 7rem;">
+                    Add Your Mating Dog</h5>
+            </center>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="/dealer/registration" method="post" enctype="multipart/form-data">
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="dogname" placeholder="Enter your Dog Name"
+                        style="width: 28rem;border-radius: 2rem;" name="dogname">
+                    <small id="name-error-msg" style="color: red;"></small>
+                    <p id="index"></p>
+                </div>
+                <div class="form-group mt-2">
+                   
+                        <select name="dogBreed" id="Breed" style="width: 28rem;height: 2.5rem;border-radius: 1rem;background-color: white;border: 1px solid skyblue;">
+                            <option value="Germen Shepherd">Germen Shepherd</option>
+                            <option value="pug">pug</option>
+                            <option value="Boxer">Boxer</option>
+                            <option value="Miltese">Miltese</option>
+                            <option value="Akita">Akita</option>
+                            <option value="Beagle">Beagle</option>
+                            <option value="Golden Retriever">Golden Retriever</option>
+
+                        </select>
+                </div>
+                <div class="form-group mt-2">
+                    <input type="text" class="form-control" id="breedDescription"
+                        placeholder="Enter Dog Breed Description" name="breedDescription"
+                        style="width: 28rem;border-radius: 2rem;">
+                </div>
+                <div class="form-group mt-2">
+                    <input type="text" class="form-control" id="Address" placeholder="Enter Address"
+                        name="location" style="width: 28rem;border-radius: 2rem;">
+                </div>
+                <label for="Gender">Gender</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="Male" name="gender" id="Male">
+                    <label class="form-check-label" for="Male">
+                        Male
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="Female" name="gender" id="Female">
+                    <label class="form-check-label" for="Female">
+                        Female
+                    </label>
+                </div>
+                <div>
+                    <input type="file" name="avtar" id="avtar">
+                </div><br>
+
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn"
+                        style="background-color: #54B435;margin-left: -12rem;width: 28rem;border-radius: 2rem;font-weight: bolder;"
+                        id="btnnn">ADD MATING DOG</button><br><br>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+</div> -->
+
+
+    <!-- dogs -->
+    <%if(item){%>
+        <div class="container">
+            <div class="row justify-content-center" id="maindiv">
+                <% item.forEach((data)=> { %>
+                    <div class="col-md-4 mb-4" style="height: auto;">
+                        <div class="card" id="ccc">
+                            <img src="/uploads/<%= data.avtar %>" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <div style="display: flex;">
+                                    <p class="card-text" style="margin-left:1.5rem ;height: 8vh;width: 9vw;">
+                                        <strong>Age</strong><br>
+                                        <%= data.DogAge %>
+                                    </p>
+                                    <p class="card-text" style="margin-left: 6rem;height: 8vh;width: 9vw;">
+                                        <strong>Colour</strong><br>
+                                        <%= data.DogColor %>
+                                    </p>
+                                </div>
+                                <div style="display: flex;">
+                                    <p class="card-text" style="margin-left:1.5rem ;height: 8vh;width: 9vw;">
+                                        <strong>Gender</strong><br>
+                                        <%= data.gender %>
+                                    </p>
+                                    <p class="card-text" style="margin-left: 6.5rem;height: 8vh;width: 9vw;">
+                                        <strong>Weight </strong><br>
+                                        <%= data.DogWeight %>kg
+                                    </p>
+                                </div>
+                                <div style="display: flex;">
+                                    <p class="card-text" style="margin-left:1.5rem ;height: 8vh;width: 9vw;">
+                                        <strong>Height</strong><br>
+                                        <%= data.DogHeight %>feet
+                                    </p>
+                                    <p class="card-text" style="margin-left: 6.5rem;height: 8vh;width: 9vw;">
+                                        <strong>Breed</strong><br>
+                                        <%= data.DogBreed %>
+                                    </p>
+                                </div>
+
+                                <p class="card-text"
+                                    style="margin-left:1.5rem ;max-height: 150px;height: 10vh;width: 18vw;">
+                                    <strong>Description</strong><br>
+                                    <%= data.breedDescription %>
+                                </p>
+                                <!-- <br> -->
+                                <form action="/dealer/edit/<%= data._id %>" method="get" class="d-inline" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    style="width: 12rem;">
+                                    <button type="submit"
+                                        style="width: 20rem; background: #54B435;border-radius: 1rem;height: 2.5rem;font-weight: bolder; ">Edit
+                                        Dog</button>
+                                </form>
+                                <form action="/dealer/delete/<%= data._id %>" method="post" class="d-inline"
+                                    style="width: 12rem;">
+                                    <button type="submit"
+                                        style="width: 20rem; height: 2.5rem; background: #54B435; border-radius: 1rem;font-weight: bolder; ">Delete
+                                        Dog</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+
+        <!-- </div> -->
+        <br><br>
+        <%}else{%>
+            <div class="row p-5">
+                <%-include('.. /partials/notFoundAlertPage')%>
+            </div>
+            <%}%>
+
+
+
+
+                <div class="modal fade" id="profileuser" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="addMatingDogLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <center>
+                                    <h5 class="modal-title" id="staticBackdropLabel"
+                                        style="font-weight: bolder;margin-left: 7rem;">
+                                        YOUR PROFILE</h5>
+                                </center>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <% if(newuser){%>
+                                <section class="vh-100" style="background-color: #838685;">
+                                    <div class="container py-5 h-100">
+                                        <div class="row d-flex justify-content-center align-items-center h-100">
+                                            <div class="col col-lg-6 mb-4 mb-lg-0">
+                                                <div class="card mb-3" id="setting">
+
+                                                    <div class="row g-0"
+                                                        style="box-shadow: 1px 1px 40px 1px;border-radius: 20px;">
+                                                        <div class="col-md-4 gradient-custom text-center text-white"
+                                                            style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                                                                alt="Avatar" class="img-fluid my-5"
+                                                                style="width: 100px;" />
+                                                            <h5>
+                                                                <%=founduser.SellerName%>
+                                                            </h5>
+                                                            <p>Seller</p>
+                                                            <i class="far fa-edit mb-5"></i>
+                                                        </div>
+                                                        <div class="col-md-8" style="border:none;">
+                                                            <div class="card-body p-4">
+                                                                <h3 class="text-center">Seller Profile</h3>
+                                                                <hr class="mt-0 mb-4">
+                                                                <div class="row pt-1">
+                                                                    <div class="col-6 mb-3">
+                                                                        <h6>Email</h6>
+                                                                        <p class="text-muted">
+                                                                            <%=founduser.SellerEmail%>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-6 mb-3">
+                                                                        <h6>Shop</h6>
+                                                                        <p class="text-muted">
+                                                                            <%=founduser.shopName%>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-6 mb-3">
+                                                                        <h6>Addharno</h6>
+                                                                        <p class="text-muted">
+                                                                            <%=founduser.Addharno%>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-6 mb-3">
+                                                                        <h6>Gstin NO.</h6>
+                                                                        <p class="text-muted">
+                                                                            <%=founduser.gstin%>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-6 mb-3">
+                                                                        <h6>Phone</h6>
+                                                                        <p class="text-muted">
+                                                                            <%=founduser.SellerContactNo%>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-6 mb-3">
+                                                                        <h6>Address</h6>
+                                                                        <p class="text-muted">
+                                                                            <%=founduser.SellerCity%>,
+                                                                                <%=founduser.SellerState%>,
+                                                                                    <%=founduser.SellerCountry%>
+                                                                        </p>
+                                                                    </div>
+                                                                    <form action="/dealer/editprofile/<%= data._id%>"
+                                                                        method="get" class="d-inline">
+                                                                        <button class="btn"
+                                                                            style="background-color: #80e45a;border-radius: 0.5rem">Edit</button><br><br>
+                                                                    </form>
+                                                                    <button class="btn"
+                                                                        style="background-color: #80e45a;border-radius: 0.5rem;margin-top: 5px;">Logout</button>
+                                                                </div>
+
+                                                                <!-- <h6>Projects</h6>
+                                                <hr class="mt-0 mb-4">
+                                                <div class="row pt-1">
+                                                    <div class="col-6 mb-3">
+                                                        <h6>Recent</h6>
+                                                        <p class="text-muted">Lorem ipsum</p>
+                                                    </div>
+                                                    <div class="col-6 mb-3">
+                                                        <h6>Most Viewed</h6>
+                                                        <p class="text-muted">Dolor sit amet</p>
+                                                    </div>
+                                                </div> -->
+
+                                                                <!-- <div class="d-flex justify-content-start">
+                                                    <a href="#!"><i
+                                                            class="fab fa-facebook-f fa-lg me-3"></i></a>
+                                                    <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                                                    <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                                                </div> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <%}else{%>
+                                    <section class="vh-100" style="background-color: #fafbfb;">
+                                        <div class="container py-5 h-100">
+                                            <div class="row d-flex justify-content-center align-items-center h-100">
+                                                <div class="col col-lg-6 mb-4 mb-lg-0">
+                                                    <div class="card mb-3" id="setting">
+
+                                                        <div class="row g-0"
+                                                            style="box-shadow: 1px 1px 40px 1px;border-radius: 20px;">
+                                                            <div class="col-md-4 gradient-custom text-center text-white"
+                                                                style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                                                                    alt="Avatar" class="img-fluid my-5"
+                                                                    style="width: 100px;" />
+                                                                <h5>
+                                                                    <%=founduser.SellerName%>
+                                                                </h5>
+                                                                <p>Seller</p>
+                                                                <i class="far fa-edit mb-5"></i>
+                                                            </div>
+                                                            <div class="col-md-8" style="border:none;">
+                                                                <div class="card-body p-4">
+                                                                    <h3 class="text-center">Seller Profile</h3>
+                                                                    <hr class="mt-0 mb-4">
+                                                                    <div class="row pt-1">
+                                                                        <div class="col-6 mb-3">
+                                                                            <h6>Email</h6>
+                                                                            <p class="text-muted">
+                                                                                <%=founduser.SellerEmail%>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-6 mb-3">
+                                                                            <h6>Shop</h6>
+                                                                            <p class="text-muted">
+                                                                                <%=founduser.shopName%>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-6 mb-3">
+                                                                            <h6>Addharno</h6>
+                                                                            <p class="text-muted">
+                                                                                <%=founduser.Addharno%>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-6 mb-3">
+                                                                            <h6>Gstin NO.</h6>
+                                                                            <p class="text-muted">
+                                                                                <%=founduser.gstin%>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-6 mb-3">
+                                                                            <h6>Phone</h6>
+                                                                            <p class="text-muted">
+                                                                                <%=founduser.SellerContactNo%>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-6 mb-3">
+                                                                            <h6>Address</h6>
+                                                                            <p class="text-muted">
+                                                                                <%=founduser.SellerCity%>,
+                                                                                    <%=founduser.SellerState%>,
+                                                                                        <%=founduser.SellerCountry%>
+                                                                            </p>
+                                                                        </div>
+                                                                        <form
+                                                                            action="/dealer/editprofile/<%= founduser._id%>"
+                                                                            method="get" class="d-inline">
+                                                                            <button class="btn"
+                                                                                style="background-color: #80e45a;border-radius: 0.5rem">Edit</button><br><br>
+                                                                        </form>
+                                                                        <button class="btn"
+                                                                            style="background-color: #80e45a;border-radius: 0.5rem;margin-top: 5px;">Logout</button>
+                                                                    </div>
+
+                                                                    <!-- <h6>Projects</h6>
+                                                    <hr class="mt-0 mb-4">
+                                                    <div class="row pt-1">
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Recent</h6>
+                                                            <p class="text-muted">Lorem ipsum</p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Most Viewed</h6>
+                                                            <p class="text-muted">Dolor sit amet</p>
+                                                        </div>
+                                                    </div> -->
+
+                                                                    <!-- <div class="d-flex justify-content-start">
+                                                        <a href="#!"><i
+                                                                class="fab fa-facebook-f fa-lg me-3"></i></a>
+                                                        <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                                                        <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                                                    </div> -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <%}%>
+                        </div>
+                    </div>
+                </div>
+                <footer>
+                    <%- include('../partials/Footer'); %>
+                </footer>
+</body>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>Contact Us</title>
+    <%-include('../partials/BootstrapLinks')%>
+<style>
+         #contact1 {
+            height:30rem;
+            border-radius:30px;
+            width: 100%;
+            background-image: url("images/contactBackground.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            padding: 50px 0px 0px 20px;
+            box-shadow: 1px 2px 50px 2px;
+            
+        }
+
+        #container {
+           width: 100%;
+            height: auto;
+            margin: 0 auto;
+            padding: 0 auto;
+            
+        }
+        #upperdi{
+            height:34rem;
+            margin-left: -2%;
+            margin-top: -4%;
+            padding-top: 100px;
+            padding-left: 10px;
+            background-color: rgba(250, 235, 215, 0.523);
+        }
+
+        .hover {
+            padding: 10px;
+            line-height: 40px;
+            background-color: rgba(255, 255, 255, 0.491);
+            border-color: #060809;
+            border-radius: 4px;
+            border: 1px solid white;
+            color: white;
+        }
+        #name,#email,#subject,#message{
+            width:100%;
+            margin-bottom:10px ;
+            margin-left: -7px;
+            background-color: rgba(255, 255, 255, 0.457);
+            border:2px solid green;
+            
+
+        }
+        .inputf::placeholder{
+            color: #060809;
+        }
+        .inputf{
+            width:330px;
+        }
+        #submit{
+            width:100%;
+            height:40px;
+            border-radius: 30px;
+            background-color: #54B435;
+            color: black;
+            border:1px solid;
+           margin-top: 1rem;
+        }
+        #contactdetail{
+             border:2px solid;
+            /* margin-left: 10px; */
+            border:2px solid green;
+           }
+           
+           #map{
+            width:24dvw;
+            height: 55dvh;
+            margin-left: -43px;
+           }
+        @media only screen and (max-width:576px) {
+            
+           #upperdi,#contact1 {
+            height:auto;
+           }  
+
+           #contactdetail{
+            margin-top: 10%;
+            border:2px solid;
+            border:2px solid green;
+           }
+           #map{
+            width:40dvw;
+            height: 45dvh;
+            margin-left: -25px;
+            
+           }
+    
+      
+        }
+
+        
+    </style>
+
+</head>
+
+<body>
+
+    <head>
+        <%- include('../partials/head'); %>
+    </head>
+    <%if(loginStatus){%>
+        <%=console.log(loginStatus)%> 
+    <header style="position: sticky; z-index:10;top: 0;">
+        <%- include('../partials/Header'); %>
+    </header>
+    <%}else{%>
+       <header style="position: sticky; z-index:10;top: 0;">
+          <%- include('../partials/withoutLoginHeader'); %>
+       </header>
+    <%}%>
+    <div style="padding-top:1.2rem;">
+        <h4 style="font-size: 2.5rem; text-align: center; font-weight: bolder ;margin-top: 1.5rem;">CONTACT <span style="font-size: 2.5rem; font-weight: BOLD;color:#54B435;">&nbsp;US</span></h4>
+        </div>
+    <div style="padding:30px">
+        <section id="contact1">
+        <div id="upperdi">
+        <div class="container" id="container">
+              <form class="">
+                <div class="row align-items-stretch mb-4">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control inputf" id="name" type="text" placeholder="Your Name *"data-sb-validations="required" data-sb-can-submit="no">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control inputf" id="email" type="email" placeholder="Your Email *"data-sb-validations="required,email" />
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control inputf" id="subject" type="text" placeholder="subject *"data-sb-validations="required" />
+                        </div>
+                        <div class="col-md-0">
+                            <div class="form-group" style="margin-top: 15px;">
+                                <textarea class="form-control inputf" id="message" placeholder="Your Message *"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" id="submit">Submit</button>
+                    </div>
+
+                    <div id="contactdetail" class="hover col-md-6 row" style="cursor:pointer; color: rgb(0, 0, 0);">
+                        <span class="col-6 text-center">
+                        <h2 style="font-weight: 500;">Contact Details</h2>
+                        <p id="p1">INDIA, indore [MP] 4563287</p>
+                        <p id="p1">dogway@gmail.com</p>
+                        <p id="p1">+91-7865764567, +91-6576545666</p>
+                    </span>
+                        <span  class="col-6" >
+                            <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.1683633019657!2d75.8569681753049!3d22.72198272938564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fd0c9435388b%3A0x7316a6a63258d65c!2sNagar%20Nigam%2C%20Indore%2C%20Madhya%20Pradesh%20452007!5e0!3m2!1sen!2sin!4v1696753707776!5m2!1sen!2sin">
+                            </iframe>
+                        </span>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>    
+    </section>
+</div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 8rem;">
+        <%- include('../partials/Footer'); %>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DogWay</title>
+
+</head>
+
+<body>
+    <%-include('../partials/adminNavbar.ejs')%>
+        <div id="dashboard" style="width: 70rem;">
+
+
+            <div class="details" id="detail1">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <hr>
+                        <center>
+                            <h2 style="color: black;">Product</h2>
+                        </center>
+                        <hr>
+                    </div>
+                    <div class="table-responsive container">
+                        <table class="table table-bordered table-striped" id="myTable">
+                            <thead>
+                                <tr>
+                                    <td>Breed Name </td>
+                                    <td>Price</td>
+                                    <td>Description</td>
+                                    <td>Age</td>
+                                    <td>Weight</td>
+                                    <td>Gender</td>
+                                    <td>Color's</td>
+                                    <td>Dog Image</td>
+                                    <td>Status</td>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <%item.forEach((DogListData)=>{%>
+                                    <tr>
+                                        <td>
+                                            <%=DogListData.DogBreed%>
+                                        </td>
+                                        <td>
+                                            <%=DogListData.dogPrice%>
+                                        </td>
+                                        <td>
+                                            <%=DogListData.breedDescription%>
+                                        </td>
+                                        <td>
+                                            <%=DogListData.DogAge%>
+                                        </td>
+                                        <td>
+                                            <%=DogListData.DogWeight%>
+                                        </td>
+                                        <td>
+                                            <%=DogListData.gender%>
+                                        </td>
+                                        <td>
+                                            <%=DogListData.DogColor%>
+                                        </td>
+                                        <td>
+                                            <img src="/uploads/<%=DogListData.avtar%>" style="height: 5rem;width: 5rem;"
+                                                class="img-responsive" alt="Image">
+                                        </td>
+                                        <td>
+                                            <%=DogListData.status%>
+                                        </td>
+                                    </tr>
+                                    <%})%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</body>
+
+</html>

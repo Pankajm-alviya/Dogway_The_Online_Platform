@@ -1,0 +1,324 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+ul{    
+    padding: 0;
+}
+
+#dog-information{
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+}
+#dog-information .w-100 .container .row .col-lg-8 .dog-img{
+    width: 100%;
+    height: 400px;
+    position: relative;
+    background-color: #f8ecf2;
+    overflow: hidden;
+}
+#dog-information .w-100 .container .row .col-lg-8 .dog-img .img{
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);       
+}
+#dog-information .w-100 .container .row .col-lg-8 .dog-img .img .img1{
+    width: 100%;
+    height: 100%;
+}
+#dog-information .w-100 .container .row .col-lg-8 .dog-img .left,#dog-information .w-100 .container .row .col-lg-8 .dog-img .right{
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   padding: 10px;
+   text-decoration: none;
+   background: #f8ecf2;
+   transition: 0.7s;
+   font-size: 14px;
+   font-weight: normal;
+}
+#dog-information .w-100 .container .row .col-lg-8 .dog-img .right{ 
+    right: 0!important;    
+ }
+#dog-information .w-100 .container .row .col-lg-8 .dog-img .left:hover,#dog-information .w-100 .container .row .col-lg-8 .dog-img .right:hover{
+    background-color: #fff;
+}
+#dog-information .w-100 .container .row .col-lg-8 .w-100 .container .row .col-md-12 ul{
+    padding: 0;
+    margin: 5px 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ }
+#dog-information .w-100 .container .row .col-lg-8 .w-100 .container .row .col-md-12 ul li{
+    font-size: 14px;
+    /* font-weight: bold; */
+}
+#dog-information .w-100 .container .row .col-lg-8 .breed-info .row .col-md-6 ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0px 0px 0 7px;
+}
+#dog-information .w-100 .container .row .col-lg-8 .breed-info .row .col-md-6 ul li{
+    width: 50%;
+    padding: 5px 0;
+}
+#dog-information .w-100 .container .row .col-lg-8 .breed-info .row .col-md-6 ul li strong{
+    /* width: 50%; */
+    /* padding: 5px; */
+    font-weight: 500;
+}
+#dog-information .w-100 .container .row .col-lg-8 .breed-info .row .col-md-6 ul li h6{
+    font-size: 13px;
+}
+.btn-success{
+    background-color: #15dc1cc6;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin: 2% 0;
+    /* border: 2px solid #018f98 !important; */
+}
+.btn-success:hover{
+    background: #018f98;
+}
+.header_rightsec
+{
+    display: block;
+    /* vertical-align: unset; */
+    position: relative;
+    right: 0;
+    bottom: 0px;
+}
+.header_right_color a{
+    background-color: #15dc1cc6;
+    margin: 10px 0;
+    text-decoration: none;
+}
+.header_right_btn{
+    color: #fff !important;
+    padding: 11px 19px;
+    display: inline-block;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.tags ul li{
+    display: inline-block;
+    padding: 0px 10px;
+    /* border: 1px solid #018f98; */
+    background-color: #fff;
+    border-radius: 13px;
+    margin: 3px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.multi-heading-list ul li h4{
+    font-size: 13px;
+    font-weight: bold;
+    padding-top: 5px;
+}
+.multi-heading-list ul li p{
+    font-size: 16px;
+    color: #202020;
+    margin-top: -10px;
+}
+.form-control:focus{
+    /* outline: none; */
+    box-shadow: none!important;
+}
+
+/* ------------------------------------slider------------------- */
+
+#slider{
+    padding: 20px 0;
+    
+    width: 100%;
+    background-color: white;
+}
+/* #myCarousel {
+    margin-top: 50px;
+} */
+
+.col-lg-4 .card{
+    border: none!important;
+    padding: 20px!important;
+    border-radius: 10px;
+    width: 100%;
+}
+.col-lg-4 .card-body{
+    background-color: white;
+    width: auto!important;
+    margin: auto;
+}
+.col-lg-4 .card-body .w-100 h5{
+    font-weight: bold;
+    color: #15dc1cc6;
+    padding: 5px 0;
+    font-size: 19px;
+}
+.col-lg-4 .card-body .w-100 p{
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: -10px;
+}
+.col-lg-4 .card-body .w-100 span{
+    font-size: 14px;
+    color: black;
+    display: block;
+    font-weight: 600;
+    margin-top: -7px;
+}
+.card .card-img{
+    position: relative;
+    background-color: #fbe8e8;
+    width: 100%;
+    
+    height: 180px;
+    border: none;
+    border-radius: 0 0 13px 13px;
+    overflow: hidden;
+    
+}
+.card .list-price{
+    width: 100%;
+    padding: 8px;
+    font-weight: bold;
+    font-size: 18px;
+    background: linear-gradient(to bottom,transparent,rgba(0,0,0,.75));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+}
+.card .w-100 .kci-tag {
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    padding: 5px 10px;
+    background-color: #15dc1cc6;    
+}
+.card .w-100 .kci-tag span{
+    color: #fff;
+    font-size: 12px;
+}
+
+.card .card-img img{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    /* border-radius: 0 0 20px 20px; */
+}
+/* @media (max-width:900px){
+    .col-md-12 .card-body,.col-sm-6 .card-body{
+        background-color: white;
+        width: 500px!important;
+    }
+} */
+.img2{
+    width: 20px;
+    height: 20px;
+    margin: auto;
+    padding: 3px 0;
+}
+.card .w-100 .row a{
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    padding: 3px;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    background-color:#15dc1cc6;
+}
+@media (max-width: 768px) {
+    
+    .carousel-inner .carousel-item>div {
+        display: none;
+    }
+
+    .carousel-inner .carousel-item>div:first-child {
+        display: block;
+    }
+    .multi-heading-list ul li{
+        
+    }
+    .multi-heading-list ul li p{
+        font-size: 16px;
+        color: #202020;
+        margin-top: -10px;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-start,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+@media (min-width: 768px) {
+
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next,
+    .carousel-item-next:not(.carousel-item-start) {
+        transform: translateX(25%) !important;
+    }
+
+    .carousel-inner .carousel-item-left.active,
+    .carousel-item-prev:not(.carousel-item-end),
+    .active.carousel-item-start,
+    .carousel-item-prev:not(.carousel-item-end) {
+        transform: translateX(-25%) !important;
+    }
+
+    .carousel-item-next.carousel-item-start,
+    .active.carousel-item-end {
+        transform: translateX(0) !important;
+    }
+
+    .carousel-inner .carousel-item-prev,
+    .carousel-item-prev:not(.carousel-item-end) {
+        transform: translateX(-25%) !important;
+    }
+}
+
+/* ------------------------------------slider end---------------- */
+
+
+/* -------------------------media query-------------------------- */
+ @media (max-width: 575px){
+    #dog-information .w-100 .container .row .col-lg-8 .dog-img .img
+    {
+       max-width: 206px;
+       /* object-fit: contain;
+       background-size: cover; */
+    }
+    #dog-information .w-100 .container .row .col-lg-8 .w-100 .container .row .col-md-12 ul li{
+        font-size: 10px;
+        /* font-weight: bold; */
+     }
+     #dog-information .w-100 .container .row .col-lg-8 .w-100 .container .row .col-md-12 ul li img{
+        width: 20px;
+     }
+ }
+ 

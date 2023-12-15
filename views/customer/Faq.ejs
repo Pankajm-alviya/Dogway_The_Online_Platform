@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <%-include('../partials/BootstrapLinks')%>
+    <%-include('../partials/IconLinks')%>
+    <style>
+        #login {
+            right: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <head>
+        <%- include('../partials/head'); %>
+    </head>
+    <%if(loginStatus){%>
+        <%=console.log(loginStatus)%> 
+    <header style="position: sticky; z-index:10;top: 0;">
+        <%- include('../partials/Header'); %>
+    </header>
+    <%}else{%>
+       <header style="position: sticky; z-index:10;top: 0;">
+          <%- include('../partials/withoutLoginHeader'); %>
+       </header>
+    <%}%>
+    <section class="pt-5">
+        <div class="container-fluid text-center">
+          <h4 class="fw-bold" style="font-size:2.5rem;">WE ARE HERE <span style="color: #54B435;">TO HELP</span></h4>
+          <p> Frequently Asked Questions About Dogs</p>
+        </div>
+      </section>
+    
+    <div class="container" style="background-color:rgb(247, 250, 251);border-radius:50px;box-shadow: 1px 1px 10px 1px;background: linear-gradient(to bottom, rgba(231, 251, 251,1), rgb(238, 252, 252), rgb(235, 247, 247),white,white)">
+        <!-- <center style="padding-top: 20px;">
+            <h1 style="font-weight: bolder; font-size: 32px;">WE ARE HERE TO HELP</h1>
+        </center> -->
+        
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="container" style=" width: cover;">
+                <div class="container py-5">
+                    <h2 class=" mb-4" style="font-weight: bolder;color: #54B435;">Frequently Asked Questions</h2><br><br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
+                                            aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+                                            About the breed of the dog.
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+                                        aria-labelledby="panelsStayOpen-headingOne">
+                                        <div class="accordion-body">
+                                            <p>We have created a breed information page, you can visit it to get complete information about the dog breed.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headiOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapOne"
+                                            aria-expanded="false" aria-controls="panelsStayOpen-collapOne">
+                                            What is the right food for my dog?
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapOne" class="accordion-collapse collapse"
+                                        aria-labelledby="panelsStayOpen-headiOne">
+                                        <div class="accordion-body">
+                                            <p>The right food for your dog is the one that provides them with complete nourishment and nutrients as per their age, breed, size and health needs. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree"
+                                            aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                            How many vaccines does my dog need?
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="panelsStayOpen-headingThree">
+                                        <div class="accordion-body">
+                                            <p>During their first year as a puppy, they will need 4 vaccines along with 4 boosters doses. In India, your puppy should receive Puppy DP, DHPPiL, Anti-Rabies, Canine Corona and Kennel Cough vaccines and boosters. 
+
+                                                Every year, your dog will need boosters for the DHPPiL, Anti-Rabies, Canine Corona and Kennel Cough vaccines</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour"
+                                            aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                                            Is human food safe for my dog?
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
+                                        aria-labelledby="panelsStayOpen-headingFour">
+                                        <div class="accordion-body">
+                                            <p>Some human foods are safe for your dog. However, there are minute differences between the human digestive system and canine digestive system. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive"
+                                            aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
+                                            Is it true that some dog breeds are biters and others aren’t
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse"
+                                        aria-labelledby="panelsStayOpen-headingFive">
+                                        <div class="accordion-body">
+                                            <p>Biting and aggression in dogs have very little to do with their breeding and more to do with their training. You can train a rottweiler to be the sweetest companion who plays with your children. And the lack of training and manhandling can push a pug to become aggressive. 
+
+                                                If you are planning to get a puppy, speak to the breeder about meeting the pup’s mom and dad. It is a well-known concept – if the pup’s mum and dad are even-tempered you have a high chance of bringing home a pup with a friendly nature</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingSix">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix"
+                                            aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
+                                            Is it possible to train an adult dog?
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse"
+                                        aria-labelledby="panelsStayOpen-headingSix">
+                                        <div class="accordion-body">
+                                            <p>"Old dogs don’t learn new tricks” – that’s one proverb you need to throw out of the window. Dogs have the ability to learn and act accordingly at any age. It has nothing to do with their breed or age. 
+
+                                                However, you may want to know the reason behind his aggression or misbehaviour before you begin training. Some dogs exhibit unpleasant behaviours after enduring years of abuse. In such cases, you will need the help of a canine behaviourist to train your pooch. 
+                                                
+                                                In any case, avoid negative reinforcement while training a puppy or adult dog.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven"
+                                            aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">
+                                            Can I leave my dog with the children?
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse"
+                                        aria-labelledby="panelsStayOpen-headingSeven">
+                                        <div class="accordion-body">
+                                            <p>Is your dog trained to behave well when you are not around? Have you seen any signs of separation anxiety or aggression in your dog once you leave? 
+
+                                                If your dog is anxious by nature, it is never a good idea to leave them unsupervised with children. Accidents including bites are common when dogs are afraid, anxious and stresse</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingEigth">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEigth"
+                                            aria-expanded="false" aria-controls="panelsStayOpen-collapseEigth">
+                                            Can I give human medicines to my dog?
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseEigth" class="accordion-collapse collapse"
+                                        aria-labelledby="panelsStayOpen-headingEigth">
+                                        <div class="accordion-body">
+                                            <p>Some human meds are alright for dogs but there are others that can cause irreversible damage to your pupper’s organs. Most importantly, the doses for dog and human meds are completely different. 
+
+                                                We do not recommend giving even the most common OTC human meds and supplements to dogs without consulting a veterinarian. If there’s an emergency, take your dog to a 24/7 veterinary care facility.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer style="margin-top: 7rem;">
+        <%- include('../partials/Footer'); %>
+    </footer>
+
+</body>
+
+</html>

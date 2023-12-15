@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/cities.js"></script>
+    <%- include('../partials/BootstrapLinks.ejs') %>
+        <title>Document</title>
+</head>
+
+<body>
+    <header style="position: sticky; z-index:10;top: 0;">
+        <%- include('../partials/Header'); %>
+    </header>
+
+    <form action="/address/<%=orderID%>" method="post">
+        <div class="container p-4 w-50 mt-4" style=" box-shadow: 1px 1px 1px 1px grey">
+            <div class=" row  ">
+                <center>
+                    <h1>Pet Parent's Details</h1>
+                </center>
+            </div>
+            <div class="row">
+
+                <label for=" name">Name</label>
+                <input class="form-control" type="text" name="name" value="" placeholder="Enter Name">
+
+                <label for="lastName" class="pt-3">Last Name</label>
+                <input class="form-control" type="text" name="lastName" value="" placeholder="Enter Last Name">
+
+                <label for="mobile" class="pt-3">Mobile</label>
+
+                <input class="form-control" type="number" name="mobile" value="" placeholder="Enter Mobile Number">
+
+                <label for="pinCode" class="pt-3">Pin Code</label>
+                <input class="form-control" type="number" name="pinCode" value="" placeholder="Enter Pin Code">
+                <label for="address" class="pt-3">Address</label>
+                <input class="form-control" type="text" name="address" value="" placeholder="Enter Address">
+
+                <select onchange="print_city('state', this.selectedIndex);" id="login_statename" name="state"
+                    class="pt-3" style="margin-top: 20px;" required></select>
+
+
+
+                <select id="state" name="city" class="pt-3" required style="margin-top: 20px;"></select>
+                <script language="javascript">print_state("login_statename");</script>
+
+
+
+                <div class="d-grid gap-2 w-100 pt-5">
+                    <button type="submit" name="" id="" class="btn btn-danger buyButton">Submit</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <footer class="row" style="margin-top: 50px;">
+        <%- include('../partials/Footer'); %>
+    </footer>
+</body>
+
+
+</html>

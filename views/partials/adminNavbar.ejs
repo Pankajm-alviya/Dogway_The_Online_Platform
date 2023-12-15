@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+        body {
+            background-color: #fbfbfb;
+        }
+
+        @media (min-width: 991.98px) {
+            main {
+                padding-left: 240px;
+            }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: -250px;
+            margin-top: 150PX;
+            padding: 58px 0 10px;
+            overflow-y: scroll;
+            box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+            width: 240px;
+            z-index: 600;
+            transition: all 0.3s;
+        }
+
+        /* Show sidebar on larger screens */
+        @media (min-width: 992px) {
+            .sidebar {
+                left: 0;
+            }
+        }
+
+        /* Hamburger icon for smaller screens */
+        .sidebar-toggler {
+            position: absolute;
+            top: 20px;
+            left: 15px;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Rest of your CSS remains the same */
+
+        .sidebar .active {
+            border-radius: 5px;
+            box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+        }
+
+        .sidebar-sticky {
+            position: relative;
+            top: 0;
+            height: auto;
+            padding-top: 0.5rem;
+            overflow-x: hidden;
+        }
+
+        .main-content {
+            margin-left: 0;
+            transition: all 0.3s;
+        }
+
+        @media (min-width: 991.98px) {
+            .main-content {
+                margin-left: 240px;
+            }
+        }
+
+
+        @media (max-width: 991.98px) {
+            .sidebar {
+                left: -100%;
+            }
+
+            .sidebar.active {
+                left: 0;
+            }
+        }
+
+        .sidebar .active {
+            border-radius: 5px;
+            box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+            /* color: black; */
+        }
+
+        .sidebar-sticky {
+            position: relative;
+            top: 0;
+            height: auto;
+            padding-top: 0.5rem;
+            overflow-x: hidden;
+        }
+
+        .sidebar .sidebar-toggler {
+            position: absolute;
+            top: 20px;
+            left: 15px;
+            cursor: pointer;
+        }
+
+        .sidebar .sidebar-toggler i {
+            font-size: 24px;
+            color: white;
+        }
+
+        .sidebar .list-group-item {
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .main-content {
+            margin-left: 0;
+            transition: all 0.3s;
+        }
+
+        @media (min-width: 991.98px) {
+            .main-content {
+                margin-left: 240px;
+            }
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 1.4;
+            color: #fff;
+            background-color: white;
+            overflow-x: hidden;
+            width: 100%;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -ms-flex-pack: center;
+            justify-content: center;
+            padding-top: 100px;
+            padding-bottom: 300px;
+        }
+
+        .sec-center {
+            position: relative;
+            max-width: 100%;
+            text-align: center;
+            z-index: 200;
+        }
+
+        [type="checkbox"]:checked,
+        [type="checkbox"]:not(:checked) {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .dark-light:checked+label,
+        .dark-light:not(:checked)+label {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            z-index: 20000;
+            display: block;
+            border-radius: 50%;
+            width: 46px;
+            height: 46px;
+            cursor: pointer;
+            transition: all 200ms linear;
+            box-shadow: 0 0 25px rgba(255, 235, 167, .45);
+        }
+
+        .dark-light:checked+label {
+            transform: rotate(360deg);
+        }
+
+        .dark-light:checked+label:after,
+        .dark-light:not(:checked)+label:after {
+            position: absolute;
+            content: '';
+            top: 1px;
+            left: 1px;
+            overflow: hidden;
+            z-index: 2;
+            display: block;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            background-color: #102770;
+            background-image: url('https://assets.codepen.io/1462889/moon.svg');
+            background-size: 20px 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: all 200ms linear;
+            opacity: 0;
+        }
+
+        .dark-light:checked+label:after {
+            opacity: 1;
+        }
+
+        .dark-light:checked+label:before,
+        .dark-light:not(:checked)+label:before {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 1;
+            display: block;
+            border-radius: 50%;
+            width: 46px;
+            height: 46px;
+            background-color: #48dbfb;
+            background-image: url('https://assets.codepen.io/1462889/sun.svg');
+            background-size: 25px 25px;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: all 200ms linear;
+        }
+
+        .dark-light:checked+label:before {
+            background-color: #000;
+        }
+
+        .light-back {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background-color: #fff;
+            overflow: hidden;
+            background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
+            background-position: center;
+            background-repeat: repeat;
+            background-size: 4%;
+            height: 100%;
+            width: 100%;
+            transition: all 200ms linear;
+            opacity: 0;
+        }
+
+        .dark-light:checked~.light-back {
+            opacity: 1;
+        }
+
+        .dropdown:checked+label,
+        .dropdown:not(:checked)+label {
+            position: relative;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 2;
+            height: 50px;
+            transition: all 200ms linear;
+            border-radius: 4px;
+            width: 220px;
+            letter-spacing: 1px;
+            display: -webkit-inline-flex;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            -moz-justify-content: center;
+            -ms-justify-content: center;
+            justify-content: center;
+            -ms-flex-pack: center;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+            box-shadow: 0 12px 35px 0 rgba(255, 235, 167, .15);
+        }
+
+        .dark-light:checked~.sec-center .for-dropdown {
+            background-color: #102770;
+            color: #ffeba7;
+            box-shadow: 0 12px 35px 0 rgba(16, 39, 112, .25);
+        }
+
+        .dropdown:checked+label:before,
+        .dropdown:not(:checked)+label:before {
+            position: fixed;
+            top: 0;
+            left: 0;
+            content: '';
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            cursor: auto;
+            pointer-events: none;
+        }
+
+        .dropdown:checked+label:before {
+            pointer-events: auto;
+        }
+
+        .dropdown:not(:checked)+label .fa {
+            font-size: 24px;
+            margin-left: 10px;
+            transition: transform 200ms linear;
+        }
+
+        .dropdown:checked+label .fa {
+            transform: rotate(180deg);
+            font-size: 24px;
+            margin-left: 10px;
+            transition: transform 200ms linear;
+        }
+
+        .section-dropdown {
+            position: absolute;
+            padding: 5px;
+            background-color: white;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            border-radius: 4px;
+            display: block;
+            box-shadow: 0 14px 35px 0 rgba(9, 9, 12, 0.4);
+            z-index: 2;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+            transition: all 200ms linear;
+        }
+
+        .dark-light:checked~.sec-center .section-dropdown {
+            background-color: #fff;
+            box-shadow: 0 14px 35px 0 rgba(7, 7, 255, 0.15);
+        }
+
+        .dropdown:checked~.section-dropdown {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .section-dropdown:before {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            content: '';
+            display: block;
+            z-index: 1;
+        }
+
+        .section-dropdown:after {
+            position: absolute;
+            top: -7px;
+            left: 30px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid #111;
+            content: '';
+            display: block;
+            z-index: 2;
+            transition: all 200ms linear;
+        }
+
+        .dark-light:checked~.sec-center .section-dropdown:after {
+            border-bottom: 8px solid #fff;
+        }
+
+        a {
+            position: relative;
+            color: #fff;
+            transition: all 200ms linear;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            border-radius: 2px;
+            padding: 5px 0;
+            padding-left: 20px;
+            padding-right: 15px;
+            margin: 2px 0;
+            text-align: left;
+            text-decoration: none;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-align-items: center;
+            align-items: center;
+            justify-content: space-around;
+            -ms-flex-pack: distribute;
+        }
+
+        .dark-light:checked~.sec-center .section-dropdown a {
+            color: #54B435;
+        }
+
+        .list-group-item:hover {
+            color: #54B435;
+            background-color: #fbf2d5;
+        }
+
+        .dark-light:checked~.sec-center .section-dropdown a:hover {
+            color: #fff;
+            background-color: green;
+        }
+
+        a .fa {
+            font-size: 22px;
+        }
+
+        .dropdown-sub:checked+label,
+        .dropdown-sub:not(:checked)+label {
+            position: relative;
+            color: #fff;
+            transition: all 200ms linear;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            border-radius: 2px;
+            padding: 5px 0;
+            padding-left: 20px;
+            padding-right: 15px;
+            text-align: left;
+            text-decoration: none;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-align-items: center;
+            align-items: center;
+            justify-content: space-between;
+            -ms-flex-pack: distribute;
+            cursor: pointer;
+        }
+
+        .dropdown-sub:checked+label .fa,
+        .dropdown-sub:not(:checked)+label .fa {
+            font-size: 22px;
+        }
+
+        .dropdown-sub:not(:checked)+label .fa {
+            transition: transform 200ms linear;
+        }
+
+        .dropdown-sub:checked+label .fa {
+            transform: rotate(135deg);
+            transition: transform 200ms linear;
+        }
+
+        .dropdown-sub:checked+label:hover,
+        .dropdown-sub:not(:checked)+label:hover {
+            color: #54B435;
+        }
+
+        .dark-light:checked~.sec-center .section-dropdown .for-dropdown-sub {
+            color: #54B435;
+        }
+
+        .dark-light:checked~.sec-center .section-dropdown .for-dropdown-sub:hover {
+            color: #ffeba7;
+            background-color: #54B435;
+        }
+
+        .section-dropdown-sub {
+            position: relative;
+            display: block;
+            width: 100%;
+            pointer-events: none;
+            opacity: 0;
+            max-height: 0;
+            padding-left: 10px;
+            padding-right: 3px;
+            overflow: hidden;
+            transition: all 200ms linear;
+        }
+
+        .dropdown-sub:checked~.section-dropdown-sub {
+            pointer-events: auto;
+            opacity: 1;
+            max-height: 999px;
+        }
+
+        .section-dropdown-sub a {
+            font-size: 14px;
+        }
+
+        .section-dropdown-sub a .fa {
+            font-size: 20px;
+        }
+
+        .logo {
+            position: fixed;
+            top: 50px;
+            left: 40px;
+            display: block;
+            z-index: 11000000;
+            background-color: transparent;
+            border-radius: 0;
+            padding: 0;
+            transition: all 250ms linear;
+        }
+
+        .logo:hover {
+            background-color: transparent;
+        }
+
+        .same:hover {
+            background-color: transparent;
+        }
+
+        .logo img {
+            height: 26px;
+            width: auto;
+            display: block;
+            transition: all 200ms linear;
+        }
+
+        .dark-light:checked~.logo img {
+            filter: brightness(10%);
+        }
+
+        .dropdown-btn:hover {
+            transition: 0.6s;
+            color: #FFFFFF;
+            background-color: #54B435;
+        }
+
+        @media screen and (max-width: 991px) {
+            .logo {
+                top: 30px;
+                left: 20px;
+            }
+
+            .dark-light:checked+label,
+            .dark-light:not(:checked)+label {
+                top: 20px;
+                right: 20px;
+            }
+        }
+
+        #sidebar .container .row .col-lg-12 .card .img {
+            width: 100px;
+            height: 100px;
+            border: none;
+            border-radius: 50%;
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <header> -->
+    <!-- Sidebar -->
+    <!-- <nav id="sidebar" class="sidebar" style="margin-top:2rem; background-color: #54B435" >
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div  style="border: none;border-bottom: 1px solid rgba(0,0,0,0.4);">
+                          <center><img src="\images\admin." class="img" alt="sdfg" height="150" style="border-radius: 50%;margin-top: -50px;"></center>
+                          <div class="card-body text-center">
+                             <h3 style="margin-top: 20px;color: white;">Pankaj Malviya</h3>
+                             <h5 style="color: white;">Dogway Admin</h5>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="sidebar-toggler" onclick="toggleSidebar()">
+                  <i class="fa fa-bars"></i>
+              </div>
+                    <div class="sidebar-sticky">
+                        
+                <div class="mt-4">
+                    <div class="sec-center">
+                        <input class="dropdown" type="checkbox" id="dropdown" name="dropdown" />
+                        <label class="for-dropdown" for="dropdown" style="margin-left: -63px;font-size: 20px;">View List
+                            <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        </label>
+                        <div class="section-dropdown">
+                            <a href="/admin/adminViewCustomer" class="dropdown-btn" style="color: black;margin-left: -23px">Customer <span style="margin-left: 10px;"><i class="fa fa-arrow-right"></i></span> </a>
+                            <a href="/admin/adminViewServiceProvider" class="dropdown-btn" style="color: black;margin-left: -25px">Service Provider<span style="margin-left: -30px;"><i class="fa fa-arrow-right"></i></span> </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="/admin" class="list-group-item list-group-item-action py-2 ripple"><i
+                    class="fa fa-chart-line fa-fw me-3" style="visibility: hidden;"></i><span style="font-size: 20px;margin-left: -30px">Orders</span></a>
+                <a href="/admin/adminViewProduct" class="list-group-item list-group-item-action py-2 ripple ">
+                    <i class="fa fa-chart-area fa-fw me-3" style="visibility: hidden;"></i><span style="font-size: 20px;margin-left: -30px">Product</span>
+                </a>
+                
+                <a href="/admin/adminAddCategory" class="list-group-item list-group-item-action py-2 ripple ">
+                    <i class="fa fa-chart-area fa-fw me-3" style="visibility: hidden;"></i><span style="font-size: 20px;margin-left: -30px">Category</span>
+                </a>
+                <a href="/admin/adminMessage" class="list-group-item list-group-item-action py-2 ripple ">
+                    <i class="fa fa-chart-area fa-fw me-3" style="visibility: hidden;"></i><span style="font-size: 20px;margin-left: -30px">Messages</span>
+                </a>
+
+                <a href="/admin/matingDog" class="list-group-item list-group-item-action py-2 ripple ">
+                    <i class="fa fa-chart-area fa-fw me-3" style="visibility: hidden;"></i><span style="font-size: 20px;margin-left: -30px">Mating Dog</span>
+                </a>
+
+                <a href="/admin/servesDogList" class="list-group-item list-group-item-action py-2 ripple ">
+                    <i class="fa fa-chart-area fa-fw me-3" style="visibility: hidden;"></i><span style="font-size: 20px;margin-left: -30px">Serves Dog</span>
+                </a>
+               
+               
+                <a href="/admin/adminResetPassword" class="list-group-item list-group-item-action py-2 ripple">
+                    <i class="fa fa-chart-pie fa-fw me-3" style="visibility: hidden;"></i><span style="font-size: 20px;margin-left: -30px">Password</span>
+                </a>
+               
+                    
+
+                <a href="adminLogout" class="list-group-item list-group-item-action py-2 ripple"><i class="fa fa-building fa-fw me-3" style="visibility: hidden;"></i><span style="font-size: 20px;margin-left: -30px">Sign Out</span></a>                
+                
+                    </div>
+            </div>
+            </div>
+        </nav> -->
+    <!-- Sidebar -->
+
+    <!-- Navbar -->
+    <!-- <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+            <div class="container-fluid ">
+                <button class="navbar-toggler" type="button" onclick="toggleSidebar()">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                   <center> <img src="\images\lastLogo.png" height="80" style="" alt="chirag" loading="lazy" /></center>
+            </div>
+        </nav> -->
+    <!-- Navbar -->
+    <!-- </header> -->
+    <style>
+        #navbar {
+            margin-top: -6.5rem;
+            width: 100%;
+            z-index: 100;
+            position: sticky;
+            background-color: #f9f4f4;
+            top: 0;
+        }
+    </style>
+    <%-include('../partials/BootstrapLinks')%>
+        <nav class="navbar navbar-expand-lg" id="navbar">
+            <a class="navbar-brand" href="#">
+                <img class="img img-responsive" src="/images/lastlogo.png" style="width:16rem;height:5rem;" alt="">
+            </a>
+            <div class="container-fluid">
+                <button class="navbar-toggler " style="background-color:#54B435;" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" style="color:gray"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item ms-5" id="nav-item">
+                            <a class="nav-link" href="/admin/adminDashboard">HOME</a>
+                        </li>
+                        <li class="nav-item" id="nav-item">
+                            <a class="nav-link" href="/admin/adminAddCategory">ADD CATEGORY</a>
+                        </li>
+                        <li class="nav-item" id="nav-item">
+                            <a class="nav-link" href="/admin/breedInfoForm">ADD NEW BREED</a>
+                        </li>
+                        <!-- <li><a class="dropdown-item" style="color: #4d7e3e;" href="/breedInfoForm" >Add Bread Form</a></li> -->
+                        <li class="nav-item dropdown" id="nav-item">
+                            <a class="nav-link" href="/admin/adminMessage">MESSAGES
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown" id="nav-item">
+                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">LISTS</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+                                style="background-color:rgb(255, 245, 227) ;">
+
+                                <li><a class="dropdown-item" style="color: #4d7e3e;"
+                                        href="/admin/adminViewProduct">products List</a></li>
+                                <li><a class="dropdown-item" style="color: #4d7e3e;" href="/admin/servesDogList">Service
+                                        Dog List</a></li>
+                                <li><a class="dropdown-item" style="color: #4d7e3e;" href="/admin/matingDog">Mating Dog
+                                        List</a></li>
+                                <li><a class="dropdown-item" style="color: #4d7e3e;"
+                                        href="/admin/adminViewServiceProvider">Service Provider List</a></li>
+                                <li><a class="dropdown-item" style="color: #4d7e3e;"
+                                        href="/admin/adminViewCustomer">Cutomer List</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown" id="nav-item">
+                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                MY ACCOUNT
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+                                style="background-color:rgb(255, 245, 227) ;color: black;">
+                                <li class="nav-item"><a href="/admin/adminLogout" class="nav-link">LOGOUT</a></li>
+
+                                <li class="nav-item" id="nav-item" id="nav-item">
+                                    <a class="nav-link" href="/admin/adminResetPassword">Password</a>
+                                </li>
+
+                                <li></li>
+                            </ul>
+                        </li>
+                     
+
+
+                    </ul>
+
+                    
+                </div>
+
+            </div>
+            </div>
+        </nav>
+</body>
+
+</html>

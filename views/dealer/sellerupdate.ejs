@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <style>
+        #login {
+            right: 100%;
+        }
+
+        #button {
+            width: 4rem;
+        }
+
+        .gradient-custom {
+
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to bottom, #54B435, #80e45a, #80e45a, #85e261, #8edb6f);
+        }
+
+        #setting {
+            border-radius: .5rem;
+            background-color: #f8f7fc;
+            width: 40em;
+        }
+
+        @media only screen and (max-width:576px) {
+            #setting {
+                border-radius: .5rem;
+                background-color: #ecebef;
+                width: 28.4em;
+
+            }
+        }
+    </style> -->
+
+</head>
+
+<body style="background:white;">
+
+
+    <header style="position: sticky; z-index: 1;top: 0;">
+        <%- include('../partials/dealerheader'); %>
+    </header>
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"
+                    style="font-weight: bolder;margin-left: 15rem; font-size: 2rem;margin-left: 26rem;"
+                    id="exampleModalLabel">SELLER SIGN-UP</h5>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img id="img"
+                            src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7883.jpg"
+                            style="height: 70vh;margin-top: 3rem;" alt="">
+                    </div>
+                    <div class="col-md-6"><br>
+                        <form action="/dealer/Sellerprofile/<%= data._id %>" method="post"  onsubmit="return sellervelidationFrom()">                            <!-- <div class="form-group">
+                                <input type="number" id="login_SellerId" placeholder="Enter SellerId" class="form-control form-control-lg" />
+                            </div><br> -->
+                            <div class="form-group">
+                                <input type="text" name="SellerName" value="<%= data.SellerName %>" id="login_SellerName" placeholder="Enter name" onkeyup="return validnameSeller()"
+                                    class="form-control form-control-lg" />
+                                    <p id="sellername"></p>
+                            </div><br>
+                            <div class="form-group">
+                                <input type="text" name="SellerContactNo" value="<%= data.SellerContactNo %>" id="login_SellerContactNo" onkeyup="return validcontactSeller()"
+                                    placeholder="Enter contact no" class="form-control form-control-lg" />
+                                    <p id="contect"></p>
+                                    <p id="selleremail"></p>
+                            </div><br>
+                            <div class="form-group">
+                                <input type="email" name="SellerEmail" value="<%= data.SellerEmail %>" id="login_SellerEmail" placeholder="Enter email" onkeyup=" return validemailSeller()"
+                                    class="form-control form-control-lg" />
+                                    <p id="selleremail"></p>
+                            </div><br>
+    
+                            <div class="form-group">
+                                <input type="password" name="SellerPassword" value="<%= data.SellerPassword %>" id="login_SellerPassword" onkeyup="return validellerpass()"
+                                    placeholder="Enter password" class="form-control form-control-lg" />
+                                    <p id="sellerpass"></p>
+                            </div><br>
+                            <div class="form-group">
+                                <input type="text" name="shopName" value="<%= data.shopName %>" id="login_Sshopname" placeholder="Enter shop name" onkeyup="return valideshope()"
+                                    class="form-control form-control-lg" />
+                                    <p id="shopname"></p>
+                            </div><br>
+                            <div class="form-group">
+                                <input type="text" name="SellerAddress" value="<%= data.shopAddress %>" id="login_Sshopaddress" onkeyup="return address()"
+                                    placeholder="Enter shop address" class="form-control form-control-lg" />
+                                    <p id="shopaddress"></p>
+                            </div><br>
+                            <div class="form-group">
+                                <input type="text" name="gstin" value="<%= data.gstin %>" id="login_Sgstnname" placeholder="Enter GSTIN No." onkeyup="return gstno()"
+                                    class="form-control form-control-lg" />
+                                    <p id="gst"></p>
+                                    <!-- 29ABCDE1234F1Z5 -->
+                            </div><br>
+                            <div class="form-group">
+                                <input type="text" name="Addharno" value="<%= data.Addharno %>" id="login_Saadharcard" onkeyup=" return validselleradhar()"
+                                    placeholder="Enter addharcard no." class="form-control form-control-lg" />
+                                    <p id="aadhar"></p>
+                            </div>
+                            <br>
+                            <div class=" d-flex m-1">
+                                <!-- <div class="form-group">
+                                    <input type="text" name="SellerCity" id="login_SellerCity" placeholder="Enter city"
+                                        class="form-control form-control-lg" />
+                                </div><br> -->
+                                <div class="form-group">
+                                    <input type="text" name="SellerState" value="<%= data.SellerState %>" id="login_SellerState" onkeyup="return validesellerstate()"
+                                        placeholder="Enter state" class="form-control form-control-lg" />
+                                        <p id="sellerstate"></p>
+                                </div><br>
+                                <div class="form-group">
+                                    <input type="text" name="SellerCountry" value="<%= data.SellerCountry %>" id="login_SellerCountry" onkeyup="return validesellercountry()"
+                                        placeholder="Enter country" class="form-control form-control-lg" />
+                                        <p id="sellercountry"></p>
+                                </div><br>
+                            </div><br>
+                            <input type="submit" class="btn " id="btnn" value="SIGN UP" /><br><br>
+    
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script>
+    function validnameSeller() {
+        var name = document.getElementById("login_SellerName");
+        if (name.value.trim() == "") {
+            document.getElementById("sellername").style.color = "red";
+            document.getElementById("sellername").innerHTML = "Name Required";
+            return false
+        }
+        else {
+            var reg = /^[A-Za-z\s]+$/;
+            if (reg.test(name.value)) {
+                document.getElementById('sellername').style.color = "green";
+                document.getElementById("sellername").innerHTML = "";
+                return true
+            }
+            else {
+                document.getElementById('sellername').style.color = "red";
+                document.getElementById("sellername").innerHTML = "Invalid name";
+                return false;
+            }
+        }
+    }
+    
+    function valideshope() {
+        var name = document.getElementById("login_Sshopname");
+        if (name.value.trim() == "") {
+            document.getElementById("shopname").style.color = "red";
+            document.getElementById("shopname").innerHTML = "Shop Name Required";
+            return false
+        }
+        else {
+            var reg = /^[A-Za-z\s]+$/;
+            if (reg.test(name.value)) {
+                document.getElementById('shopname').style.color = "green";
+                document.getElementById("shopname").innerHTML = "";
+                return true
+            }
+            else {
+                document.getElementById('shopname').style.color = "red";
+                document.getElementById("shopname").innerHTML = "Invalid shop name";
+                return false;
+            }
+        }
+    }
+    
+    function validemailSeller() {
+        var email = document.getElementById("login_SellerEmail");
+        if (email.value.trim() == "") {
+            document.getElementById("selleremail").style.color = "red";
+            document.getElementById("selleremail").innerHTML = "Email Required";
+            return false;
+        }
+        else {
+            var reg = /^\w+([\.-])?\w*@[a-z]*([\.][a-z]{2,3})+$/;
+            if (reg.test(email.value)) {
+                document.getElementById("selleremail").style.color = "green";
+                document.getElementById("selleremail").innerHTML = "";
+                return true;
+            }
+            else {
+                document.getElementById("selleremail").style.color = "red";
+                document.getElementById("selleremail").innerHTML = "Invalid email";
+                return false;
+            }
+        }
+    }
+    
+    function validesellerstate() {
+        var name = document.getElementById("login_SellerState");
+        if (name.value.trim() == "") {
+            document.getElementById("sellerstate").style.color = "red";
+            document.getElementById("sellerstate").innerHTML = "State Required";
+            return false
+        }
+        else {
+            var reg = /^[A-Za-z\s]+$/;
+            if (reg.test(name.value)) {
+                document.getElementById('sellerstate').style.color = "green";
+                document.getElementById("sellerstate").innerHTML = "";
+                return true
+            }
+            else {
+                document.getElementById('sellerstate').style.color = "red";
+                document.getElementById("sellerstate").innerHTML = "Invalid state";
+                return false;
+            }
+        }
+    }
+    function validesellercountry() {
+        var name = document.getElementById("login_SellerCountry");
+        if (name.value.trim() == "") {
+            document.getElementById("sellercountry").style.color = "red";
+            document.getElementById("sellercountry").innerHTML = "country Required";
+            return false
+        }
+        else {
+            var reg = /^[A-Za-z\s]+$/;
+            if (reg.test(name.value)) {
+                document.getElementById('sellercountry').style.color = "green";
+                document.getElementById("sellercountry").innerHTML = "";
+                return true
+            }
+            else {
+                document.getElementById('sellercountry').style.color = "red";
+                document.getElementById("sellercountry").innerHTML = "Invalid country";
+                return false;
+            }
+        }
+    }
+    
+    
+    function address() {
+        var name = document.getElementById("login_Sshopaddress");
+        if (name.value.trim() == "") {
+            document.getElementById("shopaddress").style.color = "red";
+            document.getElementById("shopaddress").innerHTML = "shop address Required";
+            return false
+        }
+        else {
+            var reg = /^[A-Za-z\s]+$/;
+            if (reg.test(name.value)) {
+                document.getElementById('shopaddress').style.color = "green";
+                document.getElementById("shopaddress").innerHTML = "";
+                return true
+            }
+            else {
+                document.getElementById('shopaddress').style.color = "red";
+                document.getElementById("shopaddress").innerHTML = "Invalid shop address";
+                return false;
+            }
+        }
+    }
+    
+    
+    function validselleradhar() {
+        // console.log("Enter state");
+        var addhano = document.getElementById("login_Saadharcard");
+    
+    
+        if (addhano.value.trim() == "") {
+            document.getElementById("aadhar").style.color = "red";
+            document.getElementById("aadhar").innerHTML = "Addhar no. Required";
+            return false
+        }
+        else {
+            var reg = "/^[0-9]{12}$";
+            if (reg.test(addhano.value)) {
+                document.getElementById('aadhar').style.color = "green";
+                document.getElementById("aadhar").innerHTML = "";
+                return true
+            }
+            else {
+                document.getElementById('aadhar').style.color = "red";
+                document.getElementById("aadhar").innerHTML = "Invalid Addhar no";
+                return false;
+            }
+        }
+    }
+    function gstno() {
+        // console.log("Enter country");
+        var name = document.getElementById("login_Sgstnname");
+    
+    
+        if (name.value.trim() == "") {
+            document.getElementById("gst").style.color = "red";
+            document.getElementById("gst").innerHTML = "gsitn. Required";
+            return false
+        }
+        else {
+            var reg = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[0-9]{1}[Z]{1}[0-9]{1}$/;
+            if (reg.test(name.value)) {
+                document.getElementById('gst').style.color = "green";
+                document.getElementById("gst").innerHTML = "";
+                return true
+            }
+            else {
+                document.getElementById('gst').style.color = "red";
+                document.getElementById("gst").innerHTML = "Invalid gsitn.";
+                return false;
+            }
+        }
+    }
+    function validellerpass() {
+        console.log("Enter pass");
+        var password = document.getElementById("login_SellerPassword");
+        if (password.value.trim() == "") {
+            document.getElementById("sellerpass").style.color = "red";
+            document.getElementById("sellerpass").innerHTML = "Password Required";
+            return false;
+        }
+        else {
+            var reg = /^(?=.+?[A-Z])(?=.+?[a-z])(?=.+?[~!@#$%^&*()_+])(?=.+?[0-9]).{8}$/;
+            if (reg.test(password.value)) {
+                document.getElementById("sellerpass").style.color = "green";
+                document.getElementById("sellerpass").innerHTML = "";
+                return true;
+            }
+            else {
+                document.getElementById("sellerpass").style.color = "red";
+                document.getElementById("sellerpass").innerHTML = "Invalid Password";
+                return false;
+            }
+        }
+    }
+    
+    function validcontactSeller() {
+        var mobile = document.getElementById("login_SellerContactNo");
+        if (mobile.value.trim() == "") {
+            document.getElementById("contect").style.color = "red";
+            document.getElementById("contect").innerHTML = "Mobile Number Required";
+            return true;
+        }
+        else {
+            var reg = /^[6789][0-9]{9}$/;
+            if (reg.test(mobile.value)) {
+                document.getElementById("contect").style.color = "green";
+                document.getElementById("contect").innerHTML = "";
+                return true;
+            }
+            else {
+                document.getElementById("contect").style.color = "red";
+                document.getElementById("contect").innerHTML = "Enter 10 Digit MobileNo.";
+                return false;
+            }
+        }
+    }
+    
+    function sellervelidationFrom() {
+        var name = validnameSeller();
+        if (name == false) {
+            return false;
+        }
+        var address = address();
+        if (address == false) {
+            return false;
+        }
+    
+        var selleremail = validemailSeller();
+        if (selleremail == false) {
+            return false;
+        }
+    
+        // var breed = valideBreed();
+        // if (breed == false) {
+        //     return false;
+        // }
+    
+        var contact = validcontactSeller();
+        if (contact == false) {
+            return false;
+        }
+        var gstno = gstno();
+        if(gstno==false){
+            return true;
+        }
+    
+        var addhano = validselleradhar();
+        if (addhano == false) {
+            return false;
+        }
+    
+    
+        // var pancard = validpancard();
+        // if (pancard == false) {
+        //     return false;
+        // }
+    
+    
+        var shop = valideshope();
+        if (shop == false) {
+            return false;
+        }
+    
+    
+        var password = validellerpass();
+        if (password == false) {
+    
+            return false;
+        }
+        var state = validesellerstate();
+        if (state == false) {
+    
+            return false;
+        }
+    
+        var state = validesellercountry();
+        if (state == false) {
+    
+            return false;
+        }
+        return true;
+    } 
+    </script>
+    <footer>
+        <%- include('../partials/Footer'); %>
+    </footer>
+</body>
+
+
+

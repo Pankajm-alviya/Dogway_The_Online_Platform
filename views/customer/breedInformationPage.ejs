@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index2</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> -->
+    <link rel="stylesheet" href="../../public/css/Bookstyle.css">
+    <!-- <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'> -->
+<%-include('../partials/BootstrapLinks')%>
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<%if(loginStatus){%>
+    <%=console.log(loginStatus)%> 
+<header style="position: sticky; z-index:10;top: 0;">
+    <%- include('../partials/Header'); %>
+</header>
+<%}else{%>
+   <header style="position: sticky; z-index:10;top: 0;">
+      <%- include('../partials/withoutLoginHeader'); %>
+   </header>
+<%}%>
+</head>
+<body>
+    <section id="dog-information">
+        <div class="w-100" style="background-color: whitesmoke;">
+            <div class="container px-5">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="dog-img rounded-1 my-2" style="background: white;">
+                            <!-- <a href="#" class="left" style="background-color: white;">
+                               <i class="fa-solid fa-arrow-left " style="color: #000;"></i>
+                            </a> -->
+                            <div class="img" style="display:flex; justify-content: center;align-items: center;">
+                               <img class="img1" src="/uploads/<%=breedObj.avtar%>" style="width:35rem;height:24rem" alt="">
+                            </div>
+                            <!-- <a href="#" class="right" style="background-color: white;">
+                               <i class="fa-solid fa-arrow-right" style="color: #000;"></i>
+                            </a> -->
+                        </div>
+                        <div class="w-100 my-2 p-3 rounded-1" style="background-color: white;">
+                           <h6 style="color: #15dc1cc6;font-size: 20px;font-weight: bolder;">Overview</h6>
+                           <span style="font-size: 14px;">
+                              <b>High Maintenance:</b>
+                              <p><%=breedObj.maintenance%></p> <br>
+                              <b>Moderate shedding:</b>
+                              <p><%=breedObj.shedding%></p> <br>
+                              <b>Easy to train:</b>
+                              <p><%=breedObj.trainability%></p> <br>
+                              <b>Personality:</b>
+                              <p><%=breedObj.personality%></p> <br>
+                              <b>Good for:</b>
+                              <p><%=breedObj.Goodfor%></p> <br>
+                             
+                           </span>
+                           <h6 class="pt-1 pb-2" style="color: #15dc1cc6;font-size: 20px;font-weight:bolder;">Breed Info</h6>
+                           
+                           <h4 class="pb-2"  style="font-size: 13px;font-weight: bold;">Temperament</h4>
+                           
+                           <div class="multi-heading-list">
+                              <ul class="d-flex" style="list-style: none;flex-wrap: wrap;gap: 30px;">
+                                <li>
+                                    <h6><b>Trainability</b></h6>
+                                    <%=breedObj.training%>
+                                </li>
+                                <li>
+                                    <h6><b>Maintenance</b></h6>
+                                    <%=breedObj.Maintenance%>
+                                </li>
+                                <li>
+                                   <h6> <b>Life Expectancy</b></h6>
+                                    <%=breedObj.lifeExpectancy%>
+                                </li>
+                                <li>
+                                    <h6><b>Dog size</b></h6>
+                                    <%=breedObj.dogSize%>
+                                </li>
+                                <li>
+                                    <h6><b>Weight</b></h6>
+                                    <%=breedObj.wheight%>
+                                </li>
+                                <li>
+                                    <h6><b>litter size</b></h6>
+                                    <%=breedObj.litterSize%>
+                                </li>
+                              </ul>
+                           </div>
+                        </div>
+                    </div>
+                
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-12 col-12 p-3">
+                        <form action="">
+                        <div class="w-100 my-2 rounded-1 p-3" style="background: white;">
+                            <h4 style="color: #15dc1cc6;font-size: 13px;font-weight: bold;">Choose Your Breed</h4>
+                                <select class="form-control" name="breed" style="font-weight: bold;padding: 5px 10px;" id="">
+                                   <option value="">-Select Breed-</option>
+                                   <option value="Afghan Hound">Afghan Hound</option>
+                                   <option value="Akita">Akita</option>
+                                   <option value="Akita">Akita</option>
+                                   <option value="Akita">Akita</option>
+                                   <option value="Akita">Akita</option>
+                                   <option value="Akita">Akita</option>
+                                   <option value="Akita">Akita</option>
+                                </select>                            
+                        </div>
+                        <div class="w-100 p-3 rounded-1 d-flex justify-content-center" style="background-color: #15dc1cc6;">
+                            <input type="submit" name="" class="border-0" style="color: white; outline: none;background-color: transparent;" id="" value="View Cockier Spaniel Puppies">
+                        </div>
+                    </form>                     
+                    </div> -->
+               
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

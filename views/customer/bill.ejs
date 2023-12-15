@@ -1,0 +1,111 @@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div class="card">
+    <div class="card-body">
+      <div class="container mb-5 mt-3">
+        <div class="container">
+          <div class="col-md-12">
+            <div class="text-center">
+              <i class="fab fa-mdb fa-4x ms-0" style="color:#5d9fc5 ;"></i>
+              <h3 class="pt-0 pr-5" style="margin-left: -1rem;">DogWay</h3>
+            </div>
+  
+          </div>
+  
+  
+          <div class="row">
+            <div class="col-xl-8">
+              <ul class="list-unstyled">
+                <li class="text-muted"><%=order.name%> <%=order.lastName%></li>
+                <li class="text-muted"><%=order.address%> ,<%=order.city%></li>
+                <li class="text-muted"><%=order.state%></li>
+                <li class="text-muted"><i class="fas fa-phone"></i>( <%=order.pinCode%> )</li>
+            </ul>
+            </div>
+            <div class="col-xl-4">
+              <ul class="list-unstyled">
+               
+                <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span
+                    class="fw-bold">Order Date: </span><span id="dateDisplay"></span></li>
+                    <li class="text-muted"><i class="fas fa-circle" style="color:#590202 ;"></i> <span
+                      class="me-1 fw-bold">Status:</span><span
+                      class="badge bg-warning text-black fw-bold">
+                      <%=order.orderStatus%></span></li>
+              </ul>
+            </div>
+          </div>
+  
+          <div class="row my-2 mx-1 justify-content-center bill-table-div ">
+            <table class="table table-striped table-bordered">
+                <thead >
+                    <tr>
+                        <th scope="col">S.no</th>
+                        <th>Product Image</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Unit Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < productsWithDetails.length; i++) { %>
+                        <tr>
+                            <th><%= i + 1 %></th>
+                            <th><img class="table-img" height="50" src="images/<%= productsWithDetails[i].productDetails.avtar%>" alt=""></th>
+                            <td><%= productsWithDetails[i].productDetails.DogBreed %></td>
+                            <td>$<%= productsWithDetails[i].productDetails.dogPrice %></td>
+                            
+                        </tr>
+                        <% } %>
+                </tbody>
+
+            </table>
+        </div>
+          <div class="row">
+            
+             <div class="col-xl-3">
+              <ul class="list-unstyled">
+                  <li class="text-muted ms-3"><span class="text-black me-4">SubTotal</span>$ <%=order.orderTotal%></li>
+                  <li class="text-muted ms-3 mt-2"><span class="text-black me-4">Tax(15%)</span>$ <%= (order.orderTotal * 0.15).toFixed(2) %></li>
+                  <li class="text-muted ms-3 mt-2"><span class="text-black me-4">Total Amount</span>$ <%= (order.orderTotal + (order.orderTotal * 0.15)).toFixed(2) %></li>
+              </ul>
+          </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xl-10">
+              <p>Thank you for your purchase</p>
+            </div>
+            <div class="col-xl-2">
+              <form action="/payment"   method="POST">
+                <input type="hidden" name="amount" value="<%= ((order.orderTotal + (order.orderTotal * 0.15))*100).toFixed(2) %>">
+                <input type="hidden" name="productName" value="Shocks">
+                <script
+                    src="//checkout.stripe.com/v2/checkout.js"
+                    class="stripe-button"
+                    data-key="<%= key %>"
+                    data-amount="<%= (order.orderTotal + (order.orderTotal * 0.15)).toFixed(2)*100 %>"
+                    data-currency="INR"
+                    data-name="Bill Payment"
+                    data-description="Bill Payments"
+                    data-locale="auto" >
+                    </script>
+              </form>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Get the current date
+    var currentDate = new Date();
+
+    // Format the date
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1; // Months are 0-based, so add 1
+    var year = currentDate.getFullYear();
+
+    // Display the date
+    var dateDisplay = document.getElementById("dateDisplay");
+    dateDisplay.textContent =  day + "/" + month+ "/" + year;
+</script>

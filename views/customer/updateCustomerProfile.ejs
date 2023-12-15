@@ -1,0 +1,109 @@
+<style>
+      #nav-item{
+        margin-left:0px ;
+        color: black;
+}
+    .nav-link{
+        font-weight: bold;
+        color: #4d7e3e;
+}
+.nav-link:hover{
+        
+        color: #352222;
+}
+.search-and-icons {
+          display: flex;
+          align-items: center;
+        }
+      
+      .search-and-icons form input {
+        border-radius: 0;
+        height: 2em;
+        background: #fff
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='grey' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E")
+          no-repeat 95%;
+      }
+      .search-and-icons form input:focus {
+        background: #fff;
+        box-shadow: none;
+      }
+      .search-and-icons .user-icons div {
+        padding-right: 1em;
+      }
+</style>
+
+<section class="vh-100" style="background-color: #838685;">
+  <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-lg-6 mb-4 mb-lg-0">
+              <div class="card mb-3" id="setting">
+
+                  <div class="row g-0">
+                      <div class="col-md-4 gradient-custom text-center text-white"
+                          style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                              alt="Avatar" class="img-fluid my-5" style="width: 100px;" />
+                          <h5>
+                              <%=customerData.CName%>
+                          </h5>
+                          <p>C</p>
+                          <i class="far fa-edit mb-5" data-bs-toggle="modal"
+                              data-bs-target="#updatemodal"></i>
+                      </div>
+                      <div class="col-md-8">
+                          <div class="card-body p-4">
+                              <h6>Update Profile</h6>
+                              <hr class="mt-0 mb-4">
+                              <div class="row pt-1">
+                                  <div class="col-6 mb-3">
+                                      <h6>Name</h6>
+                                      <p class="text-muted">
+                                          <%=customerData.CName%>
+                                      </p>
+                                  </div>
+                                  <div class="col-6 mb-3">
+                                      <h6>Email</h6>
+                                      <p class="text-muted">
+                                          <%=customerData.CEmail%>
+                                      </p>
+                                  </div>
+                                  <div class="col-6 mb-3">
+                                      <h6>Shop</h6>
+                                      <p class="text-muted">
+                                          <%=customerData.shopName%>
+                                      </p>
+                                  </div>
+                                  <div class="col-6 mb-3">
+                                      <h6>Addharno</h6>
+                                      <p class="text-muted">
+                                          <%=customerData.Addharno%>
+                                      </p>
+                                  </div>
+                                  <div class="col-6 mb-3">
+                                      <h6>State</h6>
+                                      <p class="text-muted">
+                                          <%=customerData. CState%>
+                                      </p>
+                                  </div>
+                                  <div class="col-6 mb-3">
+                                      <h6>Phone</h6>
+                                      <p class="text-muted">
+                                          <%=customerData.CContactNo%>
+                                      </p>
+                                  </div>
+                              </div>
+                              
+
+                              <div class="d-flex justify-content-start">
+                                  <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+                                  <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                                  <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

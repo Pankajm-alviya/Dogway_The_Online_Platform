@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+O8q3D6Ors2aT1l0cC+2g1/CeZzA/J5fet5pG2i5oV5z5e5bB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <style>
+        .details table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .details table thead td {
+            font-weight: 600;
+        }
+
+        .details .recentOrders table tr {
+            color: black;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .details .recentOrders table tr:last-child {
+            border-bottom: none;
+        }
+
+        .details .recentOrders table tbody tr:hover {
+            background: green;
+            color: white;
+        }
+
+        .details .recentOrders table tr td {
+            padding: 10px;
+        }
+
+        .details .recentOrders table tr td:last-child {
+            text-align: end;
+        }
+
+        .details .recentOrders table tr td:nth-child(2) {
+            text-align: end;
+        }
+
+        .details .recentOrders table tr td:nth-child(3) {
+            text-align: center;
+        }
+
+        .recentCustomers {
+            position: relative;
+            display: grid;
+            min-height: 500px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+        }
+
+        .recentCustomers .imgBx {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .recentCustomers .imgBx img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .recentCustomers table tr td {
+            padding: 12px 10px;
+        }
+
+        .recentCustomers table tr td h4 {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.2rem;
+        }
+
+        .recentCustomers table tr td h4 span {
+            font-size: 14px;
+            color: black;
+        }
+
+        .recentCustomers table tr:hover {
+            background: green;
+            color: white;
+        }
+
+        .recentCustomers table tr:hover td h4 span {
+            color: white;
+        }
+
+        .status.delivered {
+            padding: 2px 4px;
+            background: #8de02c;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .status.pending {
+            padding: 2px 4px;
+            background: #e9b10a;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .status.return {
+            padding: 2px 4px;
+            background: #f00;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .status.inProgress {
+            padding: 2px 4px;
+            background: #1795ce;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+
+
+        @media screen and (max-width : 991px) {
+            #detail1 {
+                margin-left: 0px;
+            }
+        }
+
+        #dashboard {
+            /* margin-left: 240px; */
+        }
+
+        @media (max-width:700px) {
+            #dashboard {
+                margin-left: 0px;
+            }
+        }
+        #detail1{
+            width:100%;
+            padding-right:0px;
+            
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $("#myTable").DataTable();
+        });
+    </script>
+</head>
+
+<body style="color:black">
+    <%-include('../partials/adminNavbar.ejs')%>
+        <div  style="margin-top: 20px;width: 70rem;">
+           <div id="dashboard" >
+            <%-include('../partials/admin.ejs')%>
+           </div>
+                <div class="details" id="detail1">
+                    <div class="recentOrders">
+                        <div class="cardHeader">
+
+                            <center>
+                                <hr>
+                                <h2 style="color: black;margin-top:20px;">Recent Orders</h2>
+                                <hr>
+                            </center>
+                        </div>
+                        <div class="table-responsive container">
+                            <table class="tabletable-bordered table-striped" id="myTable">
+                                <thead>
+                                    <tr>
+                                        <td>Customer Name </td>
+                                        <td>Address</td>
+                                        <td>Contact</td>
+                                        <td>Product Breed</td>
+                                        <td>Product Image</td>
+                                        <td>Product Price</td>
+                                        
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <% usersOrder.forEach((user)=> { %>
+                                        <tr>
+                                            <td>
+                                                <%=user.name%>
+                                            </td>
+                                            <td>
+                                                <%=user.address%>
+                                            </td>
+                                            <td>
+                                                <%=user.mobile%>
+                                            </td>
+                                            <td>
+                                                <%=user.productDetails[0][0].DogBreed%>
+                                            </td>
+                                            <td>
+                                                <img src="/uploads/<%=user.productDetails[0][0].avtar%>" style="height: 5rem;width: 5rem;" class="img-responsive" alt="Image">
+                                            </td>
+                                            <td>
+                                                <%=user.productDetails[0][0].dogPrice%>
+                                            </td>
+                                        </tr>
+                                        <%})%>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <script>
+            // add hovered class to selected list item
+            let list = document.querySelectorAll(".navigation li");
+
+            function activeLink() {
+                list.forEach((item) => {
+                    item.classList.remove("hovered");
+                });
+                this.classList.add("hovered");
+            }
+
+            list.forEach((item) => item.addEventListener("mouseover", activeLink));
+
+            // Menu Toggle
+            let toggle = document.querySelector(".toggle");
+            let navigation = document.querySelector(".navigation");
+            let main = document.querySelector(".main");
+
+            toggle.onclick = function () {
+                navigation.classList.toggle("active");
+                main.classList.toggle("active");
+            };
+
+        </script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

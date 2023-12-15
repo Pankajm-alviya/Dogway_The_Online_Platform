@@ -1,0 +1,38 @@
+<style>
+
+</style>
+<div class="row" style="margin-top: 3rem;display: flex; justify-content: center;align-items: center;">
+
+            <%if(!serMsg){%>
+                <img class="col-6" src="/images/noResultFound.gif" alt="" style="width:300px;height: 300px;">
+                <div class="col-6" style="width:300px">
+                    <h3 class="text-danger">Sorry!</h1>
+                        <p class="text-primary">
+                            <%=serMsg%>
+                        </p>
+                        <!-- <p>Try Again</calculap> -->
+                        <!-- <h3>For Registration</h3> -->
+                        <!-- <a href="" data-bs-toggle="modal" data-bs-target="#exampleModa" >Click here</a> -->
+                </div>
+                <%}else{%>
+            
+                <img class="col-6" src="/images/otpsent.gif" alt="" style="width:200px;height: 200px;">
+            <div class="col-6" style="width:350px;height:150px;padding-top:40px;">
+                <!-- <h3 class="text-danger"></h1> -->
+                <p class="text-primary">
+                    <%=serMsg%>
+                </p>
+                <form action="/serviceProvider/checkOtp" method="post">
+                    <input type="text" placeholder="Enter your Otp here"
+                        style="width:300px;height:40px;border-radius: 30px;" name="otp">
+                    <br>
+                    <button type="submit"
+                        style="margin-top:10px;width:300px;height:40px;border-radius: 30px;">Submit</button>
+                </form>
+                <br>
+                <!-- <button><a href="">Resend</a></button> -->
+            </div>
+           
+            <%}%>
+
+</div>

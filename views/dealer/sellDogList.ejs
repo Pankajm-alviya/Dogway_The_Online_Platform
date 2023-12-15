@@ -1,0 +1,72 @@
+ <!-- dogs -->
+ <%if(item){%>
+      <div class="container">
+          <div class="row justify-content-center" id="maindiv">
+              <% item.forEach((data)=> { %>
+                  <div class="col-md-4 mb-4" style="height: auto;">
+                      <div class="card" id="ccc">
+                          <img src="/uploads/<%= data.avtar %>" class="card-img-top" alt="...">
+                          <div class="card-body">
+                              <div style="display: flex;">
+                                  <p class="card-text" style="margin-left:1.5rem ;height: 8vh;width: 9vw;">
+                                      <strong>Age</strong><br>
+                                      <%= data.DogAge %>
+                                  </p>
+                                  <p class="card-text" style="margin-left: 6rem;height: 8vh;width: 9vw;">
+                                      <strong>Colour</strong><br>
+                                      <%= data.DogColor %>
+                                  </p>
+                              </div>
+                              <div style="display: flex;">
+                                  <p class="card-text" style="margin-left:1.5rem ;height: 8vh;width: 9vw;">
+                                      <strong>Gender</strong><br>
+                                      <%= data.gender %>
+                                  </p>
+                                  <p class="card-text" style="margin-left: 6.5rem;height: 8vh;width: 9vw;">
+                                      <strong>Weight </strong><br>
+                                      <%= data.DogWeight %>kg
+                                  </p>
+                              </div>
+                              <div style="display: flex;">
+                                  <p class="card-text" style="margin-left:1.5rem ;height: 8vh;width: 9vw;">
+                                      <strong>Height</strong><br>
+                                      <%= data.DogHeight %>feet
+                                  </p>
+                                  <p class="card-text" style="margin-left: 6.5rem;height: 8vh;width: 9vw;">
+                                      <strong>Breed</strong><br>
+                                      <%= data.DogBreed %>
+                                  </p>
+                              </div>
+
+                              <p class="card-text"
+                                  style="margin-left:1.5rem ;height: 10vh;width: 60vw;">
+                                  <strong>Description</strong><br>
+                                  <%= data.breedDescription %>
+                              </p>
+                              <!-- <br> -->
+                              <form action="/dealer/edit/<%= data._id %>" method="get" class="d-inline" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                  style="width: 12rem;">
+                                  <button type="submit"
+                                      style="width: 20rem; background: #54B435;border-radius: 1rem;height: 2.5rem;font-weight: bolder; ">Edit
+                                      Dog</button>
+                              </form>
+                              <form action="/dealer/delete/<%= data._id %>" method="post" class="d-inline"
+                                  style="width: 12rem;">
+                                  <button type="submit"
+                                      style="width: 20rem; height: 2.5rem; background: #54B435; border-radius: 1rem;font-weight: bolder; ">Delete
+                                      Dog</button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+                  <% }) %>
+          </div>
+      </div>
+
+      <!-- </div> -->
+      <br><br>
+      <%}else{%>
+          <div class="row p-5">
+              <%-include('.. /partials/notFoundAlertPage')%>
+          </div>
+          <%}%>

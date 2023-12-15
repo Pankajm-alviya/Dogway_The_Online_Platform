@@ -1,0 +1,8 @@
+<form action="/admin/upCategory/<%=result.category%>" method="post">
+    <% console.log(result.category) %>
+        <center><input type="text" name="category" id="category" placeholder="Enter Category"
+                value="<%= result.category %>"></center>
+        <center><br>
+            <button type="submit">Update</button>
+        </center>
+</form>

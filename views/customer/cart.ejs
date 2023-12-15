@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/BootstrapLinks.ejs') %>
+        <title>Document</title>
+</head>
+
+<body>
+    <%if(id!="yourOrder"){%>
+        <header style="position: sticky; z-index:10;top: 0;">
+            <%- include('../partials/Header'); %>
+        </header>
+        <%}%>
+        <center class="bg-success">
+            <hr>
+             <h2>CART</h2>
+            <hr>
+            </center>
+            <div class="container-fluid  border p-2">
+        
+        
+                <div class="container bg-white" style="border-radius: 10px;">
+                    <%if(item.length!=0){%>
+                        <form action="/placeOrder" class="row" method="post">
+                            <% item.forEach((data)=> { %>
+                                <div class="col-sm-12 col-md-6 card m-2" style="box-shadow: inset 3px 3px 20px 3px black;">
+                                    <div class="row g-0">
+                                      <div class="col-sm-12 col-md-4">
+                                        <!-- <img src="/uploads/<%=data.avtar%>" class="img-fluid img-responsive img-card-img-top" style="" alt="..."> -->
+                                       <img  style="width:100%;height:95%;" src="https://www.leaderdog.org/wp-content/uploads/2016/05/17LDFB9011-4v1-BlogImages_Tips-on-training-your-new-puppy.jpg" class="img-fluid img-responsive mt-2 " alt="...">
+
+                                      </div>
+                                      <div class="col-sm-12 col-md-8" style="cursor: pointer;">
+                                        <div class="card-body">
+                                            <h5 class="text-shadow card-title"><b><%=data.DogBreed%></b></h5>
+                                            <h5 class="card-text text-success"><b>Price : <%=data.dogPrice%>Rs.</b></h5>
+                                            
+                                            <p class="card-text mt-1"><b>Description</b> : <%=data.breedDescription%></p>
+                                            <span class="card-text m-1"><b>Age</b> : <%=data.DogAge%></span>
+                                            <span class="card-text m-1 ms-4" style=""><b>Weight</b> : <%=data.DogWeight%></span><br>
+                                            <span class="card-text m-1" style=""><b>Gender</b> : <%=data.gender%></span>
+                                            <span class="card-text m-1" style=""><b>Color's</b> : <%=data.DogColor%></span><br>
+                                                
+                                                <a href="/cartremove<%=data._id%>"
+                                                    class="btn buyButton btn-success mt-3">Remove</a>
+                                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                            <%})%>
+                            <div class="d-block" style="text-align: end;margin-bottom: 20px;">
+                                <a href="" id="main-search-btn align-end">
+                                    <button type="submit" name="" class="btn btn-success ">Place Order</button></a>
+                            </div>
+                        </form>
+                        
+                        <%}else{%>
+                            <div class="row"
+                                style="margin-top: 3rem;display: flex; justify-content: center;align-items: center;">
+                                <img class="col-6" src="/images/noResultFound.gif" alt=""
+                                    style="width:300px;height: 300px;">
+                                <div class="col-6" style="width:300px">
+                                    <h3 class="text-danger">Empty!</h1>
+                                        <p class="text-primary">
+                                            <%=msg%>
+                                        </p>
+
+
+                                </div>
+                            </div>
+                            <%}%>
+                </div>
+            </div>
+            <footer class="row" style="margin-top: 50px;">
+                <%- include('../partials/Footer'); %>
+            </footer>
+</body>
+<script>
+    document.querySelectorAll('.place-order-button').forEach((button) => {
+        button.addEventListener('click', async () => {
+            const productId = button.getAttribute('data-product-id');
+            placeOrder(productId);
+        });
+    });
+
+
+    async function placeOrder(productId) {
+        const response = await fetch(`/placeOrderForProduct${productId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const data = await response.json();
+        console.log(data);
+        if (data) {
+            console.log(`Order placed for product ${productId} successfully`);
+            // window.location = `/shippingaddress/${data.orderID}`;
+        } else {
+            console.error(`Error placing the order for product ${productId}`);
+        }
+    }
+</script>
+
+</html>

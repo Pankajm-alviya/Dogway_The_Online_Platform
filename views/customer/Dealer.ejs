@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        #login {
+            right: 100%;
+        }
+
+        #button {
+            width: 4rem;
+        }
+    </style>
+
+</head>
+
+<body style="background:white;">
+   
+    <head>
+        <%- include('../partials/dealhead'); %>
+    </head>
+    <header style="position: sticky; z-index: 1;top: 0;">
+        <%- include('../partials/dealerheader'); %>
+    </header>
+      <!-- Add dog modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add Your Dog</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" placeholder="Enter Dog Breed">
+                            <small id="name-error-msg" style="color: red;"></small>
+                            <p id="index"></p>
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" class="form-control" id="age" placeholder="Enter Dog Age">
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" class="form-control" id="color" placeholder="Enter Dog Color">
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" class="form-control" id="oldPassword" placeholder="Enter Dog Weight">
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" class="form-control" id="newPassword" placeholder="Enter Dog Height">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary">Add Dog</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- dogs -->
+
+    <div class="container-fluid row  justify-content-center" id="maindiv" >
+        <div class="card ms-5 mt-5" id="ccc"
+            style="width: 18rem;background-color:white ;border-radius: 10px;padding:10px 3px 0px 3px;box-shadow: 1px 2px 41px 4px rgb(116 115 115 / 23%);">
+            <img height="190"
+                src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fencrypted-tbn3.gstatic.com%2Flicensed-image%3Fq%3Dtbn%3AANd9GcSgU4nPfMA2Ss-LB1u-cfjkd3JCEsyeyaLqufqktH0cl4DfeyvjoGMubCIvYW5OwwpB9iMBWMNAvl3qiwA&psig=AOvVaw0V8YadQs9F14v9zpuQC2rv&ust=1694086262957000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCPjo16DxlYEDFQAAAAAdAAAAABAE"
+                class="card-img-top " style="border-radius: 5%;" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-weight: bold;">German Shepherd</h5>
+                <p class="card-text">HE is enthusiastic and age is around 1year and fully vacinated</p>
+                <span class="card-text">Max_Age </span>
+                <span class="card-text" style="margin-left: 30px;">Max_Weight</span><br>
+                <span class="card-text">15 Years</span>
+                <span class="card-text" style="margin-left: 35px;">18-30 Kg</span><br><br>
+                <button type="button" style="background: #54B435;color:white;" class="btn ">Edit Dog</button>
+                <button type="button" style="background: #54B435;color:white;" class="btn ">Delete Dog</button>
+
+            </div>
+        </div>
+        <div class="card ms-5 mt-5 p-2 d-flex" id="ccc"
+            style="width: 18rem; background-color:white ;border-radius: 17px;padding:10px 3px 0px 3px;box-shadow: 1px 2px 41px 4px rgb(116 115 115 / 23%);">
+            <img height="190"
+                src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQPhV9v4v5N4aEXbipfkZfZMYp4y9Yn9KuD65Zto4-mfDV_JJ15xsev35RocOMGiZIzHRZl-VZi4QmfFYg"
+                class="card-img-top " style="border-radius: 5%;" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-weight: bold;">Shiba Inu</h5>
+                <p class="card-text">HE is enthusiastic and age is around 1year and fully vacinated</p>
+                <span class="card-text">Max_Age </span>
+                <span class="card-text" style="margin-left: 30px;">Max_Weight</span><br>
+                <span class="card-text">15 Years</span>
+                <span class="card-text" style="margin-left: 35px;">18-30 Kg</span><br><br>
+                <button type="button" style="background: #54B435;color:white;" class="btn ">Edit Dog</button>
+                <button type="button" style="background: #54B435;color:white;" class="btn ">Delete Dog</button>
+
+            </div>
+        </div>
+        <div class="card ms-5 mt-5 p-2" id="ccc"
+            style="width: 18rem;background-color:white ;box-shadow: 1px 2px 41px 4px rgb(116 115 115 / 23%);border-radius: 17px;padding:10px 3px 0px 3px;">
+            <img height="190"
+                src="https://www.zooplus.co.uk/magazine/wp-content/uploads/2021/09/Maltese-dog-breed-768x510.jpeg"
+                class="card-img-top " style="border-radius:5%;" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-weight: bold;">Maltese dog</h5>
+                <p class="card-text">HE is enthusiastic and age is around 1year and fully vacinated</p>
+                <span class="card-text">Max_Age </span>
+                <span class="card-text" style="margin-left: 30px;">Max_Weight</span><br>
+                <span class="card-text">15 Years</span>
+                <span class="card-text" style="margin-left: 35px;">18-30 Kg</span><br><br>
+                <button type="button" style="background: #54B435;color:white;" class="btn ">Edit Dog</button>
+                <button type="button" style="background: #54B435;color:white;" class="btn ">Delete Dog</button>
+
+            </div>
+        </div>
+        <div class="card ms-5 mt-5 p-2" id="ccc"
+            style="width: 18rem;background-color:white ;box-shadow: 1px 2px 41px 4px rgb(116 115 115 / 23%);border-radius: 17px;padding:10px 3px 0px 3px;">
+            <img height="190" src="https://i.pinimg.com/474x/91/fa/c7/91fac7f1958fea4a5f84987eb8b90abf.jpg"
+                class="card-img-top " style="border-radius: 5%;" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-weight: bold;">Akita</h5>
+                <p class="card-text">HE is enthusiastic and age is around 1year and fully vacinated</p><br>
+                <span class="card-text">Max_Age </span>
+                <span class="card-text" style="margin-left: 30px;">Max_Weight</span><br>
+                <span class="card-text">15 Years</span>
+                <span class="card-text" style="margin-left: 35px;">18-30 Kg</span><br><br>
+                <button type="button" style="background: #54B435;color:white;" class="btn ">Edit Dog</button>
+                <button type="button" style="background: #54B435;color:white;" class="btn ">Delete Dog</button>
+
+            </div>
+        </div>
+        </div>
+        <!-- <div class="card ms-5 mt-5 p-2" id="ccc"
+            style="width: 18rem;background-color:rgb(255, 223, 223) ;border-radius: 17px;padding:10px 3px 0px 3px;">
+            <img height="190"
+                src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQJlwSiVSYPSDq3WyLiDm8KUZyUwX8z8DskuvOC9u3ENsxbGPRa_Ah3odil3LKaZOU8Ev-ZYZ9fBcqqrfA"
+                class="card-img-top " style="border-radius: 5%;" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-weight: bold;">Pug</h5>
+                <p class="card-text">HE is enthusiastic and age is around 1year and fully vacinated</p>
+                <span class="card-text">Max_Age </span>
+                <span class="card-text" style="margin-left: 30px;">Max_Weight</span><br>
+                <span class="card-text">15 Years</span>
+                <span class="card-text" style="margin-left: 35px;">18-30 Kg</span><br><br>
+                <button type="button" style="background: #54B435;color:white;" class="btn ">Edit Dog</button>
+                <button type="button" style="background: #54B435;color:white;" class="btn ">Delete Dog</button>
+
+            </div>
+        </div>
+        <div class="card ms-5 mt-5 p-2" id="ccc"
+            style="width: 18rem;background-color:rgb(255, 223, 223) ;border-radius: 17px;padding:10px 3px 0px 3px;">
+            <img height="190" src="https://i.pinimg.com/736x/0b/c6/a0/0bc6a0b23771f757fb8f58a4ece01096.jpg"
+                class="card-img-top " style="border-radius: 5%;" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-weight: bold;">Boxer</h5>
+                <p class="card-text">HE is enthusiastic and age is around 1year and fully vacinated</p>
+                <span class="card-text">Max_Age </span>
+                <span class="card-text" style="margin-left: 30px;">Max_Weight</span><br>
+                <span class="card-text">15 Years</span>
+                <span class="card-text" style="margin-left: 35px;">18-30 Kg</span><br><br>
+                <button type="button" style="background: #54B435;color:white;" class="btn ">Edit Dog</button>
+                <button type="button" style="background: #54B435;color:white;" class="btn ">Delete Dog</button>
+
+            </div>
+        </div>
+        <div class="card ms-5 mt-5 p-2" id="ccc"
+            style="width: 18rem;background-color:rgb(255, 223, 223) ;border-radius: 17px;padding:10px 3px 0px 3px;">
+            <img height="190"
+                src="https://www.zooplus.co.uk/magazine/wp-content/uploads/2021/09/Maltese-dog-breed-768x510.jpeg"
+                class="card-img-top " style="border-radius:5%;" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" style="font-weight: bold;">Maltese dog</h5>
+                <p class="card-text">HE is enthusiastic and age is around 1year and fully vacinated</p>
+                <span class="card-text">Max_Age </span>
+                <span class="card-text" style="margin-left: 30px;">Max_Weight</span><br>
+                <span class="card-text">15 Years</span>
+                <span class="card-text" style="margin-left: 35px;">18-30 Kg</span><br><br>
+                <button type="button" style="background: #54B435;color:white;" class="btn ">Edit Dog</button>
+                <button type="button" style="background: #54B435;color:white;" class="btn ">Delete Dog</button>
+
+            </div>
+        </div><div class="card ms-5 mt-5 p-2" id="ccc"
+        style="width: 18rem;background-color:rgb(255, 223, 223) ;border-radius: 17px;padding:10px 3px 0px 3px;">
+        <img height="190"
+            src="https://www.zooplus.co.uk/magazine/wp-content/uploads/2021/09/Maltese-dog-breed-768x510.jpeg"
+            class="card-img-top " style="border-radius:5%;" alt="...">
+        <div class="card-body">
+            <h5 class="card-title" style="font-weight: bold;">Maltese dog</h5>
+            <p class="card-text">HE is enthusiastic and age is around 1year and fully vacinated</p>
+            <span class="card-text">Max_Age </span>
+            <span class="card-text" style="margin-left: 30px;">Max_Weight</span><br>
+            <span class="card-text">15 Years</span>
+            <span class="card-text" style="margin-left: 35px;">18-30 Kg</span><br><br>
+            <button type="button" style="background: #54B435;color:white;" class="btn ">Edit Dog</button>
+            <button type="button" style="background: #54B435;color:white;" class="btn ">Delete Dog</button>
+
+        </div>
+    </div><br><br> -->
+       <br><br> <footer>
+            <%- include('../partials/Footer'); %>
+        </footer>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+   
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+
+<!-- bootstrap link -->
+<%- include('../partials/BootstrapLinks.ejs') %>
+<!-- bootstrap link -->
+
+<!-- Owl Slider link -->
+<%- include('../partials/OwlSliderLinks.ejs') %>
+<!-- Owl Slider link -->
+
+<!-- icone link -->
+<%- include('../partials/IconLinks.ejs') %>
+<!-- icone link -->
+
+   
+<style>
+    #upperMainPage{
+        padding-right: 13px
+    }
+@media screen and (max-width:567px){
+    #upperMainPage{
+        padding-right:0px
+    }
+}
+</style>
+</head>
+
+<body>
+    
+    <head>
+        <%- include('../partials/head'); %>
+    </head>
+    <%if(loginStatus){%>
+        <%=console.log(loginStatus)%> 
+    <header style="position: sticky; z-index:10;top: 0;">
+        <%- include('../partials/Header'); %>
+    </header>
+    <%}else{%>
+       <header style="position: sticky; z-index:10;top: 0;">
+          <%- include('../partials/withoutLoginHeader'); %>
+       </header>
+    <%}%>
+    
+    <%if(!msg){%>
+<div id="upperMainPage">
+    <div>
+        <img class=" img img-fluid img-responsive w-100 col-12" src="\images\background1.webp">
+        
+    </div>
+
+   <div class="row">
+    <%- include('./Offers'); %>
+   </div> 
+
+   <div class="row">
+    <%- include('./OurFeatures'); %>
+   </div> 
+
+   <div class="row">
+    <%- include('./TopPicDogs'); %>
+   </div> 
+        
+   <div class="row">
+    <%- include('./AboutUs'); %>
+   </div> 
+        
+   <div class="row">
+    <%- include('./CustomerReview'); %>
+   </div> 
+
+   <div class="row">
+    <%- include('./JoinOurFamily'); %>
+   </div> 
+        
+    <footer class="row">
+        <%- include('../partials/Footer'); %>
+    </footer>
+    <%}else{%>
+        <%-include('../partials/notFoundAlertPage')%> 
+    <%}%>
+</div> 
+</body>
+
+</html>

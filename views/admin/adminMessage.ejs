@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <title>Document</title>
+  <script>
+    $(document).ready(function () {
+      $("#myTable").DataTable();
+    });
+  </script>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+    #message {
+      width: 30rem;
+      height: auto;
+      box-shadow: 1px 2px 41px 4px rgb(116 115 115 / 23%);
+      background-color: rgb(249, 214, 162);
+      margin-left: 10%;
+    }
+
+    @media (max-width:700px) {
+      #dashboard {
+        margin-left: 0px;
+      }
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+      $("#myTable").DataTable();
+
+      // Attach click event to View Message buttons
+      $(".view-message-btn").click(function () {
+        // Get user data from data attributes
+        const name = $(this).data("name");
+        const email = $(this).data("email");
+        const subject = $(this).data("subject");
+        const message = $(this).data("message");
+
+
+        // Populate the modal with user data
+        const modalBody = $("#message-body");
+        modalBody.html(`
+      
+      <span style="color: black;">Email: ${email}</span><br>
+      <span style="color: black;">Name: ${name}</span><br><br><br>
+      <center style="color: black;">Message : ${message}</center><br><br>
+      <form action="/admin/sendMessage${email}" method="post">
+      <center><input type="text" placeholder="Reply" name="adminMessage" id="adminMessage" style="border-radius: 20px;"></center>
+     <center style="margin-top:10px"> <input type="submit" class="btn btn-primary" value="Submit"> </center>
+      </form>
+    `);
+
+        // Show the modal
+        $("#exampleModal").modal("show");
+      });
+    });
+
+  </script>
+</head>
+
+<body style="color: black;">
+
+
+  <%-include('../partials/adminNavbar.ejs')%>
+    <div id="dashboard">
+     <hr>
+      <center>
+        <h2 style="color: black;">View Message</h2>
+      </center>
+      <hr>
+      <div class="table-responsive" style="margin-top: 30px;width: 70rem;">
+        <table class="table table-striped table-bordered" id="myTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Subject</th>
+              <th>Admin Message</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% item.forEach((user)=> { %>
+              <tr>
+                <td>
+                  <%= user.name %>
+                </td>
+                <td>
+                  <%= user.email %>
+                </td>
+                <td>
+                  <%= user.subject %>
+                </td>
+                <td>
+                  <%= user.adminMessage %>
+                </td>
+
+                <!-- <td><button class="btn" style="background-color: #54B435;"  data-bs-toggle="modal" data-bs-target="#exampleModal" >View Message</button></td> -->
+                <td>
+                  <button class="btn view-message-btn" style="background-color: #54B435;" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" data-name="<%= user.name %>" data-email="<%= user.email %>"
+                    data-subject="<%= user.subject %>" data-message="<%= user.message %>">View Message</button>
+                  </td>
+              </tr>
+              <%})%>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="message-body">
+            
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <script>
+
+      let list = document.querySelectorAll(".navigation li");
+
+      function activeLink() {
+        list.forEach((item) => {
+          item.classList.remove("hovered");
+        });
+        this.classList.add("hovered");
+      }
+
+      list.forEach((item) => item.addEventListener("mouseover", activeLink));
+
+
+      let toggle = document.querySelector(".toggle");
+      let navigation = document.querySelector(".navigation");
+      let main = document.querySelector(".main");
+
+      toggle.onclick = function () {
+        navigation.classList.toggle("active");
+        main.classList.toggle("active");
+      };
+
+    </script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

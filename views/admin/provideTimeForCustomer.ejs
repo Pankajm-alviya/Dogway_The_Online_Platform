@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-image: url('/images/registration1.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    ::selection {
+      background-image: linear-gradient(to bottom right, #54B435, #FFC80E);
+    }
+
+    .container {
+      max-width: 440px;
+      padding: 0 20px;
+      margin: 100px auto;
+    }
+
+    .wrapper {
+      width: 100%;
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .wrapper .title {
+      height: 90px;
+      background-image: linear-gradient(to bottom right, #54B435, #FFC80E);
+      border-radius: 5px 5px 0 0;
+      color: #fff;
+      font-size: 30px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wrapper form {
+      padding: 30px 25px 25px 25px;
+    }
+
+    .wrapper form .row {
+      height: 45px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .wrapper form .row input {
+      height: 100%;
+      width: 100%;
+      outline: none;
+      padding-left: 60px;
+      border-radius: 5px;
+      border: 1px solid #54B435;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    form .row input:focus {
+      border-color: #54B435;
+      box-shadow: inset 0px 0px 2px 2px #fa521a40;
+    }
+
+    form .row input::placeholder {
+      color: #999;
+    }
+
+    .wrapper form .row i {
+      position: absolute;
+      width: 47px;
+      height: 100%;
+      color: #fff;
+      font-size: 18px;
+      background-image: linear-gradient(to bottom right, #54B435, #FFC80E);
+      border: 1px solid #54B435;
+      border-radius: 5px 0 0 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wrapper form .pass {
+      margin: -8px 0 20px 0;
+    }
+
+    .wrapper form .pass a {
+      color: #54B435;
+      font-size: 17px;
+      text-decoration: none;
+    }
+
+    .wrapper form .signup-link a {
+      color: #54B435;
+      font-size: 17px;
+      text-decoration: none;
+    }
+
+    .wrapper form .pass a:hover {
+      text-decoration: underline;
+    }
+
+    .wrapper form .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    .wrapper form .card a:hover {
+      text-decoration: underline;
+    }
+
+    .wrapper form .button input {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 500;
+      padding-left: 0px;
+      background-image: linear-gradient(to bottom right, #54B435, #FFC80E);
+      border: 1px solid #54B435;
+      cursor: pointer;
+    }
+
+    form .button input:hover {
+      background-image: linear-gradient(to bottom right, #54B435, #FFC80E);
+    }
+
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      width: 100%;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .password-form {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="login">
+    <div class="wrapper">
+
+      <!-- <div class="container" id="forpassword" style="display: none;"> -->
+      <!-- <div class="wrapper"> -->
+      <div class="title"><span>Mating Time</span></div>
+      <form action="/admin/EmailMassageSendCustomerForserves" onsubmit="return validationservies()" method="post" class="password-form">
+        <div class="card text-center"
+          style="max-width: 380px; margin: 0 auto; border: 2px solid #54B435; padding: 20px;">
+       
+          <div class="form-group">
+            <!-- <i class="fas fa-user"></i> -->
+            <label class="form-label" for="typeEmail" style="color: #54B435; font-weight: bold;" >Enter Time</label>
+            <input type="time" id="typeEmail" style="border: 1px solid #54B435;width: 18rem;height: 3rem;border-radius: 0.5rem;border-color:2px solid #54B435; font-size: 1rem;" name="timeforservies"
+              class="form-control my-3" required />
+          </div>
+          <div class="form-group">
+            <!-- <i class="fas fa-user"></i> -->
+            <label class="form-label" for="typeEmail" style="color: #54B435; font-weight: bold;" >Enter Date</label>
+            <input type="date" id="matingDate" style="border: 1px solid #54B435;width: 18rem;height: 3rem;border-radius: 0.5rem;border-color:2px solid #54B435; font-size: 1rem;" name="dateforServies"
+              class="form-control my-3" required />
+          </div>
+          <div class="form-group col-md-12">
+            <input type="hidden" id="typeEmail" name="email" value="<%=customer_email%>"
+              class="form-control my-3" />
+          </div>
+          <div class="form-group col-md-12">
+            <input type="hidden" id="typeEmail" name="serviceProvider_id" value="<%=serviceProvider_id%>"
+              class="form-control my-3" />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" 
+              style="width: 18rem;height: 3rem;border-radius: 0.5rem;background: #54B435;color: white;font-weight: bolder;"
+              id="otp-btn">Next</button>
+          </div>
+         
+          </div>
+          <div class="link d-flex justify-content-between mt-4">
+            
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+<script>
+  var today = new Date().toISOString().split('T')[0];
+    var matingDateInput = document.getElementById("matingDate");
+
+    matingDateInput.addEventListener("input", function () {
+      if (matingDateInput.value < today) {
+        alert("Please select a date that is today or a future date.");
+        matingDateInput.value = today;
+      }
+    });
+</script>
+   
+</body>
+
+</html>

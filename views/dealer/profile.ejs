@@ -1,0 +1,230 @@
+<style>
+    .gradient-custom {
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to bottom, #54B435, #80e45a,#80e45a, #85e261, #8edb6f);
+}
+#setting{
+    border-radius: .5rem;
+    background-color: #f8f7fc;
+    width:40em;
+}
+@media only screen and (max-width:576px){
+    #setting{
+    border-radius: .5rem;
+    background-color: #ecebef;
+    width:28.4em;
+    
+}
+}
+</style>
+
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+    <div class="modal fade" id="profileuser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="addMatingDogLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <center>
+                    <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bolder;margin-left: 7rem;">
+                        YOUR PROFILE</h5>
+                </center>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <% if(newuser){%>
+                <section class="vh-100" style="background-color: #838685;">
+                    <div class="container py-5 h-100">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                            <div class="col col-lg-6 mb-4 mb-lg-0">
+                                <div class="card mb-3" id="setting">
+
+                                    <div class="row g-0" style="box-shadow: 1px 1px 40px 1px;border-radius: 20px;">
+                                        <div class="col-md-4 gradient-custom text-center text-white"
+                                            style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                                                alt="Avatar" class="img-fluid my-5" style="width: 100px;" />
+                                            <h5>
+                                                <%=founduser.SellerName%>
+                                            </h5>
+                                            <p>Seller</p>
+                                            <i class="far fa-edit mb-5"></i>
+                                        </div>
+                                        <div class="col-md-8" style="border:none;">
+                                            <div class="card-body p-4">
+                                                <h3 class="text-center">Seller Profile</h3>
+                                                <hr class="mt-0 mb-4">
+                                                <div class="row pt-1">
+                                                    <div class="col-6 mb-3">
+                                                        <h6>Email</h6>
+                                                        <p class="text-muted">
+                                                            <%=founduser.SellerEmail%>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-6 mb-3">
+                                                        <h6>Shop</h6>
+                                                        <p class="text-muted">
+                                                            <%=founduser.shopName%>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-6 mb-3">
+                                                        <h6>Addharno</h6>
+                                                        <p class="text-muted">
+                                                            <%=founduser.Addharno%>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-6 mb-3">
+                                                        <h6>Gstin NO.</h6>
+                                                        <p class="text-muted">
+                                                            <%=founduser.gstin%>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-6 mb-3">
+                                                        <h6>Phone</h6>
+                                                        <p class="text-muted">
+                                                            <%=founduser.SellerContactNo%>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-6 mb-3">
+                                                        <h6>Address</h6>
+                                                        <p class="text-muted">
+                                                            <%=founduser.SellerCity%>,
+                                                            <%=founduser.SellerState%>,
+                                                            <%=founduser.SellerCountry%>
+                                                        </p>
+                                                    </div>
+                                                    <form action="/dealer/editprofile/<%= data._id%>" method="get" class="d-inline">
+                                                        <button class="btn" style="background-color: #80e45a;border-radius: 0.5rem">Edit</button><br><br>
+                                                    </form>
+                                                    <button class="btn" style="background-color: #80e45a;border-radius: 0.5rem;margin-top: 5px;">Logout</button>
+                                                </div>
+
+                                                <!-- <h6>Projects</h6>
+                                                <hr class="mt-0 mb-4">
+                                                <div class="row pt-1">
+                                                    <div class="col-6 mb-3">
+                                                        <h6>Recent</h6>
+                                                        <p class="text-muted">Lorem ipsum</p>
+                                                    </div>
+                                                    <div class="col-6 mb-3">
+                                                        <h6>Most Viewed</h6>
+                                                        <p class="text-muted">Dolor sit amet</p>
+                                                    </div>
+                                                </div> -->
+
+                                                <!-- <div class="d-flex justify-content-start">
+                                                    <a href="#!"><i
+                                                            class="fab fa-facebook-f fa-lg me-3"></i></a>
+                                                    <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                                                    <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <%}else{%>
+                    <section class="vh-100" style="background-color: #fafbfb;">
+                        <div class="container py-5 h-100">
+                            <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col col-lg-6 mb-4 mb-lg-0">
+                                    <div class="card mb-3" id="setting">
+
+                                        <div class="row g-0" style="box-shadow: 1px 1px 40px 1px;border-radius: 20px;">
+                                            <div class="col-md-4 gradient-custom text-center text-white"
+                                                style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                                                    alt="Avatar" class="img-fluid my-5" style="width: 100px;" />
+                                                <h5>
+                                                    <%=founduser.SellerName%>
+                                                </h5>
+                                                <p>Seller</p>
+                                                <i class="far fa-edit mb-5"></i>
+                                            </div>
+                                            <div class="col-md-8" style="border:none;">
+                                                <div class="card-body p-4">
+                                                    <h3 class="text-center">Seller Profile</h3>
+                                                    <hr class="mt-0 mb-4">
+                                                    <div class="row pt-1">
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Email</h6>
+                                                            <p class="text-muted">
+                                                                <%=founduser.SellerEmail%>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Shop</h6>
+                                                            <p class="text-muted">
+                                                                <%=founduser.shopName%>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Addharno</h6>
+                                                            <p class="text-muted">
+                                                                <%=founduser.Addharno%>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Gstin NO.</h6>
+                                                            <p class="text-muted">
+                                                                <%=founduser.gstin%>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Phone</h6>
+                                                            <p class="text-muted">
+                                                                <%=founduser.SellerContactNo%>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Address</h6>
+                                                            <p class="text-muted">
+                                                                <%=founduser.SellerCity%>,
+                                                                <%=founduser.SellerState%>,
+                                                                <%=founduser.SellerCountry%>
+                                                            </p>
+                                                        </div>
+                                                        <form action="/dealer/editprofile/<%= founduser._id%>" method="get" class="d-inline">
+                                                            <button class="btn" style="background-color: #80e45a;border-radius: 0.5rem">Edit</button><br><br>
+                                                        </form>
+                                                        <button class="btn" style="background-color: #80e45a;border-radius: 0.5rem;margin-top: 5px;">Logout</button>
+                                                    </div>
+
+                                                    <!-- <h6>Projects</h6>
+                                                    <hr class="mt-0 mb-4">
+                                                    <div class="row pt-1">
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Recent</h6>
+                                                            <p class="text-muted">Lorem ipsum</p>
+                                                        </div>
+                                                        <div class="col-6 mb-3">
+                                                            <h6>Most Viewed</h6>
+                                                            <p class="text-muted">Dolor sit amet</p>
+                                                        </div>
+                                                    </div> -->
+
+                                                    <!-- <div class="d-flex justify-content-start">
+                                                        <a href="#!"><i
+                                                                class="fab fa-facebook-f fa-lg me-3"></i></a>
+                                                        <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                                                        <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <%}%>
+        </div>
+    </div>
+</div>

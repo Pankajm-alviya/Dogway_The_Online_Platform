@@ -1,0 +1,412 @@
+<style>
+   
+    #head{
+        width:100%;
+        height: 8dvh;
+        background-color: rgb(243, 248, 246);
+        font-size: 30px; 
+        font-family:'Lucida Handwriting', 'Brush Script MT';
+        font-weight: 900;
+    }
+    #head ul li {
+        list-style: none;
+        display: inline;
+        
+    }
+    #logo{
+        text-align:center;
+        font-size:30px; 
+        font-family:'Lucida Handwriting', 'Brush Script MT', cursive;
+        font-weight: 900;
+    }
+    /* #login{
+        margin-left:80%;
+        font-size:18px;color: black;
+    } */
+   
+        
+    #login_email1,
+    #login_pass2 {
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        background: rgb(254, 247, 247);
+        color: black;
+        width: 100%;
+        height: 5%;
+        margin-left: -2rem;
+    }
+    
+    #btnnn {
+        border-radius: 2rem;
+        font-size: 1rem;
+        width: 100%;
+        margin-left: -0.5rem;
+        background: #54B435;
+        border: black;
+        color: white;
+    }
+    #login_email1,#login_pass2{
+        border-radius: 2rem;
+        margin-left: -0.5rem;
+    }
+
+    #login_name,
+    #login_email,
+    #login_contact,
+    #login_Countryname,
+    #login_pass,
+    #login_pass1 {
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        background: rgb(254, 247, 247);
+        color: black;
+        width: 100%;
+        height: 5%;
+        margin-left: -2rem;
+    }
+
+    #login_Cityname,
+    #login_statename{
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        background: rgb(254, 247, 247);
+        color: black;
+        height: 10%;
+        margin-bottom: 15px;
+        margin-left: -2rem;
+    }
+
+    #btnn {
+        border-radius: 2rem;
+        font-size: 1rem;
+        width: 100%;
+        
+        background: #54B435;
+        color: white;
+    }
+    #pass,#city,#state,#country,#contact,#cname,#cemail{
+        margin-left:0.5rem;
+    }
+
+    #addressfield{
+        border:none;
+        background-color:rgb(254, 247, 247);
+        width:20rem;
+        height:4rem;
+    }
+    #statename,#Sstate{
+        background-color:rgb(254, 247, 247);
+
+    }
+
+</style>
+<script src="js/cities.js"></script>
+
+<!-- cutomer login page -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="font-weight: bolder;margin-left: 8rem;">CUSTOMER LOGIN</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/customerLogin" method="post">
+            <div class="modal-body">
+                <div class="form-outline form-white mb-4">
+                    <input type="email" id="login_email1" placeholder="Enter Email" name="CEmail" class="form-control" />
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                    <input type="password" id="login_pass2" placeholder="Enter Password" name="CPassword" class="form-control" />
+                </div>
+                <a href="/forget" style="color: #54B435;text-decoration: none;margin-top: -1rem;font-size: 1rem;">Forgot password?</a><br><br>
+                <button type="submit" class="btn" id="btnnn">SIGN IN</button><br><br>
+              <center>
+                <a href=""  data-bs-toggle="modal" data-bs-target="#exampleModa"><span>YOU ARE NOT REGISTER ?</span>
+                    <span style="color: black;">SIGN-UP</span> </a>
+              </center>
+            </div>
+        </form>
+      </div>
+    </div>
+</div> 
+<!-- customer login page end -->
+<!-- customer registration page open -->
+<div class="modal fade" id="exampleModa" tabindex="-1" aria-labelledby="exampleModalLabel1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="font-weight: bolder;font-size: 1.5rem;" id="exampleModalLabel">CUSTOMER SIGN-UP</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <img class="img-fluid img-responsive"  src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7883.jpg" 
+                        alt="">
+                    </div>
+                    <div class=" col-sm-12 col-md-6">
+                        <form action="/customerData"  method="post" onsubmit="return save()">
+                            <div  class="form-group"  >
+                                <input type="text" id="login_name" onkeyup="return validname()" placeholder="Enter Name" name="CName" class="ms-2 form-control" />
+                                <p id="cname"></p>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="login_email"onkeyup="return validemail()" placeholder="Enter Email" name="CEmail" class="ms-2 form-control" />
+                                <p id="cemail"></p>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" id="login_contact" onkeyup="return validcontact()" placeholder="Enter Contact no." name="CContact" class="ms-2 form-control" />
+                                <p id="contact"></p>
+                            </div>
+                            <div class="form-group">
+                                <select onchange="print_city('login_Cityname', this.selectedIndex);" id="login_statename" name ="CState" class="ms-2 form-control" required></select>
+                            </div>
+    
+                            <div class="form-group">
+                                    <select id ="login_Cityname" class="ms-2 form-control" name ="CCity" required></select>
+                                    <script language="javascript">print_state("login_statename");</script>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id="login_pass" onkeyup="return validpass()"placeholder="Enter password" name="CPassword" class="ms-2 form-control" />
+                                <p id="pass"></p>
+                            </div>
+                            
+                            <input type="submit" class="btn ms-2 " id="btnn" value="SIGN UP" /><br><br>
+                       
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- customer registration page close -->
+
+     <script>
+        function validname(){
+            console.log("Enter name");
+          var name=document.getElementById("login_name");
+          
+        //   var address=document.getElementById("add");
+          if(name.value.trim()==""){
+            document.getElementById("cname").style.color="red";
+            document.getElementById("cname").innerHTML="Name Required";
+            return false
+          }
+          else {
+            var reg=/^[A-Za-z\s]+$/;
+            if(reg.test(name.value)){
+             document.getElementById('cname').style.color="green";
+             document.getElementById("cname").innerHTML="Valid name";
+             return true
+            }
+            else{
+             document.getElementById('cname').style.color="red";
+             document.getElementById("cname").innerHTML="Invalid name";
+             return false;
+            }
+          }
+    }
+    
+    function validemail(){   
+        console.log("Enter email");
+       var email=document.getElementById("login_email");   
+       if(email.value.trim()==""){
+          document.getElementById("cemail").style.color="red";
+          document.getElementById("cemail").innerHTML="Email Required";
+          return false;
+       }
+       else {
+          var reg = /^\w+([\.-])?\w*@[a-z]*([\.][a-z]{2,3})+$/;
+            if(reg.test(email.value)){
+             document.getElementById("cemail").style.color="green";
+             document.getElementById("cemail").innerHTML="Valid Email";
+              return true;
+            }
+            else{
+             document.getElementById("cemail").style.color="red";
+             document.getElementById("cemail").innerHTML="Invalid email";
+             return false;
+            }
+       }
+    }
+
+    function validcity(){
+        console.log("Enter city");
+          var name=document.getElementById("login_Cityname");
+          
+        //   var address=document.getElementById("add");
+          if(name.value.trim()==""){
+            document.getElementById("city").style.color="red";
+            document.getElementById("city").innerHTML="City Name Required";
+            return false
+          }
+          else {
+            var reg=/^[A-Za-z\s]+$/;
+            if(reg.test(name.value)){
+             document.getElementById('city').style.color="green";
+             document.getElementById("city").innerHTML="Valid name";
+             return true
+            }
+            else{
+             document.getElementById('city').style.color="red";
+             document.getElementById("city").innerHTML="Invalid name";
+             return false;
+            }
+          }
+    }
+    function validstate(){
+        console.log("Enter state");
+          var name=document.getElementById("login_statename");
+          
+       
+          if(name.value.trim()==""){
+            document.getElementById("state").style.color="red";
+            document.getElementById("state").innerHTML="State Name Required";
+            return false
+          }
+          else {
+            var reg=/^[A-Za-z\s]+$/;
+            if(reg.test(name.value)){
+             document.getElementById('state').style.color="green";
+             document.getElementById("state").innerHTML="Valid name";
+             return true
+            }
+            else{
+             document.getElementById('state').style.color="red";
+             document.getElementById("state").innerHTML="Invalid name";
+             return false;
+            }
+          }
+    }
+    
+    function validpass(){
+       var password=document.getElementById("login_pass");   
+       if(password.value.trim()==""){
+          document.getElementById("pass").style.color="red";
+          document.getElementById("pass").innerHTML="Password Required";
+          return false;
+       }
+       else {
+        var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if(reg.test(password.value)){
+             document.getElementById("pass").style.color="green";
+             document.getElementById("pass").innerHTML="Valid Password";
+             return true;
+            }
+            else{
+             document.getElementById("pass").style.color="red";
+             document.getElementById("pass").innerHTML="Invalid Password";
+             return false;
+            }
+       }
+    }
+    function validcontact(){
+       var mobile=document.getElementById("login_contact");
+       if(mobile.value.trim()==""){
+          document.getElementById("contact").style.color="red";
+          document.getElementById("contact").innerHTML="Mobile Number Required";
+          return true;
+       }
+       else{
+          var reg=/^[6789][0-9]{9}$/;
+          if(reg.test(mobile.value))
+          {
+             document.getElementById("contact").style.color="green";
+             document.getElementById("contact").innerHTML="Valid Mobile No.";
+             return true;
+          }
+          else
+          {
+             document.getElementById("contact").style.color="red";
+             document.getElementById("contact").innerHTML="Enter 10 Digit MobileNo.";
+             return false;         
+          }
+       }
+    }
+    
+    function save(){
+    
+       console.log("Enter in sabe()....");
+       var name=validname();
+       if(name==false){
+          return false;
+       }
+       
+       
+       var email=validemail();
+       if(email==false){
+           return false;
+       }
+       
+       
+       var num=validcontact();
+       if(num==false){
+          return false;
+       }
+       
+
+       var name=validcity();
+       if(name==false){
+          return false;
+       }
+      
+    
+       var name=validstate();
+       if(name==false){
+          return false;
+       }
+      
+       var pass=validpass();
+       if(pass==false){
+          
+          return false;
+       }
+      return true;
+    }   
+    </script>    
+ 
+
+ <!-- .............................service provider login page.................................... -->
+ 
+<!-- .............................service provider login page end.................................... -->
+<!-- ServiesProvider registration -->
+
+
+    
+
+<!-- ...................seller login........................ -->
+
+
+
+<!-- forget password -->
+<div class="container" id="forpassword" style="display: none;">
+    <div class="wrapper">
+      <div class="title"><span>Forgot Password</span></div>
+      <form action="/customer/forgot-password" method="post" class="password-form">
+        <div class="card text-center" style="max-width: 380px; margin: 0 auto; border: 2px solid #54B435; padding: 20px;">
+          <!-- <p class="card-text py-2" style="color: #54B435;">
+            Enter your email address and we'll send you an email with instructions to reset your password.
+          </p> -->
+          <div class="form-group">
+            <i class="fas fa-user"></i>
+            <input type="email" id="typeEmail" style="border: 1px solid #54B435;" name="Cemail" class="form-control my-3" placeholder="Enter your email" required />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" onclick="showOtp()" style=" background-image: linear-gradient(to bottom right, #54B435, #FFC80E); border: 1px solid #54B435 ;" id="otp-btn">Send OTP to Verify</button>
+          </div>
+          <div class="form-group" >
+            <input type="text" id="otp" name="otp" style="display: none; border: 1px solid #54B435;" placeholder="Enter OTP" class="form-control" />
+          </div>
+          <div class="form-group">
+            <button type="submit" class=" btn btn-primary text-center bg-primary" style="display:none; background-image: linear-gradient(to bottom right, #54B435, #FFC80E); border: 1px solid #54B435 ;" onclick="confirmPassword()" id="submit">Submit</button>
+          </div>
+          <div class="link d-flex justify-content-between mt-4" >
+            <!-- <a style="color: #54B435;" href="/user_login">Login</a>
+            <a style="color: #54B435;" href="/Registration">Register</a> -->
+          </div>
+        </div>
+      </form>
+    </div>
+  </div> 
